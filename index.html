@@ -11,6 +11,7 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      scroll-behavior: smooth; /* Desplazamiento suave al hacer clic en el botón */
     }
 
     body {
@@ -98,7 +99,6 @@
       line-height: 1;
       display: inline-block;
       
-      /* Gradiente continuo desde Plata (P) hasta Azul metalizado (A en adelante) */
       background: linear-gradient(
         90deg, 
         #a6acb3 0%,    /* P plateada */
@@ -187,11 +187,34 @@
     .synopsis-body {
       font-size: 1.05rem;
       color: #333;
-      margin-bottom: 35px;
+      margin-bottom: 25px;
       line-height: 1.6;
     }
 
-    /* BOTONES DE DESCARGA CON TEXTURA METÁLICA Y REMACHES */
+    /* BOTÓN PEQUEÑO PARA LA SINOPSIS */
+    .btn-synopsis-small {
+      display: inline-block;
+      padding: 8px 16px;
+      margin-bottom: 25px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      color: #2c3035;
+      background: linear-gradient(90deg, #c2c7ce 0%, #9ba3ad 100%);
+      border: 1px solid #717780;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+      transition: filter 0.2s, transform 0.1s;
+      width: fit-content;
+    }
+
+    .btn-synopsis-small:hover {
+      filter: brightness(1.08);
+      transform: translateY(-1px);
+    }
+
+    /* CONTENEDOR DE BOTONES DE DESCARGA */
     .buttons-container {
       display: flex;
       flex-direction: column;
@@ -199,6 +222,7 @@
       width: 310px;
     }
 
+    /* BOTONES DE DESCARGA QUE CAMBIAN DE PLATEADO A AZUL METALIZADO */
     .btn-download {
       display: block;
       padding: 14px 20px;
@@ -207,29 +231,28 @@
       font-size: 1.15rem;
       font-weight: 800;
       letter-spacing: 1px;
-      color: #ffffff;
-      text-shadow: 0 -1px 2px rgba(0, 0, 0, 0.9);
+      color: #111111;
+      text-shadow: 0 1px 1px rgba(255, 255, 255, 0.6);
       border-radius: 6px;
-      background-color: #0066aa;
+      background-color: #809bb8;
       background-image: 
         repeating-linear-gradient(
           180deg,
-          rgba(255, 255, 255, 0.18) 0px,
-          rgba(255, 255, 255, 0.18) 1px,
-          rgba(0, 0, 0, 0.15) 1px,
-          rgba(0, 0, 0, 0.15) 2px
+          rgba(255, 255, 255, 0.25) 0px,
+          rgba(255, 255, 255, 0.25) 1px,
+          rgba(0, 0, 0, 0.2) 1px,
+          rgba(0, 0, 0, 0.2) 2px
         ),
         linear-gradient(
-          180deg, 
-          #5ea6d8 0%, 
-          #0066aa 18%, 
-          #004b85 50%, 
-          #002b55 51%, 
-          #005588 85%, 
-          #2283cc 100%
+          90deg, 
+          #c2c7ce 0%, 
+          #9ba3ad 25%, 
+          #5883ac 55%, 
+          #0066aa 80%, 
+          #004488 100%
         );
       background-blend-mode: overlay;
-      border: 1px solid #121417;
+      border: 1px solid #1a1c1f;
       box-shadow: 
         0 5px 10px rgba(0, 0, 0, 0.45), 
         inset 0 1px 2px rgba(255, 255, 255, 0.8), 
@@ -343,7 +366,10 @@
         <h2 class="book-title">Con el vuelo de los pájaros</h2>
         <p class="book-category">Science Fiction</p>
 
-        <h3 class="synopsis-heading">Sinopsis</h3>
+        <!-- Botón pequeño para ir directamente a la sinopsis -->
+        <a href="#sinopsis-seccion" class="btn-synopsis-small">Leer Sinopsis ↓</a>
+
+        <h3 id="sinopsis-seccion" class="synopsis-heading">Sinopsis</h3>
         <p class="synopsis-body">
           [Próximamente ingresarás aquí la sinopsis de la novela...]
         </p>
