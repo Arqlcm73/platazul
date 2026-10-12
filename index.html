@@ -22,38 +22,38 @@
       min-height: 100vh;
     }
 
-    /* BANDA METÁLICA CEPILLADA / ESMERILADA CON RAYADO HORIZONTAL REAL */
+    /* BANDA METÁLICA MÁS OSCURA, OPACA Y CON ESMERILADO MUY VISIBLE */
     .metallic-bar {
-      background-color: #a8acb1;
+      background-color: #53585e;
       background-image: 
-        /* Rayado/microgrooves horizontales estilo acero esmerilado */
+        /* Rayado horizontal pronunciado para efecto esmerilado/cepillado */
         repeating-linear-gradient(
           180deg,
-          rgba(255, 255, 255, 0.2) 0px,
-          rgba(255, 255, 255, 0.2) 1px,
-          rgba(0, 0, 0, 0.15) 1px,
-          rgba(0, 0, 0, 0.15) 2px
+          rgba(255, 255, 255, 0.28) 0px,
+          rgba(255, 255, 255, 0.28) 1px,
+          rgba(0, 0, 0, 0.35) 1px,
+          rgba(0, 0, 0, 0.35) 2px
         ),
-        /* Degradado de luz metálico vertical */
+        /* Gradiente metálico oscuro y opaco */
         linear-gradient(
           180deg, 
-          #6b6f75 0%, 
-          #9fa3a9 15%, 
-          #d2d6db 38%, 
-          #f0f3f6 50%, 
-          #c4c8cd 65%, 
-          #8a8e94 85%, 
-          #585c62 100%
+          #2c3035 0%, 
+          #585e66 18%, 
+          #8a9098 42%, 
+          #a8aeb7 50%, 
+          #717780 62%, 
+          #41454b 85%, 
+          #202327 100%
         );
       background-blend-mode: overlay;
-      border-top: 1px solid #484b50;
-      border-bottom: 2px solid #282a2e;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), inset 0 -1px 0 rgba(0,0,0,0.5);
+      border-top: 1px solid #1a1c1f;
+      border-bottom: 2px solid #101113;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), inset 0 -1px 0 rgba(0,0,0,0.7);
     }
 
     /* ENCABEZADO SUPERIOR */
     header {
-      padding: 32px 5%; 
+      padding: 34px 5%; 
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -70,12 +70,12 @@
       width: 105px;
       height: 105px;
       border-radius: 16px;
-      background: linear-gradient(135deg, #e1e3e7 0%, #585d65 50%, #1c1e22 100%);
+      background: linear-gradient(135deg, #d2d5d9 0%, #4a4f56 50%, #121416 100%);
       padding: 4px;
       box-shadow: 
-        0 8px 16px rgba(0, 0, 0, 0.5), 
-        inset 0 2px 3px rgba(255, 255, 255, 0.9), 
-        inset 0 -3px 5px rgba(0, 0, 0, 0.8);
+        0 8px 16px rgba(0, 0, 0, 0.6), 
+        inset 0 2px 3px rgba(255, 255, 255, 0.8), 
+        inset 0 -3px 5px rgba(0, 0, 0, 0.9);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -86,50 +86,47 @@
       height: 100%;
       object-fit: cover;
       border-radius: 12px;
-      border: 1px solid #141618;
+      border: 1px solid #0d0e10;
     }
 
-    /* TÍTULO PRINCIPAL: PlatAzul */
+    /* TÍTULO PRINCIPAL: PlatAzul con transición gradual Silver -> Blue */
     .brand-title {
       font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
       font-size: 4.8rem;
       font-weight: 700;
       letter-spacing: -2px;
       line-height: 1;
-      display: flex;
-      align-items: center;
-    }
-
-    .plat-text {
-      color: #4a4f56;
-      text-shadow: 
-        0 1px 1px rgba(255, 255, 255, 0.9),
-        0 -1px 1px rgba(0, 0, 0, 0.6),
-        1px 2px 3px rgba(0, 0, 0, 0.3);
-    }
-
-    .azul-text {
-      background: linear-gradient(180deg, #3399ff 0%, #0066cc 45%, #003366 100%);
+      display: inline-block;
+      
+      /* Gradiente continuo desde Plata (P) hasta Azul metalizado (A en adelante) */
+      background: linear-gradient(
+        90deg, 
+        #a6acb3 0%,    /* P plateada */
+        #828890 25%,   /* Transición suave plateada */
+        #49719b 48%,   /* Mezcla intermedia antes de la A */
+        #0066b2 62%,   /* Azul en la A */
+        #004488 100%   /* Azul metalizado profundo final */
+      );
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0px 2px 3px rgba(0, 0, 0, 0.4));
+      filter: drop-shadow(0px 2px 3px rgba(0, 0, 0, 0.7));
     }
 
     /* ENLACE DE CONTACTO */
     nav a {
       font-family: Arial, sans-serif;
-      color: #2e3238;
+      color: #e2e5e9;
       text-decoration: none;
       font-weight: 700;
       font-size: 1.25rem;
       letter-spacing: 1.8px;
       text-transform: uppercase;
-      text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
       transition: color 0.2s;
     }
 
     nav a:hover {
-      color: #0066cc;
+      color: #3399ff;
     }
 
     /* ÁREA CENTRAL BLANCA */
@@ -217,10 +214,10 @@
       background-image: 
         repeating-linear-gradient(
           180deg,
-          rgba(255, 255, 255, 0.15) 0px,
-          rgba(255, 255, 255, 0.15) 1px,
-          rgba(0, 0, 0, 0.1) 1px,
-          rgba(0, 0, 0, 0.1) 2px
+          rgba(255, 255, 255, 0.18) 0px,
+          rgba(255, 255, 255, 0.18) 1px,
+          rgba(0, 0, 0, 0.15) 1px,
+          rgba(0, 0, 0, 0.15) 2px
         ),
         linear-gradient(
           180deg, 
@@ -234,7 +231,7 @@
       background-blend-mode: overlay;
       border: 1px solid #121417;
       box-shadow: 
-        0 5px 10px rgba(0, 0, 0, 0.4), 
+        0 5px 10px rgba(0, 0, 0, 0.45), 
         inset 0 1px 2px rgba(255, 255, 255, 0.8), 
         inset 0 -2px 4px rgba(0, 0, 0, 0.6);
       position: relative;
@@ -261,16 +258,25 @@
 
     /* PIE DE PÁGINA */
     footer {
-      padding: 26px 5%; 
+      padding: 28px 5%; 
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
-    .footer-left, .footer-center {
+    .footer-brand {
       font-family: 'Trebuchet MS', sans-serif;
       font-size: 1.5rem;
       font-weight: 700;
+      background: linear-gradient(
+        90deg, 
+        #a6acb3 0%, 
+        #49719b 50%, 
+        #0066b2 100%
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.8));
     }
 
     .footer-icons {
@@ -279,15 +285,15 @@
     }
 
     .footer-icons a {
-      color: #2e3238;
+      color: #e2e5e9;
       font-size: 1.4rem;
       text-decoration: none;
-      text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
       transition: color 0.2s;
     }
 
     .footer-icons a:hover {
-      color: #0066cc;
+      color: #3399ff;
     }
 
     /* RESPONSIVO */
@@ -313,15 +319,13 @@
 </head>
 <body>
 
-  <!-- Encabezado superior metálico cepillado -->
+  <!-- Encabezado superior con bandas oscuras, esmerilado visible y gradiente continuo -->
   <header class="metallic-bar">
     <div class="header-brand">
       <div class="logo-frame">
         <img src="logo-101.jpg" alt="Logo PlatAzul">
       </div>
-      <h1 class="brand-title">
-        <span class="plat-text">Plat</span><span class="azul-text">Azul</span>
-      </h1>
+      <h1 class="brand-title">PlatAzul</h1>
     </div>
     <nav>
       <a href="#contacto">CONTACTO</a>
@@ -341,7 +345,7 @@
 
         <h3 class="synopsis-heading">Sinopsis</h3>
         <p class="synopsis-body">
-          [En desarrollo. Próximamente ingresarás aquí la sinopsis de la novela...]
+          [Próximamente ingresarás aquí la sinopsis de la novela...]
         </p>
 
         <div class="buttons-container">
@@ -352,14 +356,10 @@
     </div>
   </main>
 
-  <!-- Pie de página metálico cepillado -->
+  <!-- Pie de página -->
   <footer class="metallic-bar">
-    <div class="footer-left">
-      <span class="plat-text">Plat</span><span class="azul-text">Azul</span>
-    </div>
-    <div class="footer-center">
-      <span class="plat-text">Plat</span><span class="azul-text">Azul</span>
-    </div>
+    <div class="footer-brand">PlatAzul</div>
+    <div class="footer-brand">PlatAzul</div>
     <div class="footer-icons" id="contacto">
       <a href="mailto:tuemail@ejemplo.com"><i class="fa-regular fa-envelope"></i></a>
       <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
