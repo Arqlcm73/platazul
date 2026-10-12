@@ -11,7 +11,7 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      scroll-behavior: smooth; /* Desplazamiento suave al hacer clic en el botón */
+      scroll-behavior: smooth;
     }
 
     body {
@@ -27,7 +27,6 @@
     .metallic-bar {
       background-color: #53585e;
       background-image: 
-        /* Rayado horizontal pronunciado para efecto esmerilado/cepillado */
         repeating-linear-gradient(
           180deg,
           rgba(255, 255, 255, 0.28) 0px,
@@ -35,7 +34,6 @@
           rgba(0, 0, 0, 0.35) 1px,
           rgba(0, 0, 0, 0.35) 2px
         ),
-        /* Gradiente metálico oscuro y opaco */
         linear-gradient(
           180deg, 
           #2c3035 0%, 
@@ -101,11 +99,11 @@
       
       background: linear-gradient(
         90deg, 
-        #a6acb3 0%,    /* P plateada */
-        #828890 25%,   /* Transición suave plateada */
-        #49719b 48%,   /* Mezcla intermedia antes de la A */
-        #0066b2 62%,   /* Azul en la A */
-        #004488 100%   /* Azul metalizado profundo final */
+        #a6acb3 0%,    
+        #828890 25%,   
+        #3d6088 48%,   
+        #003865 62%,   
+        #002244 100%   
       );
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -174,47 +172,59 @@
     .book-category {
       font-size: 1.1rem;
       color: #555;
-      margin-bottom: 28px;
+      margin-bottom: 24px;
     }
 
-    .synopsis-heading {
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: #111;
-      margin-bottom: 8px;
-    }
-
-    .synopsis-body {
-      font-size: 1.05rem;
-      color: #333;
-      margin-bottom: 25px;
-      line-height: 1.6;
-    }
-
-    /* BOTÓN PEQUEÑO PARA LA SINOPSIS */
-    .btn-synopsis-small {
+    /* BOTÓN LEER SINOPSIS (Colores de logo-101, liso, pequeño) */
+    .btn-synopsis-toggle {
       display: inline-block;
-      padding: 8px 16px;
-      margin-bottom: 25px;
+      padding: 9px 18px;
+      margin-bottom: 20px;
       text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 700;
+      font-size: 0.95rem;
+      font-weight: 800;
       letter-spacing: 0.8px;
-      color: #2c3035;
-      background: linear-gradient(90deg, #c2c7ce 0%, #9ba3ad 100%);
-      border: 1px solid #717780;
+      color: #ffffff;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
       border-radius: 4px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+      background: linear-gradient(
+        90deg, 
+        #d0d5dd 0%, 
+        #828892 25%, 
+        #2c5378 55%, 
+        #003865 80%, 
+        #002040 100%
+      );
+      border: 1px solid #101214;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+      cursor: pointer;
       transition: filter 0.2s, transform 0.1s;
       width: fit-content;
     }
 
-    .btn-synopsis-small:hover {
-      filter: brightness(1.08);
+    .btn-synopsis-toggle:hover {
+      filter: brightness(1.1);
       transform: translateY(-1px);
     }
 
-    /* CONTENEDOR DE BOTONES DE DESCARGA */
+    /* TEXTO DE SINOPSIS DESPLEGABLE */
+    .synopsis-body {
+      display: none; /* Se activa/despliega al hacer clic en Leer Sinopsis */
+      font-size: 1.05rem;
+      color: #333;
+      margin-bottom: 25px;
+      line-height: 1.6;
+      background: #f7f9fa;
+      padding: 15px;
+      border-left: 3px solid #003865;
+      border-radius: 4px;
+    }
+
+    .synopsis-body.active {
+      display: block;
+    }
+
+    /* BOTONES DE DESCARGA LISOS CON COLORES EXACTOS DE LOGO-101 */
     .buttons-container {
       display: flex;
       flex-direction: column;
@@ -222,7 +232,6 @@
       width: 310px;
     }
 
-    /* BOTONES DE DESCARGA QUE CAMBIAN DE PLATEADO A AZUL METALIZADO */
     .btn-download {
       display: block;
       padding: 14px 20px;
@@ -231,36 +240,28 @@
       font-size: 1.15rem;
       font-weight: 800;
       letter-spacing: 1px;
-      color: #111111;
-      text-shadow: 0 1px 1px rgba(255, 255, 255, 0.6);
+      color: #ffffff;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
       border-radius: 6px;
-      background-color: #809bb8;
-      background-image: 
-        repeating-linear-gradient(
-          180deg,
-          rgba(255, 255, 255, 0.25) 0px,
-          rgba(255, 255, 255, 0.25) 1px,
-          rgba(0, 0, 0, 0.2) 1px,
-          rgba(0, 0, 0, 0.2) 2px
-        ),
-        linear-gradient(
-          90deg, 
-          #c2c7ce 0%, 
-          #9ba3ad 25%, 
-          #5883ac 55%, 
-          #0066aa 80%, 
-          #004488 100%
-        );
-      background-blend-mode: overlay;
-      border: 1px solid #1a1c1f;
+      /* Gradiente liso horizontal sin esmerilar: Plateado a Azul Logo-101 */
+      background: linear-gradient(
+        90deg, 
+        #e0e4e8 0%, 
+        #a4aab2 20%, 
+        #527498 50%, 
+        #003865 80%, 
+        #001e3d 100%
+      );
+      border: 1px solid #0f1113;
       box-shadow: 
-        0 5px 10px rgba(0, 0, 0, 0.45), 
+        0 5px 10px rgba(0, 0, 0, 0.4), 
         inset 0 1px 2px rgba(255, 255, 255, 0.8), 
         inset 0 -2px 4px rgba(0, 0, 0, 0.6);
       position: relative;
       transition: transform 0.1s, filter 0.2s;
     }
 
+    /* Remaches metálicos lisos */
     .btn-download::before, .btn-download::after {
       content: '';
       position: absolute;
@@ -276,7 +277,7 @@
 
     .btn-download:hover {
       transform: translateY(-2px);
-      filter: brightness(1.08);
+      filter: brightness(1.1);
     }
 
     /* PIE DE PÁGINA */
@@ -294,8 +295,8 @@
       background: linear-gradient(
         90deg, 
         #a6acb3 0%, 
-        #49719b 50%, 
-        #0066b2 100%
+        #3d6088 50%, 
+        #003865 100%
       );
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -342,7 +343,7 @@
 </head>
 <body>
 
-  <!-- Encabezado superior con bandas oscuras, esmerilado visible y gradiente continuo -->
+  <!-- Encabezado superior -->
   <header class="metallic-bar">
     <div class="header-brand">
       <div class="logo-frame">
@@ -366,12 +367,12 @@
         <h2 class="book-title">Con el vuelo de los pájaros</h2>
         <p class="book-category">Science Fiction</p>
 
-        <!-- Botón pequeño para ir directamente a la sinopsis -->
-        <a href="#sinopsis-seccion" class="btn-synopsis-small">Leer Sinopsis ↓</a>
+        <!-- Botón para desplegar la sinopsis -->
+        <button class="btn-synopsis-toggle" onclick="toggleSynopsis()">Leer Sinopsis ↓</button>
 
-        <h3 id="sinopsis-seccion" class="synopsis-heading">Sinopsis</h3>
-        <p class="synopsis-body">
-          Cuando la mente acecha, cuando la imaginación traspasa límites, la ficción puede volverse realidad. Más allá del poderío bélico, en el silencio de las sombras, se gesta el terror.
+        <!-- Texto de la sinopsis (sin la palabra encabezado) -->
+        <p id="sinopsis-text" class="synopsis-body">
+          [Próximamente ingresarás aquí la sinopsis de la novela...]
         </p>
 
         <div class="buttons-container">
@@ -392,6 +393,13 @@
       <a href="#"><i class="fa-brands fa-instagram"></i></a>
     </div>
   </footer>
+
+  <script>
+    function toggleSynopsis() {
+      const synopsis = document.getElementById('sinopsis-text');
+      synopsis.classList.toggle('active');
+    }
+  </script>
 
 </body>
 </html>
