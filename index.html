@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PlatAzul | Sitio Oficial</title>
+  <title>PlatAzul | Con el vuelo de los pájaros</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       theme: {
@@ -13,171 +13,158 @@
           fontFamily: {
             sans: ['Inter', 'sans-serif'],
             display: ['Space Grotesk', 'sans-serif'],
-          },
-          colors: {
-            plata: {
-              100: '#f8fafc',
-              200: '#e2e8f0',
-              400: '#94a3b8',
-              700: '#334155',
-            },
-            azulMetal: {
-              DEFAULT: '#1e3a8a',
-              dark: '#172554',
-              glow: '#2563eb',
-            }
           }
         }
       }
     }
   </script>
   <style>
-    /* Efecto metálico y detalles de remaches */
-    .btn-metal-azul {
-      background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 50%, #172554 100%);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.3), 0 4px 10px rgba(30, 58, 138, 0.3);
+    /* Estilo del texto PlatAzul con P de plata, A de azul y difuminado */
+    .texto-platazul {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 800;
+    }
+    .letra-p {
+      color: #e2e8f0;
+      text-shadow: 0 0 10px rgba(255,255,255,0.8), 0 2px 4px rgba(0,0,0,0.3);
+    }
+    .letras-lat {
+      background: linear-gradient(90deg, #cbd5e1 0%, #64748b 50%, #1e3a8a 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .letra-a {
+      color: #1d4ed8;
+      text-shadow: 0 0 12px rgba(29, 78, 216, 0.5);
+    }
+    .letras-zul {
+      background: linear-gradient(90deg, #2563eb 0%, #1e3a8a 60%, #172554 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Botón con degradado de Plateado a Azul Metalizado */
+    .btn-plata-azul {
+      background: linear-gradient(135deg, #cbd5e1 0%, #94a3b8 25%, #2563eb 70%, #1e3a8a 100%);
+      background-size: 200% 200%;
+      background-position: 0% 50%;
+      color: #ffffff;
+      box-shadow: 0 4px 15px rgba(30, 58, 138, 0.25), inset 0 1px 1px rgba(255,255,255,0.6);
+      transition: all 0.4s ease;
       position: relative;
     }
-    .btn-metal-azul::before, .btn-metal-azul::after {
-      content: '';
-      position: absolute;
-      width: 4px;
-      height: 4px;
-      background: #94a3b8;
-      border-radius: 50%;
-      box-shadow: inset 0 1px 1px rgba(0,0,0,0.5);
+    .btn-plata-azul:hover {
+      background-position: 100% 50%;
+      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4), inset 0 1px 2px rgba(255,255,255,0.8);
+      transform: translateY(-2px);
     }
-    .btn-metal-azul::before { top: 6px; left: 8px; }
-    .btn-metal-azul::after { top: 6px; right: 8px; }
 
-    .borde-plata {
+    /* Borde metalizado pulido para la tarjeta de portada */
+    .borde-portada-metal {
       border: 1px solid #cbd5e1;
-      box-shadow: 0 4px 20px -2px rgba(148, 163, 184, 0.15);
+      box-shadow: 0 10px 30px -5px rgba(148, 163, 184, 0.3), 0 0 15px rgba(30, 58, 138, 0.1);
     }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased flex flex-col min-h-screen">
 
-  <!-- Encabezado / Navegación -->
-  <header class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50">
-    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-      <div class="flex items-center space-x-3">
-        <!-- Espacio reservado para tu logo definitivo -->
-        <div class="w-10 h-10 rounded bg-slate-200 border border-slate-300 flex items-center justify-center font-display font-bold text-slate-700">
-          PA
-        </div>
-        <span class="font-display text-xl font-bold tracking-tight text-slate-900">PlatAzul</span>
+  <!-- Encabezado / Marca Principal -->
+  <header class="bg-white/95 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50 py-5 shadow-sm">
+    <div class="max-w-6xl mx-auto px-6 flex items-center justify-between">
+      
+      <!-- Logo y Nombre destacados de mayor tamaño -->
+      <div class="flex items-center space-x-4">
+        <img src="logo 101.jpg" alt="Logo PlatAzul" class="w-14 h-14 md:w-16 md:h-16 object-contain rounded shadow-md border border-slate-200">
+        <span class="texto-platazul text-3xl md:text-4xl tracking-tight">
+          <span class="letra-p">P</span><span class="letras-lat">lat</span><span class="letra-a">A</span><span class="letras-zul">zul</span>
+        </span>
       </div>
 
-      <nav class="flex items-center space-x-6">
-        <a href="#novela" class="text-sm font-semibold text-azulMetal hover:text-azulMetal-glow transition-colors">Novela</a>
-        <a href="#proyectos" class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Proyectos & Conceptos</a>
-        <a href="#contacto" class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Contacto</a>
+      <nav>
+        <a href="#contacto" class="text-sm font-semibold text-slate-600 hover:text-blue-900 transition-colors">Contacto</a>
       </nav>
     </div>
   </header>
 
-  <!-- Sección Principal: La Novela -->
-  <section id="novela" class="py-16 md:py-24 max-w-5xl mx-auto px-6 flex-grow">
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+  <!-- Sección Principal: Novela -->
+  <main class="py-12 md:py-20 max-w-6xl mx-auto px-6 flex-grow flex items-center">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center w-full">
       
-      <!-- Contenedor de Portada (Espacio listo) -->
-      <div class="md:col-span-5 flex justify-center">
-        <div class="w-64 h-96 bg-white borde-plata rounded-lg flex flex-col items-center justify-center p-6 text-center text-slate-400 border-dashed border-2 border-slate-300">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mb-2 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+      <!-- Contenedor de Portada Más Grande -->
+      <div class="lg:col-span-5 flex justify-center">
+        <div class="w-72 h-[26rem] md:w-80 md:h-[28rem] bg-white borde-portada-metal rounded-xl flex flex-col items-center justify-center p-8 text-center border-dashed border-2 border-slate-300 relative overflow-hidden group">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mb-4 text-slate-300 group-hover:text-blue-600 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
           </svg>
-          <span class="text-xs font-medium uppercase tracking-wider">Espacio para la Portada</span>
+          <span class="text-xs font-semibold uppercase tracking-widest text-slate-400">Portada del Libro</span>
+          <span class="text-sm font-bold text-slate-700 mt-2">Con el vuelo de los pájaros</span>
         </div>
       </div>
 
-      <!-- Datos de la Novela -->
-      <div class="md:col-span-7 space-y-6">
+      <!-- Información y Botones de Descarga -->
+      <div class="lg:col-span-7 space-y-8">
         <div>
-          <span class="inline-block px-3 py-1 bg-slate-200 text-slate-700 text-xs font-semibold uppercase tracking-wider rounded-full mb-3">Ciencia Ficción</span>
-          <h1 class="text-3xl md:text-4xl font-display font-bold text-slate-900 leading-tight">
+          <span class="inline-block px-3.5 py-1 bg-slate-200 text-slate-700 text-xs font-bold uppercase tracking-widest rounded-full mb-3 border border-slate-300">Novela · Ciencia Ficción</span>
+          <h1 class="text-4xl md:text-5xl font-display font-extrabold text-slate-900 leading-tight">
             Con el vuelo de los pájaros
           </h1>
         </div>
 
         <!-- Bloque para la Sinopsis -->
-        <div class="bg-white p-6 rounded-xl borde-plata text-slate-600 leading-relaxed space-y-3">
-          <h3 class="font-display font-semibold text-slate-800 text-sm uppercase tracking-wide">Sinopsis</h3>
-          <p class="text-sm italic text-slate-500">
+        <div class="bg-white p-7 rounded-2xl border border-slate-200 shadow-sm text-slate-600 leading-relaxed space-y-3">
+          <h2 class="font-display font-bold text-slate-800 text-xs uppercase tracking-wider">Sinopsis</h2>
+          <p class="text-sm md:text-base italic text-slate-500">
             [Próximamente ingresarás aquí la sinopsis de la novela...]
           </p>
         </div>
 
-        <!-- Botón de Descarga Gratis -->
-        <div class="pt-2">
-          <a href="#" class="inline-flex items-center px-8 py-4 text-white font-medium rounded-lg btn-metal-azul hover:opacity-95 transition-all text-sm uppercase tracking-wider">
-            <span>Descargar Gratis (PDF)</span>
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-            </svg>
-          </a>
+        <!-- Botones de Descarga (PDF y ePub) -->
+        <div class="space-y-3 pt-2">
+          <p class="text-xs font-bold uppercase tracking-wider text-slate-500">Descarga Gratuita</p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            
+            <!-- Botón PDF -->
+            <a href="#" class="btn-plata-azul inline-flex items-center justify-center px-7 py-4 font-semibold rounded-xl text-sm uppercase tracking-wider">
+              <span>Descargar PDF</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+              </svg>
+            </a>
+
+            <!-- Botón ePub -->
+            <a href="#" class="btn-plata-azul inline-flex items-center justify-center px-7 py-4 font-semibold rounded-xl text-sm uppercase tracking-wider">
+              <span>Descargar ePub</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+              </svg>
+            </a>
+
+          </div>
         </div>
+
       </div>
 
     </div>
-  </section>
+  </main>
 
-  <!-- Sección de Proyectos & Conceptos -->
-  <section id="proyectos" class="bg-white py-16 border-t border-slate-200">
-    <div class="max-w-5xl mx-auto px-6">
-      <div class="mb-10">
-        <h2 class="text-2xl font-display font-bold text-slate-900">Taller de Diseño & Conceptos</h2>
-        <p class="text-slate-500 text-sm mt-1">Exploración en arquitectura, iluminación a medida e invenciones electromecánicas.</p>
+  <!-- Pie de Página -->
+  <footer id="contacto" class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800 mt-auto">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+      
+      <div class="text-center md:text-left">
+        <span class="texto-platazul text-2xl tracking-tight block">
+          <span class="letra-p">P</span><span class="letras-lat">lat</span><span class="letra-a">A</span><span class="letras-zul">zul</span>
+        </span>
+        <p class="text-sm text-slate-400 italic mt-1">Un taller donde las ideas se fusionan...</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <!-- Tarjeta Concepto 1 -->
-        <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 flex flex-col justify-between">
-          <div>
-            <span class="text-xs font-semibold text-azulMetal uppercase tracking-wider">Iluminación</span>
-            <h3 class="font-display font-bold text-slate-800 text-lg mt-1">Diseño de Lámparas</h3>
-            <p class="text-slate-600 text-xs mt-2">Líneas conceptuales y prototipos de iluminación industrial adaptados a espacios arquitectónicos.</p>
-          </div>
-          <span class="text-xs text-slate-400 mt-6 block">En desarrollo</span>
-        </div>
-
-        <!-- Tarjeta Concepto 2 -->
-        <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 flex flex-col justify-between">
-          <div>
-            <span class="text-xs font-semibold text-azulMetal uppercase tracking-wider">Electromecánica</span>
-            <h3 class="font-display font-bold text-slate-800 text-lg mt-1">Inventos & Dispositivos</h3>
-            <p class="text-slate-600 text-xs mt-2">Bocetos técnicos y desarrollos mecánicos enfocados en la funcionalidad y precisión.</p>
-          </div>
-          <span class="text-xs text-slate-400 mt-6 block">En desarrollo</span>
-        </div>
-
-        <!-- Tarjeta Concepto 3 -->
-        <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 flex flex-col justify-between">
-          <div>
-            <span class="text-xs font-semibold text-azulMetal uppercase tracking-wider">Arquitectura</span>
-            <h3 class="font-display font-bold text-slate-800 text-lg mt-1">Proyectos Especiales</h3>
-            <p class="text-slate-600 text-xs mt-2">Portafolio de propuestas de diseño espacial, estructural y acabados metálicos.</p>
-          </div>
-          <span class="text-xs text-slate-400 mt-6 block">En desarrollo</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Pie de página / Contacto -->
-  <footer id="contacto" class="bg-slate-900 text-slate-400 py-10 border-t border-slate-800 mt-auto">
-    <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
-      <div>
-        <p class="font-display text-white font-semibold">PlatAzul</p>
-        <p class="text-xs text-slate-500 mt-1">Arquitectura · Electromecánica · Literatura</p>
-      </div>
-
-      <!-- Enlaces de contacto (para completar luego) -->
+      <!-- Enlaces de contacto -->
       <div class="flex space-x-6 text-sm">
         <span class="hover:text-white transition-colors cursor-pointer">Email</span>
         <span class="hover:text-white transition-colors cursor-pointer">Facebook</span>
         <span class="hover:text-white transition-colors cursor-pointer">Instagram</span>
       </div>
+
     </div>
   </footer>
 
