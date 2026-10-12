@@ -233,7 +233,7 @@
       flex-direction: column;
       gap: 16px;
       width: 310px;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
 
     .btn-download {
@@ -282,22 +282,22 @@
       filter: brightness(1.1);
     }
 
-    /* FILA DE SINOPSIS (BOTÓN MÁS PEQUEÑO ABAJO DE LOS OTROS BOTONES Y TEXTO EN NEGRITA PEQUEÑA) */
+    /* FILA DE SINOPSIS (BOTÓN MÁS PEQUEÑO ABAJO Y TEXTO EN NEGRITA) */
     .synopsis-row {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       margin-bottom: 15px;
       flex-wrap: wrap;
     }
 
     .btn-synopsis-toggle {
       display: inline-block;
-      padding: 7px 14px;
+      padding: 6px 12px;
       text-decoration: none;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       font-weight: 800;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.4px;
       color: #ffffff;
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
       border-radius: 4px;
@@ -323,7 +323,7 @@
     }
 
     .synopsis-warning-text {
-      font-size: 0.82rem;
+      font-size: 0.78rem;
       font-weight: 700;
       color: #333333;
       line-height: 1.3;
@@ -334,7 +334,6 @@
       display: none; 
       font-size: 1.05rem;
       color: #333;
-      margin-top: 10px;
       margin-bottom: 25px;
       line-height: 1.6;
       background: #f7f9fa;
@@ -413,7 +412,7 @@
         text-align: center;
       }
       .buttons-container {
-        margin: 0 auto 20px;
+        margin: 0 auto;
       }
       .synopsis-row {
         justify-content: center;
@@ -462,16 +461,16 @@
         <p class="book-author">Cristian Marcelo Latrónica</p>
         <p class="book-category">Science Fiction</p>
 
-        <!-- Botones de descarga -->
+        <!-- Botones de descarga arriba -->
         <div class="buttons-container">
           <a href="libro.pdf" download class="btn-download">DESCARGAR PDF</a>
           <a href="libro.epub" download class="btn-download">DESCARGAR ePub</a>
         </div>
 
-        <!-- Botón de sinopsis más pequeño ubicado abajo con advertencia en negrita -->
+        <!-- Botón de sinopsis más pequeño abajo con texto aclaratorio al lado -->
         <div class="synopsis-row">
           <button class="btn-synopsis-toggle" onclick="toggleSynopsis()">Leer Sinopsis ↓</button>
-          <span class="synopsis-warning-text">solo si no vas a leer la historia completa.</span>
+          <span class="synopsis-warning-text"><b>solo si no vas a leer la historia completa.</b></span>
         </div>
 
         <!-- Texto de la sinopsis -->
