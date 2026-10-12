@@ -50,6 +50,20 @@
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), inset 0 -1px 0 rgba(0,0,0,0.7);
     }
 
+    /* FRANJAS DE TEXTO REPETIDAS PEGADAS A LAS BANDAS */
+    .ticker-stripe {
+      background-color: #f0f2f5;
+      color: #55595f;
+      font-size: 0.75rem;
+      font-weight: bold;
+      padding: 3px 0;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 100%;
+      letter-spacing: 2px;
+      user-select: none;
+    }
+
     /* ENCABEZADO SUPERIOR */
     header {
       padding: 34px 5%; 
@@ -282,7 +296,7 @@
       filter: brightness(1.1);
     }
 
-    /* FILA DE SINOPSIS (BOTÓN MÁS PEQUEÑO ABAJO Y TEXTO EN NEGRITA) */
+    /* FILA DE SINOPSIS */
     .synopsis-row {
       display: flex;
       align-items: center;
@@ -414,9 +428,6 @@
       .buttons-container {
         margin: 0 auto;
       }
-      .synopsis-row {
-        justify-content: center;
-      }
       footer {
         flex-direction: column;
         gap: 16px;
@@ -447,6 +458,11 @@
       <a href="#contacto">CONTACTO</a>
     </nav>
   </header>
+
+  <!-- Franja de texto pegada abajo de la banda superior -->
+  <div class="ticker-stripe">
+    <b>FICCIÓN &nbsp;&bull;&nbsp; FICCIÓN &nbsp;&bull;&nbsp; FICCIÓN &nbsp;&bull;&nbsp; FICCIÓN &nbsp;&bull;&nbsp; FICCIÓN &nbsp;&bull;&nbsp; FICCIÓN &nbsp;&bull;&nbsp; FICCIÓN &nbsp;&bull;&nbsp; FICCIÓN &nbsp;&bull;&nbsp; FICCIÓN &nbsp;&bull;&nbsp; FICCIÓN &nbsp;&bull;&nbsp; FICCIÓN &nbsp;&bull;&nbsp; FICCIÓN &nbsp;&bull;&nbsp; FICCIÓN &nbsp;&bull;&nbsp; FICCIÓN &nbsp;&bull;&nbsp; FICCIÓN &nbsp;&bull;&nbsp; FICCIÓN</b>
+  </div>
 
   <!-- Contenido principal -->
   <main>
@@ -480,6 +496,11 @@
       </div>
     </div>
   </main>
+
+  <!-- Franja de texto pegada sobre la banda inferior -->
+  <div class="ticker-stripe">
+    <b>Cualquier similitud con la realidad es pura casualidad &nbsp;&bull;&nbsp; Cualquier similitud con la realidad es pura casualidad &nbsp;&bull;&nbsp; Cualquier similitud con la realidad es pura casualidad</b>
+  </div>
 
   <!-- Pie de página -->
   <footer class="metallic-bar">
