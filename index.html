@@ -4,10 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PlatAzul - Con el vuelo de los pájaros</title>
-  <!-- Iconos de FontAwesome para las redes sociales -->
+  <!-- Iconos de redes sociales -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    /* Reseteo básico */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -15,266 +14,318 @@
     }
 
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #e0e0e0;
-      color: #111;
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #f5f5f7;
+      color: #000;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
     }
 
-    /* Textura metálica/plateada cepillada */
-    .metallic-bg {
-      background: linear-gradient(180deg, #b0b5ba 0%, #d8dcde 25%, #8e9399 50%, #d8dcde 75%, #a0a5aa 100%);
-      border-bottom: 2px solid #666;
-      border-top: 2px solid #666;
-      box-shadow: inset 0 1px 3px rgba(255,255,255,0.8), inset 0 -1px 3px rgba(0,0,0,0.5);
+    /* BARRA METÁLICA CEPILLADA Y PULIDA */
+    .metallic-bar {
+      background: linear-gradient(
+        180deg, 
+        #4f5358 0%, 
+        #9d9ea0 6%, 
+        #d8d9db 18%, 
+        #b1b3b6 35%, 
+        #6e7175 60%, 
+        #a8abaf 85%, 
+        #4a4d50 100%
+      );
+      border-top: 2px solid #2e3033;
+      border-bottom: 3px solid #202224;
+      box-shadow: inset 0 2px 4px rgba(255,255,255,0.7), inset 0 -2px 4px rgba(0,0,0,0.6);
     }
 
-    /* ENCABEZADO */
+    /* ENCABEZADO SUPERIOR */
     header {
-      padding: 20px 5%;
+      padding: 18px 4%;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
-    .brand-container {
+    .header-brand {
       display: flex;
       align-items: center;
-      gap: 15px;
+      gap: 18px;
     }
 
-    .brand-title {
-      font-size: 3.2rem;
-      font-weight: 700;
-      letter-spacing: -1px;
+    /* MARCO 3D METÁLICO PARA EL LOGO (logo-101.jpg) */
+    .logo-frame {
+      width: 80px;
+      height: 80px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #e6e8ea 0%, #83888e 50%, #3e4145 100%);
+      padding: 4px;
+      box-shadow: 
+        0 6px 12px rgba(0, 0, 0, 0.5), 
+        inset 0 2px 3px rgba(255, 255, 255, 0.9), 
+        inset 0 -2px 4px rgba(0, 0, 0, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .brand-plat {
-      color: #4a4d50;
-    }
-
-    .brand-azul {
-      color: #006699;
-      text-shadow: 0px 1px 2px rgba(0,0,0,0.3);
-    }
-
-    .logo-img {
-      height: 70px;
-      width: auto;
+    .logo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+      border: 1px solid #2a2c2e;
     }
 
+    /* TÍTULO PRINCIPAL: PlatAzul */
+    .brand-title {
+      font-size: 3.8rem;
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+    }
+
+    .plat-text {
+      color: #3b3e42;
+      text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.6), -1px -1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    .azul-text {
+      background: linear-gradient(180deg, #1e88e5 0%, #005b96 50%, #003366 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.4));
+    }
+
+    /* ENLACE DE NAVEGACIÓN */
     nav a {
-      color: #333;
+      color: #33363a;
       text-decoration: none;
       font-weight: 700;
-      font-size: 1.1rem;
-      letter-spacing: 1px;
-      transition: color 0.3s;
+      font-size: 1.15rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+      transition: color 0.2s;
     }
 
     nav a:hover {
-      color: #006699;
+      color: #005b96;
     }
 
-    /* CONTENIDO PRINCIPAL */
+    /* ÁREA PRINCIPAL */
     main {
       background-color: #ffffff;
       flex: 1;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 50px 5%;
+      padding: 60px 4%;
     }
 
-    .book-container {
-      max-width: 900px;
+    .book-wrapper {
+      max-width: 950px;
       width: 100%;
       display: flex;
-      gap: 50px;
+      gap: 60px;
       align-items: flex-start;
     }
 
-    .book-cover {
-      flex: 1;
-      max-width: 320px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-      border-radius: 4px;
+    .book-cover-container {
+      flex: 0 0 320px;
     }
 
-    .book-cover img {
+    .book-cover-container img {
       width: 100%;
       height: auto;
-      display: block;
-      border-radius: 4px;
+      border-radius: 2px;
+      box-shadow: 8px 12px 24px rgba(0, 0, 0, 0.25);
     }
 
-    .book-details {
-      flex: 1.2;
+    .book-info {
+      flex: 1;
       display: flex;
       flex-direction: column;
     }
 
     .book-title {
-      font-size: 2.2rem;
-      color: #000;
-      margin-bottom: 5px;
+      font-size: 2.3rem;
       font-weight: 700;
+      color: #111;
+      margin-bottom: 4px;
     }
 
-    .book-genre {
+    .book-category {
       font-size: 1.1rem;
       color: #555;
-      margin-bottom: 25px;
+      margin-bottom: 28px;
     }
 
-    .synopsis-title {
+    .synopsis-heading {
       font-size: 1.4rem;
       font-weight: 700;
-      margin-bottom: 10px;
+      color: #111;
+      margin-bottom: 8px;
     }
 
-    .synopsis-text {
-      color: #444;
-      line-height: 1.6;
+    .synopsis-body {
+      font-size: 1.05rem;
+      color: #333;
       margin-bottom: 35px;
-      font-size: 1rem;
+      line-height: 1.6;
     }
 
-    /* BOTONES ESTILO METÁLICO/AZUL */
-    .download-buttons {
+    /* BOTONES DE DESCARGA EN AZUL METALIZADO Y PLATEADO */
+    .buttons-container {
       display: flex;
       flex-direction: column;
-      gap: 15px;
-      max-width: 280px;
+      gap: 16px;
+      width: 290px;
     }
 
-    .btn-metallic {
+    .btn-download {
       display: block;
-      padding: 12px 20px;
+      padding: 13px 20px;
       text-align: center;
       text-decoration: none;
-      color: #000;
-      font-weight: 700;
-      font-size: 1.1rem;
-      letter-spacing: 1px;
-      border-radius: 20px;
-      background: linear-gradient(180deg, #d6d9dc 0%, #8b929a 50%, #5a6068 51%, #a2a8b0 100%);
-      border: 1px solid #444;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.8);
-      transition: transform 0.1s, box-shadow 0.2s;
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      color: #ffffff;
+      text-shadow: 0 -1px 2px rgba(0, 0, 0, 0.8), 0 1px 1px rgba(255, 255, 255, 0.3);
+      border-radius: 24px;
+      background: linear-gradient(
+        180deg, 
+        #82b3d5 0%, 
+        #006699 12%, 
+        #004477 50%, 
+        #002b55 51%, 
+        #005588 88%, 
+        #0088cc 100%
+      );
+      border: 2px solid #1a1c1e;
+      box-shadow: 
+        0 4px 8px rgba(0, 0, 0, 0.4), 
+        inset 0 1px 2px rgba(255, 255, 255, 0.8), 
+        inset 0 -2px 3px rgba(0, 0, 0, 0.6);
+      transition: transform 0.1s, filter 0.2s;
     }
 
-    .btn-metallic:hover {
+    .btn-download:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 10px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.8);
+      filter: brightness(1.1);
     }
 
     /* PIE DE PÁGINA */
     footer {
-      padding: 15px 5%;
+      padding: 14px 4%;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
-    .footer-left {
-      font-size: 1.4rem;
-      font-weight: 700;
+    .footer-logo-left, .footer-logo-center {
+      font-size: 1.5rem;
+      font-weight: 800;
     }
 
-    .footer-center {
-      font-size: 1.4rem;
-      font-weight: 700;
-    }
-
-    .social-icons {
+    .footer-icons {
       display: flex;
-      gap: 15px;
+      gap: 16px;
     }
 
-    .social-icons a {
-      color: #222;
+    .footer-icons a {
+      color: #1f2124;
       font-size: 1.4rem;
-      transition: color 0.3s;
+      text-decoration: none;
+      transition: color 0.2s;
     }
 
-    .social-icons a:hover {
-      color: #006699;
+    .footer-icons a:hover {
+      color: #005b96;
     }
 
-    /* Adaptación para pantallas pequeñas */
+    /* DISEÑO RESPONSIVO (MÓVILES) */
     @media (max-width: 768px) {
-      .book-container {
+      header {
+        flex-direction: column;
+        gap: 15px;
+      }
+      .book-wrapper {
         flex-direction: column;
         align-items: center;
         text-align: center;
       }
-      .download-buttons {
+      .buttons-container {
         margin: 0 auto;
       }
-      header, footer {
+      footer {
         flex-direction: column;
-        gap: 15px;
+        gap: 12px;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Encabezado con textura metálica -->
-  <header class="metallic-bg">
-    <div class="brand-container">
+  <!-- Encabezado superior metálico -->
+  <header class="metallic-bar">
+    <div class="header-brand">
+      <!-- Cuadro biselado 3D con el logo logo-101.jpg -->
+      <div class="logo-frame">
+        <img src="logo-101.jpg" alt="Logo PlatAzul">
+      </div>
+      <!-- Título de la marca -->
       <h1 class="brand-title">
-        <span class="brand-plat">Plat</span><span class="brand-azul">Azul</span>
+        <span class="plat-text">Plat</span><span class="azul-text">Azul</span>
       </h1>
-      <!-- Imagen de logo colocada a la derecha de PlatAzul -->
-      <img src="logo-101.jpg" alt="Logo PlatAzul" class="logo-img">
     </div>
     <nav>
       <a href="#contacto">CONTACTO</a>
     </nav>
   </header>
 
-  <!-- Contenido principal -->
+  <!-- Cuerpo central -->
   <main>
-    <section class="book-container">
-      <!-- Portada del libro -->
-      <div class="book-cover">
-        <img src="portada-libro.jpg" alt="Con el vuelo de los pájaros">
+    <div class="book-wrapper">
+      <!-- 1. PORTADA DEL LIBRO -->
+      <div class="book-cover-container">
+        <img src="portada-libro.jpg" alt="Portada Con el vuelo de los pájaros">
       </div>
 
-      <!-- Detalle del libro y descargas -->
-      <div class="book-details">
+      <!-- Información del libro -->
+      <div class="book-info">
         <h2 class="book-title">Con el vuelo de los pájaros</h2>
-        <p class="book-genre">Science Fiction</p>
+        <p class="book-category">Science Fiction</p>
 
-        <h3 class="synopsis-title">Sinopsis</h3>
-        <p class="synopsis-text">
+        <h3 class="synopsis-heading">Sinopsis</h3>
+
+        <!-- 2. SINOPSIS DEL LIBRO (Escribe aquí la sinopsis cuando la tengas) -->
+        <p class="synopsis-body">
           [Próximamente ingresarás aquí la sinopsis de la novela...]
         </p>
 
-        <div class="download-buttons">
-          <a href="#" class="btn-metallic">DESCARGAR PDF</a>
-          <a href="#" class="btn-metallic">DESCARGAR ePub</a>
+        <!-- 3. ARCHIVOS DE DESCARGA PDF Y EPUB -->
+        <div class="buttons-container">
+          <a href="libro.pdf" download class="btn-download">DESCARGAR PDF</a>
+          <a href="libro.epub" download class="btn-download">DESCARGAR ePub</a>
         </div>
       </div>
-    </section>
+    </div>
   </main>
 
-  <!-- Pie de página con textura metálica -->
-  <footer class="metallic-bg">
-    <div class="footer-left">
-      <span class="brand-plat">Plat</span><span class="brand-azul">Azul</span>
+  <!-- Pie de página metálico -->
+  <footer class="metallic-bar">
+    <div class="footer-logo-left">
+      <span class="plat-text">Plat</span><span class="azul-text">Azul</span>
     </div>
-    <div class="footer-center">
-      <span class="brand-plat">Plat</span><span class="brand-azul">Azul</span>
+    <div class="footer-logo-center">
+      <span class="plat-text">Plat</span><span class="azul-text">Azul</span>
     </div>
-    <div class="social-icons" id="contacto">
-      <a href="#"><i class="fa-regular fa-envelope"></i></a>
+    <div class="footer-icons" id="contacto">
+      <a href="mailto:tuemail@ejemplo.com"><i class="fa-regular fa-envelope"></i></a>
       <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
       <a href="#"><i class="fa-brands fa-instagram"></i></a>
     </div>
