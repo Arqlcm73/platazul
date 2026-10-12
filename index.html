@@ -22,33 +22,33 @@
       min-height: 100vh;
     }
 
-    /* BANDA DE ACERO INOXIDABLE ESMERILADO NATURAL (Claro, opaco y realista) */
+    /* BANDA METÁLICA MÁS OSCURA, OPACA Y CON ESMERILADO MUY VISIBLE */
     .metallic-bar {
-      background-color: #9da2a8;
+      background-color: #53585e;
       background-image: 
-        /* Rayado horizontal fino de acero cepillado */
+        /* Rayado horizontal pronunciado para efecto esmerilado/cepillado */
         repeating-linear-gradient(
           180deg,
-          rgba(255, 255, 255, 0.35) 0px,
-          rgba(255, 255, 255, 0.35) 1px,
-          rgba(0, 0, 0, 0.18) 1px,
-          rgba(0, 0, 0, 0.18) 2px
+          rgba(255, 255, 255, 0.28) 0px,
+          rgba(255, 255, 255, 0.28) 1px,
+          rgba(0, 0, 0, 0.35) 1px,
+          rgba(0, 0, 0, 0.35) 2px
         ),
-        /* Gradiente natural de acero pulido */
+        /* Gradiente metálico oscuro y opaco */
         linear-gradient(
           180deg, 
-          #5d6268 0%, 
-          #8a9098 16%, 
-          #c4c9d0 42%, 
-          #e4e8ed 50%, 
-          #b2b7be 62%, 
-          #737880 85%, 
-          #484d54 100%
+          #2c3035 0%, 
+          #585e66 18%, 
+          #8a9098 42%, 
+          #a8aeb7 50%, 
+          #717780 62%, 
+          #41454b 85%, 
+          #202327 100%
         );
       background-blend-mode: overlay;
-      border-top: 1px solid #3a3d42;
-      border-bottom: 2px solid #222428;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.7), inset 0 -1px 0 rgba(0,0,0,0.5);
+      border-top: 1px solid #1a1c1f;
+      border-bottom: 2px solid #101113;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), inset 0 -1px 0 rgba(0,0,0,0.7);
     }
 
     /* ENCABEZADO SUPERIOR */
@@ -70,12 +70,12 @@
       width: 105px;
       height: 105px;
       border-radius: 16px;
-      background: linear-gradient(135deg, #e4e7ec 0%, #686e77 50%, #1a1c20 100%);
+      background: linear-gradient(135deg, #d2d5d9 0%, #4a4f56 50%, #121416 100%);
       padding: 4px;
       box-shadow: 
-        0 8px 16px rgba(0, 0, 0, 0.5), 
-        inset 0 2px 3px rgba(255, 255, 255, 0.9), 
-        inset 0 -3px 5px rgba(0, 0, 0, 0.8);
+        0 8px 16px rgba(0, 0, 0, 0.6), 
+        inset 0 2px 3px rgba(255, 255, 255, 0.8), 
+        inset 0 -3px 5px rgba(0, 0, 0, 0.9);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -86,10 +86,10 @@
       height: 100%;
       object-fit: cover;
       border-radius: 12px;
-      border: 1px solid #141618;
+      border: 1px solid #0d0e10;
     }
 
-    /* TÍTULO PRINCIPAL: PlatAzul con transición gradual natural */
+    /* TÍTULO PRINCIPAL: PlatAzul con transición gradual Silver -> Blue */
     .brand-title {
       font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
       font-size: 4.8rem;
@@ -98,34 +98,35 @@
       line-height: 1;
       display: inline-block;
       
+      /* Gradiente continuo desde Plata (P) hasta Azul metalizado (A en adelante) */
       background: linear-gradient(
         90deg, 
-        #2a2e34 0%,    /* P plateada oscura para contraste perfecto sobre acero claro */
-        #3b424a 25%,   /* Transición plateada */
-        #005599 52%,   /* Transición hacia azul */
-        #0066cc 70%,   /* Azul brillante en la A */
-        #003366 100%   /* Azul metalizado profundo final */
+        #a6acb3 0%,    /* P plateada */
+        #828890 25%,   /* Transición suave plateada */
+        #49719b 48%,   /* Mezcla intermedia antes de la A */
+        #0066b2 62%,   /* Azul en la A */
+        #004488 100%   /* Azul metalizado profundo final */
       );
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0px 1px 2px rgba(255, 255, 255, 0.6));
+      filter: drop-shadow(0px 2px 3px rgba(0, 0, 0, 0.7));
     }
 
     /* ENLACE DE CONTACTO */
     nav a {
       font-family: Arial, sans-serif;
-      color: #22252a;
+      color: #e2e5e9;
       text-decoration: none;
       font-weight: 700;
       font-size: 1.25rem;
       letter-spacing: 1.8px;
       text-transform: uppercase;
-      text-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
       transition: color 0.2s;
     }
 
     nav a:hover {
-      color: #005b96;
+      color: #3399ff;
     }
 
     /* ÁREA CENTRAL BLANCA */
@@ -269,13 +270,13 @@
       font-weight: 700;
       background: linear-gradient(
         90deg, 
-        #2a2e34 0%, 
-        #005599 50%, 
-        #003366 100%
+        #a6acb3 0%, 
+        #49719b 50%, 
+        #0066b2 100%
       );
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0px 1px 1px rgba(255, 255, 255, 0.6));
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.8));
     }
 
     .footer-icons {
@@ -284,15 +285,15 @@
     }
 
     .footer-icons a {
-      color: #22252a;
+      color: #e2e5e9;
       font-size: 1.4rem;
       text-decoration: none;
-      text-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
       transition: color 0.2s;
     }
 
     .footer-icons a:hover {
-      color: #005b96;
+      color: #3399ff;
     }
 
     /* RESPONSIVO */
@@ -318,7 +319,7 @@
 </head>
 <body>
 
-  <!-- Encabezado superior con acero inoxidable esmerilado natural -->
+  <!-- Encabezado superior con bandas oscuras, esmerilado visible y gradiente continuo -->
   <header class="metallic-bar">
     <div class="header-brand">
       <div class="logo-frame">
