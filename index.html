@@ -443,3 +443,67 @@
         <!-- .com.ar -->
         <span class="domain-ext">.com.ar</span>
       </div>
+    </div>
+    <nav>
+      <a href="#contacto">CONTACTO</a>
+    </nav>
+  </header>
+
+  <!-- Contenido principal -->
+  <main>
+    <div class="book-wrapper">
+      <div class="book-cover-container">
+        <img src="portada-libro.jpg" alt="Portada Con el vuelo de los pájaros">
+      </div>
+
+      <div class="book-info">
+        <h2 class="book-title">Con el vuelo de los pájaros</h2>
+        <p class="book-by">por</p>
+        <p class="book-author">Cristian Marcelo Latrónica</p>
+        <p class="book-category">Science Fiction</p>
+
+        <!-- Botones de descarga -->
+        <div class="buttons-container">
+          <a href="libro.pdf" download class="btn-download">DESCARGAR PDF</a>
+          <a href="libro.epub" download class="btn-download">DESCARGAR ePub</a>
+        </div>
+
+        <!-- Botón de sinopsis más pequeño ubicado abajo con advertencia en negrita -->
+        <div class="synopsis-row">
+          <button class="btn-synopsis-toggle" onclick="toggleSynopsis()">Leer Sinopsis ↓</button>
+          <span class="synopsis-warning-text">solo si no vas a leer la historia completa.</span>
+        </div>
+
+        <!-- Texto de la sinopsis -->
+        <p id="sinopsis-text" class="synopsis-body">
+          [Próximamente ingresarás aquí la sinopsis de la novela...]
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Pie de página -->
+  <footer class="metallic-bar">
+    <div class="footer-brand">PlatAzul</div>
+
+    <!-- Texto de Copyright ubicado en el centro de la banda -->
+    <div class="copyright-legal-text">
+      Copyright © Cristian Marcelo Latrónica 2026. Todos los derechos reservados. Esta es una edición digital autorizada para su descarga gratuita desde esta página web. Queda prohibida su venta, alteración o distribución en plataformas no autorizadas por el autor.
+    </div>
+
+    <div class="footer-icons" id="contacto">
+      <a href="mailto:tuemail@ejemplo.com"><i class="fa-regular fa-envelope"></i></a>
+      <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="#"><i class="fa-brands fa-instagram"></i></a>
+    </div>
+  </footer>
+
+  <script>
+    function toggleSynopsis() {
+      const synopsis = document.getElementById('sinopsis-text');
+      synopsis.classList.toggle('active');
+    }
+  </script>
+
+</body>
+</html>
