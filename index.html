@@ -19,7 +19,6 @@
     }
   </script>
   <style>
-    /* Fondo del encabezado y pie con textura de acero cepillado */
     .bg-acero-hdr {
       background: linear-gradient(180deg, #4b5563 0%, #374151 40%, #1f2937 100%);
       border-bottom: 2px solid #9ca3af;
@@ -30,7 +29,6 @@
       border-top: 2px solid #4b5563;
     }
 
-    /* Tipografía moderna para el texto PlatAzul */
     .texto-platazul {
       font-family: 'Montserrat', sans-serif;
       font-weight: 900;
@@ -57,7 +55,6 @@
       filter: drop-shadow(0 2px 3px rgba(0,0,0,0.5));
     }
 
-    /* Botón metálico estilo remachado */
     .btn-placa-metal {
       background: linear-gradient(180deg, #94a3b8 0%, #475569 35%, #1e3a8a 70%, #172554 100%);
       border: 1px solid #cbd5e1;
@@ -72,7 +69,6 @@
       background: linear-gradient(180deg, #cbd5e1 0%, #64748b 35%, #2563eb 70%, #1e3a8a 100%);
     }
 
-    /* Remaches en las esquinas de los botones */
     .btn-placa-metal::before, .btn-placa-metal::after {
       content: '';
       position: absolute;
@@ -85,7 +81,6 @@
     .btn-placa-metal::before { top: 6px; left: 8px; }
     .btn-placa-metal::after { top: 6px; right: 8px; }
 
-    /* Marco metálico para la portada */
     .marco-portada {
       box-shadow: 0 15px 35px -5px rgba(0,0,0,0.3), 0 0 15px rgba(30, 58, 138, 0.2);
     }
@@ -93,13 +88,13 @@
 </head>
 <body class="bg-slate-100 text-slate-800 font-sans antialiased flex flex-col min-h-screen">
 
-  <!-- Encabezado / Barra Superior con Logo 101 -->
+  <!-- Encabezado / Barra Superior -->
   <header class="bg-acero-hdr py-6 px-6 sticky top-0 z-50">
     <div class="max-w-6xl mx-auto flex items-center justify-between">
       
-      <!-- Contenedor con la imagen del Logo 101 y la tipografía destacada -->
+      <!-- Logo 101 sin espacios en el nombre de archivo y texto estilizado -->
       <div class="flex items-center space-x-5">
-        <img src="logo 101.jpg" alt="Logo PlatAzul" class="w-16 h-16 md:w-20 md:h-20 object-cover rounded-lg border-2 border-slate-300 shadow-xl">
+        <img src="logo-101.jpg" alt="Logo PlatAzul" class="w-16 h-16 md:w-20 md:h-20 object-cover rounded-lg border-2 border-slate-300 shadow-xl">
         <span class="texto-platazul text-4xl md:text-5xl tracking-tight">
           <span class="letra-p-3d">P</span><span class="letras-lat-mod">lat</span><span class="letra-a-3d">A</span><span class="letras-zul-mod">zul</span>
         </span>
