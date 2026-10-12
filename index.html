@@ -15,35 +15,30 @@
 
     body {
       font-family: Arial, Helvetica, sans-serif;
-      background-color: #dcdfe3; /* Fondo exterior similar a la pantalla */
+      background-color: #dcdfe3;
       color: #000;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
     }
 
-    /* BANDA METÁLICA ESMERILADA CON PROPORCIÓN EXACTA */
+    /* BANDA METÁLICA ESMERILADA MÁS OSCURA, PLANA Y 50% MÁS ANCHA */
     .metallic-bar {
       background: linear-gradient(
         180deg, 
-        #3a3d42 0%, 
-        #7c8187 8%, 
-        #c8cbce 22%, 
-        #9ea2a7 45%, 
-        #5a5e64 65%, 
-        #b2b6bb 88%, 
-        #3e4145 100%
+        #242629 0%, 
+        #484b50 20%, 
+        #35383c 50%, 
+        #242629 100%
       );
-      border-top: 3px solid #1f2124;
-      border-bottom: 4px solid #15171a;
-      box-shadow: 
-        inset 0 3px 6px rgba(255, 255, 255, 0.8), 
-        inset 0 -3px 6px rgba(0, 0, 0, 0.7);
+      /* Sin bordes 3D ni sombras de relieve, aspecto totalmente plano */
+      border: none;
+      box-shadow: none;
     }
 
-    /* ENCABEZADO SUPERIOR */
+    /* ENCABEZADO SUPERIOR (50% más ancho: padding vertical aumentado) */
     header {
-      padding: 28px 4%; /* Altura generosa proporcional a logo-pa.jpg */
+      padding: 42px 4%; 
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -90,31 +85,30 @@
     }
 
     .plat-text {
-      color: #3b3e42;
-      text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.6), -1px -1px 2px rgba(0, 0, 0, 0.5);
+      color: #b0b4ba; /* Ajustado ligeramente más claro para destacar sobre el fondo oscuro */
+      text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.4);
     }
 
     .azul-text {
-      background: linear-gradient(180deg, #1e88e5 0%, #005b96 50%, #003366 100%);
+      background: linear-gradient(180deg, #3399ff 0%, #0066cc 50%, #004499 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.4));
+      filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.6));
     }
 
     /* ENLACE DE NAVEGACIÓN */
     nav a {
-      color: #2b2e33;
+      color: #c5c8ce;
       text-decoration: none;
       font-weight: 700;
       font-size: 1.15rem;
       letter-spacing: 1.5px;
       text-transform: uppercase;
-      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
       transition: color 0.2s;
     }
 
     nav a:hover {
-      color: #005b96;
+      color: #3399ff;
     }
 
     /* ÁREA CENTRAL BLANCA */
@@ -220,9 +214,9 @@
       filter: brightness(1.1);
     }
 
-    /* PIE DE PÁGINA CON LA MISMA PROPORCIÓN */
+    /* PIE DE PÁGINA (50% más ancho: padding vertical aumentado) */
     footer {
-      padding: 22px 4%; /* Altura proporcional a la parte superior */
+      padding: 33px 4%; 
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -239,14 +233,14 @@
     }
 
     .footer-icons a {
-      color: #2b2e33;
+      color: #c5c8ce;
       font-size: 1.4rem;
       text-decoration: none;
       transition: color 0.2s;
     }
 
     .footer-icons a:hover {
-      color: #005b96;
+      color: #3399ff;
     }
 
     /* DISEÑO RESPONSIVO (MÓVILES) */
@@ -272,7 +266,7 @@
 </head>
 <body>
 
-  <!-- Encabezado superior con la proporción exacta -->
+  <!-- Encabezado superior plano, oscuro y más ancho -->
   <header class="metallic-bar">
     <div class="header-brand">
       <div class="logo-frame">
@@ -311,7 +305,7 @@
     </div>
   </main>
 
-  <!-- Pie de página con la misma proporción -->
+  <!-- Pie de página plano, oscuro y más ancho -->
   <footer class="metallic-bar">
     <div class="footer-logo-left">
       <span class="plat-text">Plat</span><span class="azul-text">Azul</span>
