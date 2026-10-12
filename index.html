@@ -110,7 +110,7 @@
     .brand-title-wrapper {
       display: flex;
       align-items: baseline;
-      gap: 6px;
+      gap: 4px;
     }
 
     .brand-title {
@@ -136,17 +136,15 @@
 
     /* EXTENSIÓN .com.ar */
     .domain-ext {
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      font-size: 1.8rem;
+      font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
+      font-size: 1.6rem;
       font-weight: 700;
-      color: #555a60;
-      text-shadow: 
-        -1px -1px 0 #fff,  
-         1px -1px 0 #fff,
-        -1px  1px 0 #fff,
-         1px  1px 0 #fff,
-         0 2px 4px rgba(0,0,0,0.4);
-      letter-spacing: -0.5px;
+      letter-spacing: 0.5px;
+      background: linear-gradient(180deg, #e2e6ea 0%, #9aa0a6 50%, #5f646a 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.8));
+      margin-left: 2px;
     }
 
     /* ENLACE DE CONTACTO */
@@ -321,17 +319,9 @@
     footer {
       padding: 24px 5%; 
       display: flex;
-      flex-direction: column;
-      gap: 16px;
-      align-items: center;
-      text-align: center;
-    }
-
-    .footer-top {
-      width: 100%;
-      display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 20px;
     }
 
     .footer-brand {
@@ -347,11 +337,24 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.8));
+      flex-shrink: 0;
+    }
+
+    /* TEXTO DE COPYRIGHT EN EL CENTRO DE LA BANDA */
+    .copyright-legal-text {
+      color: #c0c5cc;
+      font-size: 0.85rem;
+      line-height: 1.4;
+      text-align: center;
+      max-width: 650px;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
+      font-weight: 400;
     }
 
     .footer-icons {
       display: flex;
       gap: 20px;
+      flex-shrink: 0;
     }
 
     .footer-icons a {
@@ -364,18 +367,6 @@
 
     .footer-icons a:hover {
       color: #3399ff;
-    }
-
-    /* TEXTO DE COPYRIGHT LEGAL */
-    .copyright-legal-text {
-      color: #c0c5cc;
-      font-size: 0.88rem;
-      line-height: 1.5;
-      max-width: 900px;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
-      border-top: 1px solid rgba(255, 255, 255, 0.15);
-      padding-top: 12px;
-      font-weight: 400;
     }
 
     /* RESPONSIVO */
@@ -392,9 +383,10 @@
       .buttons-container {
         margin: 0 auto;
       }
-      .footer-top {
+      footer {
         flex-direction: column;
-        gap: 12px;
+        gap: 16px;
+        text-align: center;
       }
     }
   </style>
@@ -413,7 +405,7 @@
       </div>
       <div class="brand-title-wrapper">
         <h1 class="brand-title">PlatAzul</h1>
-        <!-- .com.ar más chico en gris con borde blanco -->
+        <!-- .com.ar -->
         <span class="domain-ext">.com.ar</span>
       </div>
     </div>
@@ -451,19 +443,17 @@
 
   <!-- Pie de página -->
   <footer class="metallic-bar">
-    <div class="footer-top">
-      <div class="footer-brand">PlatAzul</div>
-      <div class="footer-brand">PlatAzul</div>
-      <div class="footer-icons" id="contacto">
-        <a href="mailto:tuemail@ejemplo.com"><i class="fa-regular fa-envelope"></i></a>
-        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-        <a href="#"><i class="fa-brands fa-instagram"></i></a>
-      </div>
-    </div>
+    <div class="footer-brand">PlatAzul</div>
 
-    <!-- Texto de Copyright completo en la banda inferior -->
+    <!-- Texto de Copyright ubicado en el centro de la banda -->
     <div class="copyright-legal-text">
       Copyright © Cristian Marcelo Latrónica 2026. Todos los derechos reservados. Esta es una edición digital autorizada para su descarga gratuita desde esta página web. Queda prohibida su venta, alteración o distribución en plataformas no autorizadas por el autor.
+    </div>
+
+    <div class="footer-icons" id="contacto">
+      <a href="mailto:tuemail@ejemplo.com"><i class="fa-regular fa-envelope"></i></a>
+      <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="#"><i class="fa-brands fa-instagram"></i></a>
     </div>
   </footer>
 
