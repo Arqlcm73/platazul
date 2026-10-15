@@ -114,6 +114,7 @@
       object-fit: cover;
       border-radius: 12px;
       border: 1px solid #0d0e10;
+      image-rendering: -webkit-optimize-contrast; /* Optimización de nitidez para HD */
     }
 
     /* SÍMBOLO © AL COSTADO DERECHO DEL LOGO */
@@ -127,7 +128,7 @@
       margin-top: 8px;
     }
 
-    /* TÍTULO PRINCIPAL: PlatAzul */
+    /* TÍTULO PRINCIPAL: PlatAzul CON 'PLA' PLATEADO CROMADO Y DEGRADÉ DESDE 'T' Y 'A' HACIA EL AZUL */
     .brand-title-wrapper {
       display: flex;
       align-items: baseline;
@@ -144,16 +145,16 @@
       
       background: linear-gradient(
         90deg, 
-        #ffffff 0%,    
-        #e2e7ec 12%,   
-        #a8b1ba 28%,   
-        #527ba6 45%,   
-        #003865 68%,   
-        #001a33 100%   
+        #ffffff 0%,    /* 'P' Plateado brillante cromado */
+        #e3e8ed 15%,   /* 'L' Plateado claro */
+        #b8c2cc 32%,   /* 'A' Plateado metálico del logo */
+        #6b90b8 48%,   /* Transición en 'T' y 'A' */
+        #004077 68%,   /* Azul metalizado */
+        #001c38 100%   /* Azul profundo al final */
       );
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0px 2px 3px rgba(0, 0, 0, 0.7));
+      filter: drop-shadow(0px 2px 3px rgba(0, 0, 0, 0.75));
     }
 
     /* EXTENSIÓN .com.ar */
@@ -426,8 +427,8 @@
       background: linear-gradient(
         90deg, 
         #ffffff 0%, 
-        #a8b1ba 30%, 
-        #3d6088 65%, 
+        #b8c2cc 32%, 
+        #4d739c 60%, 
         #003865 100%
       );
       -webkit-background-clip: text;
@@ -436,7 +437,7 @@
       flex-shrink: 0;
     }
 
-    /* TEXTO DE COPYRIGHT EN EL CENTRO DE LA BANDA CON "TOTAL O PARCIAL" */
+    /* TEXTO DE COPYRIGHT EN EL CENTRO DE LA BANDA */
     .copyright-legal-text {
       color: #c0c5cc;
       font-size: 0.85rem;
