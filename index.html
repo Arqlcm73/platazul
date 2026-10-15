@@ -128,7 +128,7 @@
       margin-top: 8px;
     }
 
-    /* TÍTULO PRINCIPAL: PlatAzul CON 'PLA' PLATEADO CROMADO HD Y PASO AL AZUL METALIZADO EN 'T' Y 'A' */
+    /* TÍTULO PRINCIPAL: PlatAzul CON TEXTURA EXACTA DEL LOGO EN HD */
     .brand-title-wrapper {
       display: flex;
       align-items: baseline;
@@ -143,20 +143,13 @@
       line-height: 1;
       display: inline-block;
       
-      background: linear-gradient(
-        90deg, 
-        #ffffff 0%,    /* Brillo inicial de la P */
-        #dcdcdc 8%,   
-        #7a8088 16%,   /* Sombra de reflejo cromado */
-        #ffffff 24%,   /* Destello de luz cromada en L */
-        #c8d0d8 35%,   /* Plata pulido en A */
-        #507ca8 48%,   /* Transición a partir de T y A */
-        #003865 70%,   /* Azul metalizado */
-        #001830 100%   /* Azul noche al final */
-      );
+      /* RECORTE CON EL ARCHIVO DE IMAGEN HD DE TU LOGO (logo-101.jpg) */
+      background-image: url('logo-101.jpg');
+      background-size: 350px auto;
+      background-position: left center;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.85));
+      filter: drop-shadow(0px 2px 3px rgba(0, 0, 0, 0.7));
     }
 
     /* EXTENSIÓN .com.ar */
@@ -426,13 +419,9 @@
       font-family: 'Trebuchet MS', sans-serif;
       font-size: 1.5rem;
       font-weight: 700;
-      background: linear-gradient(
-        90deg, 
-        #ffffff 0%, 
-        #c8d0d8 35%, 
-        #507ca8 58%, 
-        #003865 100%
-      );
+      background-image: url('logo-101.jpg');
+      background-size: 200px auto;
+      background-position: left center;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.8));
