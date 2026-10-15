@@ -127,7 +127,7 @@
       margin-top: 8px;
     }
 
-    /* TÍTULO PRINCIPAL: PlatAzul */
+    /* TÍTULO PRINCIPAL: PlatAzul CON 'PLAT' MÁS PLATEADO BRILLANTE */
     .brand-title-wrapper {
       display: flex;
       align-items: baseline;
@@ -144,11 +144,12 @@
       
       background: linear-gradient(
         90deg, 
-        #a6acb3 0%,    
-        #828890 25%,   
-        #3d6088 48%,   
-        #003865 62%,   
-        #002244 100%   
+        #ffffff 0%,    /* P bien plateada / blanca metálica */
+        #e2e7ec 12%,   
+        #a8b1ba 28%,   /* Cierre de 'Plat' en tono plata brillante */
+        #527ba6 45%,   
+        #003865 68%,   /* Degradé fluido hacia el azul profundo */
+        #001a33 100%   
       );
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -161,7 +162,7 @@
       font-size: 1.6rem;
       font-weight: 700;
       letter-spacing: 0.5px;
-      background: linear-gradient(180deg, #e2e6ea 0%, #9aa0a6 50%, #5f646a 100%);
+      background: linear-gradient(180deg, #ffffff 0%, #a8b0b8 50%, #5f646a 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.8));
@@ -226,11 +227,11 @@
       flex-direction: column;
     }
 
-    /* ESTILOS DEL TÍTULO DE LA NOVELA DESPLACADO AÚN MÁS HACIA LA IZQUIERDA */
+    /* ESTILOS DEL TÍTULO DE LA NOVELA */
     .book-title {
       color: #000000;
       margin-bottom: 12px;
-      white-space: nowrap; /* MANTIENE TODO EN UN SOLO RENGLÓN */
+      white-space: nowrap; 
       display: flex;
       align-items: baseline;
       justify-content: flex-start;
@@ -238,7 +239,7 @@
       max-width: 100%;
       overflow: visible;
       padding: 15px 0px 10px 0px;
-      margin-left: -38px; /* CORRIDO HACIA LA IZQUIERDA 1.5 VECES MÁS */
+      margin-left: -38px;
     }
 
     /* FUENTE EDWARDIAN SCRIPT ITC PARA INICIALES MAYÚSCULAS */
@@ -312,7 +313,7 @@
       border-radius: 6px;
       background: linear-gradient(
         90deg, 
-        #e0e4e8 0%, 
+        #ffffff 0%, 
         #a4aab2 20%, 
         #527498 50%, 
         #003865 80%, 
@@ -424,8 +425,9 @@
       font-weight: 700;
       background: linear-gradient(
         90deg, 
-        #a6acb3 0%, 
-        #3d6088 50%, 
+        #ffffff 0%, 
+        #a8b1ba 30%, 
+        #3d6088 65%, 
         #003865 100%
       );
       -webkit-background-clip: text;
@@ -526,7 +528,6 @@
       </div>
 
       <div class="book-info">
-        <!-- TÍTULO DESPLAZADO MÁS HACIA LA IZQUIERDA -->
         <h2 class="book-title">
           <span class="edwardian-cap-c">C</span><span class="embassy-text">ON&nbsp;EL&nbsp;</span>
           <span class="edwardian-cap-vp">V</span><span class="embassy-text">UELO&nbsp;DE&nbsp;LOS&nbsp;</span>
