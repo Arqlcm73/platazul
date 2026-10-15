@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PlatAzul.com.ar - Con el vuelo de los pájaros</title>
-  <!-- Iconos de redes sociales -->
+  <!-- Iconos de redes sociales y acciones -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
   <!-- Carga de fuentes caligráficas alternativas desde Google Fonts -->
@@ -128,7 +128,7 @@
       margin-top: 8px;
     }
 
-    /* TÍTULO PRINCIPAL: PlatAzul CON EL DEGRADÉ FINO Y ELEGANTE */
+    /* TÍTULO PRINCIPAL: PlatAzul */
     .brand-title-wrapper {
       display: flex;
       align-items: baseline;
@@ -291,7 +291,7 @@
     .book-category {
       font-size: 1.05rem;
       color: #555;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
 
     /* BOTONES DE DESCARGA LISOS */
@@ -412,6 +412,121 @@
     .synopsis-body.active {
       display: block;
     }
+
+    /* BARRA DE INTERACCIÓN (ME GUSTA, NO ME GUSTA, COMPARTIR, COMENTAR) */
+    .interaction-bar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 10px;
+      margin-bottom: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn-action {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      background-color: #f1f3f5;
+      border: 1px solid #cbd0d6;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #333;
+      cursor: pointer;
+      transition: background-color 0.2s, color 0.2s, transform 0.1s;
+    }
+
+    .btn-action:hover {
+      background-color: #e2e6ea;
+      transform: translateY(-1px);
+    }
+
+    .btn-action.active-like {
+      background-color: #003865;
+      color: #ffffff;
+      border-color: #002244;
+    }
+
+    .btn-action.active-dislike {
+      background-color: #721c24;
+      color: #ffffff;
+      border-color: #521319;
+    }
+
+    /* SECCIÓN DE FORMULARIO DE COMENTARIOS */
+    .comments-section {
+      display: none;
+      margin-top: 10px;
+      padding: 15px;
+      background-color: #f8f9fa;
+      border: 1px solid #e2e6ea;
+      border-radius: 8px;
+      width: 100%;
+      max-width: 450px;
+    }
+
+    .comments-section.active {
+      display: block;
+    }
+
+    .comments-section h4 {
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+      color: #003865;
+    }
+
+    .comments-section input, 
+    .comments-section textarea {
+      width: 100%;
+      padding: 8px 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-family: inherit;
+    }
+
+    .comments-section button {
+      padding: 8px 16px;
+      background-color: #003865;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .comments-section button:hover {
+      background-color: #002244;
+    }
+
+    /* NOTIFICACIÓN "ENLACE COPIADO" */
+    #copy-toast {
+      visibility: hidden;
+      min-width: 180px;
+      background-color: #222;
+      color: #fff;
+      text-align: center;
+      border-radius: 4px;
+      padding: 8px 12px;
+      position: fixed;
+      z-index: 1000;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.85rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    #copy-toast.show {
+      visibility: visible;
+      animation: fadein 0.3s, fadeout 0.5s 2.5s;
+    }
+
+    @keyframes fadein { from { bottom: 0; opacity: 0; } to { bottom: 30px; opacity: 1; } }
+    @keyframes fadeout { from { bottom: 30px; opacity: 1; } to { bottom: 0; opacity: 0; } }
 
     /* PIE DE PÁGINA */
     footer {
@@ -557,9 +672,42 @@
         <p id="sinopsis-text" class="synopsis-body">
           [Próximamente ingresarás aquí la sinopsis de la novela...]
         </p>
+
+        <!-- BARRA INTERACTIVA: ME GUSTA / NO ME GUSTA / COMPARTIR / COMENTAR -->
+        <div class="interaction-bar">
+          <button id="like-btn" class="btn-action" onclick="handleLike()">
+            <i class="fa-regular fa-thumbs-up"></i> <span id="like-count">0</span>
+          </button>
+          
+          <button id="dislike-btn" class="btn-action" onclick="handleDislike()">
+            <i class="fa-regular fa-thumbs-down"></i> <span id="dislike-count">0</span>
+          </button>
+
+          <button class="btn-action" onclick="sharePage()">
+            <i class="fa-solid fa-share-nodes"></i> Compartir
+          </button>
+
+          <button class="btn-action" onclick="toggleComments()">
+            <i class="fa-regular fa-comment"></i> Comentar
+          </button>
+        </div>
+
+        <!-- SECCIÓN DESPLEGABLE PARA COMENTARIOS -->
+        <div id="comments-box" class="comments-section">
+          <h4>Déjanos tu comentario o mensaje:</h4>
+          <form action="https://formspree.io/f/tu-form-id" method="POST" onsubmit="handleCommentSubmit(event)">
+            <input type="text" name="name" placeholder="Tu Nombre o Apodo" required>
+            <textarea name="message" rows="3" placeholder="Escribe tu opinión aquí..." required></textarea>
+            <button type="submit">Enviar Comentario</button>
+          </form>
+        </div>
+
       </div>
     </div>
   </main>
+
+  <!-- Notificación flotante de enlace copiado -->
+  <div id="copy-toast">¡Enlace copiado al portapapeles!</div>
 
   <!-- Franja de texto pegada sobre la banda inferior -->
   <div class="ticker-stripe">
@@ -586,6 +734,90 @@
     function toggleSynopsis() {
       const synopsis = document.getElementById('sinopsis-text');
       synopsis.classList.toggle('active');
+    }
+
+    function toggleComments() {
+      const comments = document.getElementById('comments-box');
+      comments.classList.toggle('active');
+    }
+
+    /* LÓGICA DE REENVIAR / COMPARTIR ENLACE */
+    function sharePage() {
+      if (navigator.share) {
+        navigator.share({
+          title: 'Con el vuelo de los pájaros - PlatAzul',
+          text: 'Descarga gratis la novela "Con el vuelo de los pájaros" de Cristian Marcelo Latrónica',
+          url: window.location.href
+        }).catch(() => {});
+      } else {
+        navigator.clipboard.writeText(window.location.href);
+        showToast();
+      }
+    }
+
+    function showToast() {
+      const toast = document.getElementById("copy-toast");
+      toast.className = "show";
+      setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
+    }
+
+    /* LÓGICA DE ME GUSTA / NO ME GUSTA (Guardado local) */
+    let likes = parseInt(localStorage.getItem('page_likes') || '0');
+    let dislikes = parseInt(localStorage.getItem('page_dislikes') || '0');
+    let userVote = localStorage.getItem('user_vote');
+
+    document.getElementById('like-count').innerText = likes;
+    document.getElementById('dislike-count').innerText = dislikes;
+    updateVoteUI();
+
+    function handleLike() {
+      if (userVote === 'like') {
+        likes--;
+        userVote = null;
+      } else {
+        if (userVote === 'dislike') dislikes--;
+        likes++;
+        userVote = 'like';
+      }
+      saveVotes();
+    }
+
+    function handleDislike() {
+      if (userVote === 'dislike') {
+        dislikes--;
+        userVote = null;
+      } else {
+        if (userVote === 'like') likes--;
+        dislikes++;
+        userVote = 'dislike';
+      }
+      saveVotes();
+    }
+
+    function saveVotes() {
+      localStorage.setItem('page_likes', likes);
+      localStorage.setItem('page_dislikes', dislikes);
+      if (userVote) localStorage.setItem('user_vote', userVote);
+      else localStorage.removeItem('user_vote');
+
+      document.getElementById('like-count').innerText = likes;
+      document.getElementById('dislike-count').innerText = dislikes;
+      updateVoteUI();
+    }
+
+    function updateVoteUI() {
+      const likeBtn = document.getElementById('like-btn');
+      const dislikeBtn = document.getElementById('dislike-btn');
+      
+      likeBtn.classList.remove('active-like');
+      dislikeBtn.classList.remove('active-dislike');
+
+      if (userVote === 'like') likeBtn.classList.add('active-like');
+      if (userVote === 'dislike') dislikeBtn.classList.add('active-dislike');
+    }
+
+    function handleCommentSubmit(e) {
+      alert("¡Gracias por tu comentario!");
     }
   </script>
 
