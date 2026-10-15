@@ -7,7 +7,7 @@
   <!-- Iconos de redes sociales -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
-  <!-- Carga de fuentes caligráficas alternativas desde Google Fonts para máxima compatibilidad -->
+  <!-- Carga de fuentes caligráficas alternativas desde Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Great+Vibes&family=Parisienne&display=swap" rel="stylesheet">
@@ -226,28 +226,29 @@
       flex-direction: column;
     }
 
-    /* ESTILOS DEL TÍTULO DE LA NOVELA EN UN SOLO RENGLÓN */
+    /* ESTILOS DEL TÍTULO DE LA NOVELA ALINEADO A LA IZQUIERDA */
     .book-title {
       color: #000000;
       margin-bottom: 12px;
       white-space: nowrap; /* MANTIENE TODO EN UN SOLO RENGLÓN */
       display: flex;
       align-items: baseline;
+      justify-content: flex-start;
       gap: 2px;
       max-width: 100%;
-      overflow: visible; /* PERMITE MOSTRAR TRAZOS LARGOS SIN CORTAR */
-      padding: 15px 10px 10px 10px; /* ESPACIO DE SEGURIDAD ARRIBA Y A LOS COSTADOS */
+      overflow: visible;
+      padding: 15px 0px 10px 0px; /* ALINEADO A LA IZQUIERDA CON LOS BOTONES DE ABAJO */
+      margin-left: 0;
     }
 
-    /* FUENTE EDWARDIAN SCRIPT ITC PARA INICIALES MAYÚSCULAS CON MAYOR ESPESOR */
+    /* FUENTE EDWARDIAN SCRIPT ITC PARA INICIALES MAYÚSCULAS CON ESPESOR LIGERAMENTE MÁS FINO */
     .edwardian-cap-c {
       font-family: 'Edwardian Script ITC', 'Alex Brush', 'Great Vibes', cursive;
       font-size: 5.2rem;
       font-weight: bold;
       line-height: 1;
       margin-right: -4px;
-      -webkit-text-stroke: 0.6px #000; /* APORTA MÁS ESPESOR A LOS TRAZOS FINOS */
-      filter: drop-shadow(0px 0px 0.3px #000);
+      -webkit-text-stroke: 0.3px #000;
     }
 
     .edwardian-cap-vp {
@@ -256,18 +257,16 @@
       font-weight: bold;
       line-height: 1;
       margin-right: -3px;
-      -webkit-text-stroke: 0.6px #000;
-      filter: drop-shadow(0px 0px 0.3px #000);
+      -webkit-text-stroke: 0.3px #000;
     }
 
-    /* FUENTE EMBASSY BT / CALIGRÁFICA PARA RESTO DE LETRAS Y PUNTO CON MÁS ESPESOR */
+    /* FUENTE EMBASSY BT / CALIGRÁFICA PARA RESTO DE LETRAS Y PUNTO */
     .embassy-text {
       font-family: 'Embassy BT', 'Parisienne', 'Alex Brush', cursive;
       font-size: 1.85rem;
       font-weight: bold;
       letter-spacing: 0.5px;
-      -webkit-text-stroke: 0.4px #000; /* APORTA MÁS ESPESOR A LAS MINÚSCULAS Y AL PUNTO */
-      filter: drop-shadow(0px 0px 0.2px #000);
+      -webkit-text-stroke: 0.2px #000;
     }
 
     /* AUTORÍA Y SUBTÍTULO */
@@ -513,7 +512,7 @@
     </nav>
   </header>
 
-  <!-- Franja de texto pegada abajo de la banda superior (FICCION sin tilde y sin espacios) -->
+  <!-- Franja de texto pegada abajo de la banda superior -->
   <div class="ticker-stripe">
     <b>FICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCION</b>
   </div>
@@ -526,7 +525,7 @@
       </div>
 
       <div class="book-info">
-        <!-- TÍTULO CORREGIDO SIN CORTES Y CON MÁS ESPESOR -->
+        <!-- TÍTULO CORRIDO A LA IZQUIERDA Y CON TRAZO MÁS FINO -->
         <h2 class="book-title">
           <span class="edwardian-cap-c">C</span><span class="embassy-text">ON&nbsp;EL&nbsp;</span>
           <span class="edwardian-cap-vp">V</span><span class="embassy-text">UELO&nbsp;DE&nbsp;LOS&nbsp;</span>
