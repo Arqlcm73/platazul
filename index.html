@@ -114,7 +114,7 @@
       object-fit: cover;
       border-radius: 12px;
       border: 1px solid #0d0e10;
-      image-rendering: -webkit-optimize-contrast; /* Optimización de nitidez para HD */
+      image-rendering: -webkit-optimize-contrast;
     }
 
     /* SÍMBOLO © AL COSTADO DERECHO DEL LOGO */
@@ -128,7 +128,7 @@
       margin-top: 8px;
     }
 
-    /* TÍTULO PRINCIPAL: PlatAzul CON 'PLA' PLATEADO CROMADO Y DEGRADÉ DESDE 'T' Y 'A' HACIA EL AZUL */
+    /* TÍTULO PRINCIPAL: PlatAzul CON 'PLA' PLATEADO CROMADO HD Y PASO AL AZUL METALIZADO EN 'T' Y 'A' */
     .brand-title-wrapper {
       display: flex;
       align-items: baseline;
@@ -145,16 +145,18 @@
       
       background: linear-gradient(
         90deg, 
-        #ffffff 0%,    /* 'P' Plateado brillante cromado */
-        #e3e8ed 15%,   /* 'L' Plateado claro */
-        #b8c2cc 32%,   /* 'A' Plateado metálico del logo */
-        #6b90b8 48%,   /* Transición en 'T' y 'A' */
-        #004077 68%,   /* Azul metalizado */
-        #001c38 100%   /* Azul profundo al final */
+        #ffffff 0%,    /* Brillo inicial de la P */
+        #dcdcdc 8%,   
+        #7a8088 16%,   /* Sombra de reflejo cromado */
+        #ffffff 24%,   /* Destello de luz cromada en L */
+        #c8d0d8 35%,   /* Plata pulido en A */
+        #507ca8 48%,   /* Transición a partir de T y A */
+        #003865 70%,   /* Azul metalizado */
+        #001830 100%   /* Azul noche al final */
       );
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0px 2px 3px rgba(0, 0, 0, 0.75));
+      filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.85));
     }
 
     /* EXTENSIÓN .com.ar */
@@ -427,8 +429,8 @@
       background: linear-gradient(
         90deg, 
         #ffffff 0%, 
-        #b8c2cc 32%, 
-        #4d739c 60%, 
+        #c8d0d8 35%, 
+        #507ca8 58%, 
         #003865 100%
       );
       -webkit-background-clip: text;
@@ -568,7 +570,7 @@
   <footer class="metallic-bar">
     <div class="footer-brand">PlatAzul</div>
 
-    <!-- Texto de Copyright actualizado -->
+    <!-- Texto de Copyright -->
     <div class="copyright-legal-text">
       Copyright © Cristian Marcelo Latrónica 2026. Todos los derechos reservados. Esta es una edición digital autorizada para su descarga gratuita desde esta página web. Queda prohibida su venta, alteración o distribución total o parcial en plataformas no autorizadas por el autor.
     </div>
