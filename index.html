@@ -226,7 +226,7 @@
       flex-direction: column;
     }
 
-    /* ESTILOS DEL TÍTULO DE LA NOVELA ALINEADO A LA IZQUIERDA */
+    /* ESTILOS DEL TÍTULO DE LA NOVELA DESPLACADO AÚN MÁS HACIA LA IZQUIERDA */
     .book-title {
       color: #000000;
       margin-bottom: 12px;
@@ -237,11 +237,11 @@
       gap: 2px;
       max-width: 100%;
       overflow: visible;
-      padding: 15px 0px 10px 0px; /* ALINEADO A LA IZQUIERDA CON LOS BOTONES DE ABAJO */
-      margin-left: 0;
+      padding: 15px 0px 10px 0px;
+      margin-left: -38px; /* CORRIDO HACIA LA IZQUIERDA 1.5 VECES MÁS */
     }
 
-    /* FUENTE EDWARDIAN SCRIPT ITC PARA INICIALES MAYÚSCULAS CON ESPESOR LIGERAMENTE MÁS FINO */
+    /* FUENTE EDWARDIAN SCRIPT ITC PARA INICIALES MAYÚSCULAS */
     .edwardian-cap-c {
       font-family: 'Edwardian Script ITC', 'Alex Brush', 'Great Vibes', cursive;
       font-size: 5.2rem;
@@ -476,6 +476,7 @@
       }
       .book-title {
         justify-content: center;
+        margin-left: 0;
       }
       .buttons-container {
         margin: 0 auto;
@@ -525,7 +526,7 @@
       </div>
 
       <div class="book-info">
-        <!-- TÍTULO CORRIDO A LA IZQUIERDA Y CON TRAZO MÁS FINO -->
+        <!-- TÍTULO DESPLAZADO MÁS HACIA LA IZQUIERDA -->
         <h2 class="book-title">
           <span class="edwardian-cap-c">C</span><span class="embassy-text">ON&nbsp;EL&nbsp;</span>
           <span class="edwardian-cap-vp">V</span><span class="embassy-text">UELO&nbsp;DE&nbsp;LOS&nbsp;</span>
