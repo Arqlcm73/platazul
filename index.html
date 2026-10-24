@@ -1,825 +1,606 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PlatAzul.com.ar - Con el vuelo de los pájaros</title>
-  <!-- Iconos de redes sociales y acciones -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <!-- Carga de fuentes caligráficas alternativas desde Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Great+Vibes&family=Parisienne&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlatAzul | Libros Digitales y Lectura Protegida</title>
+    <!-- Librerías gratuitas para estampado dinámico en el navegador -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <style>
+        :root {
+            --azul-fondo: #0a192f;
+            --azul-tarjeta: #172a45;
+            --azul-borde: #233554;
+            --celeste: #64ffda;
+            --texto-principal: #e6f1ff;
+            --texto-secundario: #8892b0;
+            --rojo-like: #ff6b6b;
+        }
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      scroll-behavior: smooth;
-    }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
 
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background-color: #ffffff;
-      color: #000;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
+        body {
+            background-color: var(--azul-fondo);
+            color: var(--texto-principal);
+            line-height: 1.6;
+        }
 
-    /* BANDA METÁLICA MÁS OSCURA, OPACA Y CON ESMERILADO MUY VISIBLE */
-    .metallic-bar {
-      background-color: #53585e;
-      background-image: 
-        repeating-linear-gradient(
-          180deg,
-          rgba(255, 255, 255, 0.28) 0px,
-          rgba(255, 255, 255, 0.28) 1px,
-          rgba(0, 0, 0, 0.35) 1px,
-          rgba(0, 0, 0, 0.35) 2px
-        ),
-        linear-gradient(
-          180deg, 
-          #2c3035 0%, 
-          #585e66 18%, 
-          #8a9098 42%, 
-          #a8aeb7 50%, 
-          #717780 62%, 
-          #41454b 85%, 
-          #202327 100%
-        );
-      background-blend-mode: overlay;
-      border-top: 1px solid #1a1c1f;
-      border-bottom: 2px solid #101113;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), inset 0 -1px 0 rgba(0,0,0,0.7);
-    }
+        /* Navegación */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 10%;
+            background-color: rgba(10, 25, 47, 0.95);
+            border-bottom: 1px solid rgba(100, 255, 218, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
 
-    /* FRANJAS DE TEXTO MUY PEQUEÑAS Y PEGADAS A LAS BANDAS */
-    .ticker-stripe {
-      background-color: #f2f4f7;
-      color: #4a4e54;
-      font-size: 0.65rem;
-      font-weight: bold;
-      padding: 1px 0;
-      white-space: nowrap;
-      overflow: hidden;
-      width: 100%;
-      letter-spacing: 0px;
-      user-select: none;
-      line-height: 1.1;
-    }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--celeste);
+            letter-spacing: 2px;
+        }
 
-    /* ENCABEZADO SUPERIOR */
-    header {
-      padding: 34px 5%; 
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
 
-    .header-brand {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
+        .nav-links a {
+            color: var(--texto-principal);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
 
-    /* CONTENEDOR DEL LOGO CON © */
-    .logo-container-relative {
-      position: relative;
-      display: flex;
-      align-items: center;
-    }
+        .nav-links a:hover {
+            color: var(--celeste);
+        }
 
-    /* MARCO 3D METÁLICO PARA EL LOGO (logo-101.jpg) */
-    .logo-frame {
-      width: 105px;
-      height: 105px;
-      border-radius: 16px;
-      background: linear-gradient(135deg, #d2d5d9 0%, #4a4f56 50%, #121416 100%);
-      padding: 4px;
-      box-shadow: 
-        0 8px 16px rgba(0, 0, 0, 0.6), 
-        inset 0 2px 3px rgba(255, 255, 255, 0.8), 
-        inset 0 -3px 5px rgba(0, 0, 0, 0.9);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+        /* Hero / Encabezado principal */
+        .hero {
+            text-align: center;
+            padding: 80px 20px 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
 
-    .logo-frame img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 12px;
-      border: 1px solid #0d0e10;
-      image-rendering: -webkit-optimize-contrast;
-    }
+        .hero h1 {
+            font-size: 2.8rem;
+            color: var(--texto-principal);
+            margin-bottom: 15px;
+        }
 
-    /* SÍMBOLO © AL COSTADO DERECHO DEL LOGO */
-    .logo-copyright-symbol {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: #d0d5dd;
-      margin-left: 6px;
-      text-shadow: 0 1px 2px rgba(0,0,0,0.8);
-      align-self: flex-start;
-      margin-top: 8px;
-    }
+        .hero h1 span {
+            color: var(--celeste);
+        }
 
-    /* TÍTULO PRINCIPAL: PlatAzul */
-    .brand-title-wrapper {
-      display: flex;
-      align-items: baseline;
-      gap: 4px;
-    }
+        .hero p {
+            color: var(--texto-secundario);
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
 
-    .brand-title {
-      font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
-      font-size: 4.8rem;
-      font-weight: 700;
-      letter-spacing: -2px;
-      line-height: 1;
-      display: inline-block;
-      
-      background: linear-gradient(
-        90deg, 
-        #ffffff 0%,    
-        #dcdcdc 8%,   
-        #7a8088 16%,   
-        #ffffff 24%,   
-        #c8d0d8 35%,   
-        #507ca8 48%,   
-        #003865 70%,   
-        #001830 100%   
-      );
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.85));
-    }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            display: grid;
+            gap: 40px;
+        }
 
-    /* EXTENSIÓN .com.ar */
-    .domain-ext {
-      font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
-      font-size: 1.6rem;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      background: linear-gradient(180deg, #ffffff 0%, #a8b0b8 50%, #5f646a 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.8));
-      margin-left: 2px;
-    }
+        /* Tarjetas de Contenido */
+        .card {
+            background-color: var(--azul-tarjeta);
+            border-radius: 8px;
+            padding: 30px;
+            border: 1px solid var(--azul-borde);
+            box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
+        }
 
-    /* ENLACES DE NAVEGACIÓN SUPERIOR */
-    nav {
-      display: flex;
-      gap: 25px;
-      align-items: center;
-    }
+        .card h2 {
+            color: var(--celeste);
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+            border-bottom: 1px solid var(--azul-borde);
+            padding-bottom: 10px;
+        }
 
-    nav a {
-      font-family: Arial, sans-serif;
-      color: #e2e5e9;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 1.25rem;
-      letter-spacing: 1.8px;
-      text-transform: uppercase;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
-      transition: color 0.2s;
-    }
+        /* Sección de Interacción (Likes y Descargas) */
+        .stats-bar {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            background: rgba(10, 25, 47, 0.6);
+            padding: 20px;
+            border-radius: 6px;
+            border: 1px solid var(--azul-borde);
+        }
 
-    nav a:hover {
-      color: #3399ff;
-    }
+        .stat-item {
+            text-align: center;
+        }
 
-    /* ÁREA CENTRAL BLANCA */
-    main {
-      background-color: #ffffff;
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 60px 5%;
-    }
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--celeste);
+            display: block;
+        }
 
-    .book-wrapper {
-      max-width: 950px;
-      width: 100%;
-      display: flex;
-      gap: 60px;
-      align-items: flex-start;
-    }
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--texto-secundario);
+        }
 
-    .book-cover-container {
-      flex: 0 0 320px;
-    }
+        .like-buttons {
+            display: flex;
+            gap: 15px;
+        }
 
-    .book-cover-container img {
-      width: 100%;
-      height: auto;
-      border-radius: 3px;
-      box-shadow: 10px 15px 30px rgba(0, 0, 0, 0.25);
-    }
+        .btn-like {
+            background: transparent;
+            border: 1px solid var(--azul-borde);
+            color: var(--texto-principal);
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
 
-    .book-info {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
+        .btn-like:hover {
+            border-color: var(--celeste);
+            color: var(--celeste);
+        }
 
-    /* ESTILOS DEL TÍTULO DE LA NOVELA */
-    .book-title {
-      color: #000000;
-      margin-bottom: 12px;
-      white-space: nowrap; 
-      display: flex;
-      align-items: baseline;
-      justify-content: flex-start;
-      gap: 2px;
-      max-width: 100%;
-      overflow: visible;
-      padding: 15px 0px 10px 0px;
-      margin-left: -38px;
-    }
+        .btn-like.active-like {
+            background: rgba(100, 255, 218, 0.1);
+            border-color: var(--celeste);
+            color: var(--celeste);
+        }
 
-    /* FUENTE EDWARDIAN SCRIPT ITC PARA INICIALES MAYÚSCULAS */
-    .edwardian-cap-c {
-      font-family: 'Edwardian Script ITC', 'Alex Brush', 'Great Vibes', cursive;
-      font-size: 5.2rem;
-      font-weight: bold;
-      line-height: 1;
-      margin-right: -4px;
-      -webkit-text-stroke: 0.3px #000;
-    }
+        .btn-like.active-dislike {
+            background: rgba(255, 107, 107, 0.1);
+            border-color: var(--rojo-like);
+            color: var(--rojo-like);
+        }
 
-    .edwardian-cap-vp {
-      font-family: 'Edwardian Script ITC', 'Alex Brush', 'Great Vibes', cursive;
-      font-size: 4.2rem;
-      font-weight: bold;
-      line-height: 1;
-      margin-right: -3px;
-      -webkit-text-stroke: 0.3px #000;
-    }
+        /* Visor de Lectura Online */
+        .reader-controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
 
-    /* FUENTE EMBASSY BT / CALIGRÁFICA PARA RESTO DE LETRAS Y PUNTO */
-    .embassy-text {
-      font-family: 'Embassy BT', 'Parisienne', 'Alex Brush', cursive;
-      font-size: 1.85rem;
-      font-weight: bold;
-      letter-spacing: 0.5px;
-      -webkit-text-stroke: 0.2px #000;
-    }
+        .btn-control {
+            background: rgba(100, 255, 218, 0.05);
+            color: var(--celeste);
+            border: 1px solid var(--celeste);
+            padding: 6px 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
 
-    /* AUTORÍA Y SUBTÍTULO */
-    .book-by {
-      font-size: 0.85rem;
-      color: #777;
-      font-style: italic;
-      margin-bottom: 2px;
-    }
+        .btn-control:hover {
+            background: rgba(100, 255, 218, 0.2);
+        }
 
-    .book-author {
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: #222;
-      margin-bottom: 8px;
-    }
+        .reader-content {
+            background: #ffffff;
+            color: #222222;
+            padding: 35px;
+            border-radius: 6px;
+            max-height: 350px;
+            overflow-y: auto;
+            font-size: 1rem;
+            line-height: 1.8;
+            transition: background 0.3s, color 0.3s;
+        }
 
-    .book-category {
-      font-size: 1.05rem;
-      color: #555;
-      margin-bottom: 20px;
-    }
+        .reader-content.sepia {
+            background: #f4ecd8;
+            color: #5b4636;
+        }
 
-    /* BOTONES DE DESCARGA LISOS */
-    .buttons-container {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      width: 310px;
-      margin-bottom: 18px;
-    }
+        .reader-content.night {
+            background: #121212;
+            color: #e0e0e0;
+        }
 
-    .btn-download {
-      display: block;
-      padding: 14px 20px;
-      text-align: center;
-      text-decoration: none;
-      font-size: 1.15rem;
-      font-weight: 800;
-      letter-spacing: 1px;
-      color: #ffffff;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
-      border-radius: 6px;
-      background: linear-gradient(
-        90deg, 
-        #ffffff 0%, 
-        #a4aab2 20%, 
-        #527498 50%, 
-        #003865 80%, 
-        #001e3d 100%
-      );
-      border: 1px solid #0f1113;
-      box-shadow: 
-        0 5px 10px rgba(0, 0, 0, 0.4), 
-        inset 0 1px 2px rgba(255, 255, 255, 0.8), 
-        inset 0 -2px 4px rgba(0, 0, 0, 0.6);
-      position: relative;
-      transition: transform 0.1s, filter 0.2s;
-    }
+        /* Formulario y Descargas */
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
 
-    .btn-download::before, .btn-download::after {
-      content: '';
-      position: absolute;
-      top: 7px;
-      width: 5px;
-      height: 5px;
-      background: #eef1f5;
-      border-radius: 50%;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.8);
-    }
-    .btn-download::before { left: 8px; }
-    .btn-download::after { right: 8px; }
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
 
-    .btn-download:hover {
-      transform: translateY(-2px);
-      filter: brightness(1.1);
-    }
+        .form-group {
+            margin-bottom: 15px;
+        }
 
-    /* FILA DE SINOPSIS */
-    .synopsis-row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 15px;
-      flex-wrap: wrap;
-    }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--texto-secundario);
+            font-size: 0.9rem;
+        }
 
-    .btn-synopsis-toggle {
-      display: inline-block;
-      padding: 6px 12px;
-      text-decoration: none;
-      font-size: 0.8rem;
-      font-weight: 800;
-      letter-spacing: 0.4px;
-      color: #ffffff;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
-      border-radius: 4px;
-      background: linear-gradient(
-        90deg, 
-        #d0d5dd 0%, 
-        #828892 25%, 
-        #2c5378 55%, 
-        #003865 80%, 
-        #002040 100%
-      );
-      border: 1px solid #101214;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.25);
-      cursor: pointer;
-      transition: filter 0.2s, transform 0.1s;
-      width: fit-content;
-      flex-shrink: 0;
-    }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 4px;
+            border: 1px solid var(--azul-borde);
+            background-color: var(--azul-fondo);
+            color: var(--texto-principal);
+            font-size: 1rem;
+        }
 
-    .btn-synopsis-toggle:hover {
-      filter: brightness(1.1);
-      transform: translateY(-1px);
-    }
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--celeste);
+        }
 
-    .synopsis-warning-text {
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: #333333;
-      line-height: 1.3;
-    }
+        .watermark-preview {
+            grid-column: 1 / -1;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.25);
+            border-left: 3px solid var(--celeste);
+            font-size: 0.85rem;
+            color: var(--texto-secundario);
+            border-radius: 0 4px 4px 0;
+        }
 
-    /* TEXTO DE SINOPSIS DESPLEGABLE */
-    .synopsis-body {
-      display: none; 
-      font-size: 1.05rem;
-      color: #333;
-      margin-bottom: 25px;
-      line-height: 1.6;
-      background: #f7f9fa;
-      padding: 15px;
-      border-left: 3px solid #003865;
-      border-radius: 4px;
-    }
+        .watermark-text {
+            color: var(--texto-principal);
+            font-weight: bold;
+            display: block;
+            margin-top: 5px;
+            word-break: break-all;
+        }
 
-    .synopsis-body.active {
-      display: block;
-    }
+        .btn-download {
+            grid-column: 1 / -1;
+            background-color: transparent;
+            color: var(--celeste);
+            border: 2px solid var(--celeste);
+            padding: 14px;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
 
-    /* BARRA DE INTERACCIÓN (ME GUSTA, NO ME GUSTA, COMPARTIR, COMENTAR) */
-    .interaction-bar {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-top: 10px;
-      margin-bottom: 15px;
-      flex-wrap: wrap;
-    }
+        .btn-download:hover {
+            background-color: rgba(100, 255, 218, 0.1);
+        }
 
-    .btn-action {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      padding: 7px 14px;
-      background-color: #f1f3f5;
-      border: 1px solid #cbd0d6;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: #333;
-      cursor: pointer;
-      transition: background-color 0.2s, color 0.2s, transform 0.1s;
-    }
+        .btn-download:disabled {
+            border-color: var(--texto-secundario);
+            color: var(--texto-secundario);
+            cursor: not-allowed;
+        }
 
-    .btn-action:hover {
-      background-color: #e2e6ea;
-      transform: translateY(-1px);
-    }
+        .status-msg {
+            grid-column: 1 / -1;
+            text-align: center;
+            color: var(--celeste);
+            font-size: 0.9rem;
+        }
 
-    .btn-action.active-like {
-      background-color: #003865;
-      color: #ffffff;
-      border-color: #002244;
-    }
-
-    .btn-action.active-dislike {
-      background-color: #721c24;
-      color: #ffffff;
-      border-color: #521319;
-    }
-
-    /* SECCIÓN DE FORMULARIO DE COMENTARIOS */
-    .comments-section {
-      display: none;
-      margin-top: 10px;
-      padding: 15px;
-      background-color: #f8f9fa;
-      border: 1px solid #e2e6ea;
-      border-radius: 8px;
-      width: 100%;
-      max-width: 450px;
-    }
-
-    .comments-section.active {
-      display: block;
-    }
-
-    .comments-section h4 {
-      font-size: 0.95rem;
-      margin-bottom: 10px;
-      color: #003865;
-    }
-
-    .comments-section input, 
-    .comments-section textarea {
-      width: 100%;
-      padding: 8px 10px;
-      margin-bottom: 10px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      font-size: 0.85rem;
-      font-family: inherit;
-    }
-
-    .comments-section button {
-      padding: 8px 16px;
-      background-color: #003865;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .comments-section button:hover {
-      background-color: #002244;
-    }
-
-    /* NOTIFICACIÓN "ENLACE COPIADO" */
-    #copy-toast {
-      visibility: hidden;
-      min-width: 180px;
-      background-color: #222;
-      color: #fff;
-      text-align: center;
-      border-radius: 4px;
-      padding: 8px 12px;
-      position: fixed;
-      z-index: 1000;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 0.85rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    }
-
-    #copy-toast.show {
-      visibility: visible;
-      animation: fadein 0.3s, fadeout 0.5s 2.5s;
-    }
-
-    @keyframes fadein { from { bottom: 0; opacity: 0; } to { bottom: 30px; opacity: 1; } }
-    @keyframes fadeout { from { bottom: 30px; opacity: 1; } to { bottom: 0; opacity: 0; } }
-
-    /* PIE DE PÁGINA */
-    footer {
-      padding: 24px 5%; 
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .footer-brand {
-      font-family: 'Trebuchet MS', sans-serif;
-      font-size: 1.5rem;
-      font-weight: 700;
-      background: linear-gradient(
-        90deg, 
-        #ffffff 0%, 
-        #c8d0d8 35%, 
-        #507ca8 58%, 
-        #003865 100%
-      );
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.8));
-      flex-shrink: 0;
-    }
-
-    /* TEXTO DE COPYRIGHT EN EL CENTRO DE LA BANDA */
-    .copyright-legal-text {
-      color: #c0c5cc;
-      font-size: 0.85rem;
-      line-height: 1.4;
-      text-align: center;
-      max-width: 650px;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
-      font-weight: 400;
-    }
-
-    .footer-icons {
-      display: flex;
-      gap: 20px;
-      flex-shrink: 0;
-    }
-
-    .footer-icons a {
-      color: #e2e5e9;
-      font-size: 1.4rem;
-      text-decoration: none;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
-      transition: color 0.2s;
-    }
-
-    .footer-icons a:hover {
-      color: #3399ff;
-    }
-
-    /* RESPONSIVO */
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        gap: 15px;
-      }
-      .book-wrapper {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-      .book-title {
-        justify-content: center;
-        margin-left: 0;
-      }
-      .buttons-container {
-        margin: 0 auto;
-      }
-      footer {
-        flex-direction: column;
-        gap: 16px;
-        text-align: center;
-      }
-    }
-  </style>
+        /* Pie de página */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--texto-secundario);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--azul-borde);
+            margin-top: 60px;
+        }
+    </style>
 </head>
 <body>
 
-  <!-- Encabezado superior -->
-  <header class="metallic-bar">
-    <div class="header-brand">
-      <div class="logo-container-relative">
-        <div class="logo-frame">
-          <img src="logo-101.jpg" alt="Logo PlatAzul">
-        </div>
-        <!-- © al costado derecho del logo -->
-        <span class="logo-copyright-symbol">©</span>
-      </div>
-      <div class="brand-title-wrapper">
-        <h1 class="brand-title">PlatAzul</h1>
-        <!-- .com.ar -->
-        <span class="domain-ext">.com.ar</span>
-      </div>
-    </div>
     <nav>
-      <a href="#cronica">CRÓNICA</a>
-      <a href="#contacto">CONTACTO</a>
+        <div class="logo">PlatAzul</div>
+        <ul class="nav-links">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#visor">Lectura Online</a></li>
+            <li><a href="#descarga">Descargas</a></li>
+        </ul>
     </nav>
-  </header>
 
-  <!-- Franja de texto pegada abajo de la banda superior -->
-  <div class="ticker-stripe">
-    <b>FICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCION</b>
-  </div>
+    <header class="hero" id="inicio">
+        <h1>Ediciones <span>PlatAzul</span></h1>
+        <p>Publicaciones digitales de libre acceso con estampado de licencia personalizada en tiempo real.</p>
+    </header>
 
-  <!-- Contenido principal -->
-  <main>
-    <div class="book-wrapper">
-      <div class="book-cover-container">
-        <img src="portada-libro.jpg" alt="Portada Con el vuelo de los pájaros">
-      </div>
+    <div class="container">
 
-      <div class="book-info">
-        <h2 class="book-title">
-          <span class="edwardian-cap-c">C</span><span class="embassy-text">ON&nbsp;EL&nbsp;</span>
-          <span class="edwardian-cap-vp">V</span><span class="embassy-text">UELO&nbsp;DE&nbsp;LOS&nbsp;</span>
-          <span class="edwardian-cap-vp">P</span><span class="embassy-text">ÁJAROS.</span>
-        </h2>
+        <!-- SECCIÓN: Contadores e Interacción -->
+        <section class="card">
+            <h2>Valoración y Estadísticas de Descarga</h2>
+            <div class="stats-bar">
+                
+                <div class="stat-item">
+                    <span id="downloadCounter" class="stat-value">124</span>
+                    <span class="stat-label">Descargas realizadas</span>
+                </div>
 
-        <p class="book-by">por</p>
-        <p class="book-author">Cristian Marcelo Latrónica</p>
-        <p class="book-category">Science Fiction</p>
+                <div class="like-buttons">
+                    <button class="btn-like" id="btnLike" onclick="votar('like')">
+                        👍 <span id="likeCounter">42</span>
+                    </button>
+                    <button class="btn-like" id="btnDislike" onclick="votar('dislike')">
+                        👎 <span id="dislikeCounter">3</span>
+                    </button>
+                </div>
 
-        <!-- Botones de descarga arriba -->
-        <div class="buttons-container">
-          <a href="libro.pdf" download class="btn-download">DESCARGAR PDF</a>
-          <a href="libro.epub" download class="btn-download">DESCARGAR ePub</a>
-        </div>
+            </div>
+        </section>
+        
+        <!-- SECCIÓN 1: Visor de Lectura Integrado -->
+        <section class="card" id="visor">
+            <h2>Visor de Lectura en Línea</h2>
+            <div class="reader-controls">
+                <button class="btn-control" onclick="changeTheme('normal')">Modo Claro</button>
+                <button class="btn-control" onclick="changeTheme('sepia')">Sepia</button>
+                <button class="btn-control" onclick="changeTheme('night')">Modo Oscuro</button>
+                <button class="btn-control" onclick="changeFontSize(1)">Aumentar Texto A+</button>
+                <button class="btn-control" onclick="changeFontSize(-1)">Reducir Texto A-</button>
+            </div>
+            <div id="reader" class="reader-content">
+                <h3>Capítulo 1: Presentación</h3>
+                <p style="margin-top: 12px;">
+                    Bienvenido a la plataforma de lectura digital de PlatAzul. Podés disfrutar de nuestro contenido directamente desde esta ventana sin necesidad de descargar archivos adicionales.
+                </p>
+                <p style="margin-top: 12px;">
+                    Si preferís guardar una copia para tu dispositivo, podés utilizar el formulario inferior para solicitar la versión en PDF o ePUB. Cada ejemplar descargado se genera de forma única, incluyendo una marca de agua sutil con tu nombre y correo en el pie de página.
+                </p>
+            </div>
+        </section>
 
-        <!-- Botón de sinopsis más pequeño abajo con texto aclaratorio al lado -->
-        <div class="synopsis-row">
-          <button class="btn-synopsis-toggle" onclick="toggleSynopsis()">Leer Sinopsis ↓</button>
-          <span class="synopsis-warning-text"><b>solo si no vas a leer la historia completa.</b></span>
-        </div>
+        <!-- SECCIÓN 2: Formulario de Descarga Gratuita con Marca de Agua -->
+        <section class="card" id="descarga">
+            <h2>Descarga Gratuita Protegida (PDF / ePUB)</h2>
+            <form id="downloadForm" onsubmit="procesarDescarga(event)" class="form-grid">
+                
+                <div class="form-group">
+                    <label for="nombre">Nombre y Apellido:</label>
+                    <input type="text" id="nombre" placeholder="Ej: Juan Pérez" required oninput="actualizarPrevisualizacion()">
+                </div>
 
-        <!-- Texto de la sinopsis -->
-        <p id="sinopsis-text" class="synopsis-body">
-          [Próximamente ingresarás aquí la sinopsis de la novela...]
-        </p>
+                <div class="form-group">
+                    <label for="email">Correo electrónico:</label>
+                    <input type="email" id="email" placeholder="Ej: juan@ejemplo.com" required oninput="actualizarPrevisualizacion()">
+                </div>
 
-        <!-- BARRA INTERACTIVA: ME GUSTA / NO ME GUSTA / COMPARTIR / COMENTAR -->
-        <div class="interaction-bar">
-          <button id="like-btn" class="btn-action" onclick="handleLike()">
-            <i class="fa-regular fa-thumbs-up"></i> <span id="like-count">0</span>
-          </button>
-          
-          <button id="dislike-btn" class="btn-action" onclick="handleDislike()">
-            <i class="fa-regular fa-thumbs-down"></i> <span id="dislike-count">0</span>
-          </button>
+                <div class="form-group" style="grid-column: 1 / -1;">
+                    <label for="formato">Seleccioná el formato deseado:</label>
+                    <select id="formato">
+                        <option value="pdf">Documento PDF (.pdf)</option>
+                        <option value="epub">Libro Electrónico ePUB (.epub)</option>
+                    </select>
+                </div>
 
-          <button class="btn-action" onclick="sharePage()">
-            <i class="fa-solid fa-share-nodes"></i> Compartir
-          </button>
+                <div class="watermark-preview">
+                    <span>Marca de agua que se estampará en las páginas:</span>
+                    <span id="previewText" class="watermark-text">Copia personal registrada para: [Completá tus datos] - PlatAzul</span>
+                </div>
 
-          <button class="btn-action" onclick="toggleComments()">
-            <i class="fa-regular fa-comment"></i> Comentar
-          </button>
-        </div>
+                <button type="submit" id="btnSubmit" class="btn-download">Estampar Marca de Agua y Descargar</button>
+                <div id="status" class="status-msg"></div>
+            </form>
+        </section>
 
-        <!-- SECCIÓN DESPLEGABLE PARA COMENTARIOS -->
-        <div id="comments-box" class="comments-section">
-          <h4>Déjanos tu comentario o mensaje:</h4>
-          <form action="https://formspree.io/f/tu-form-id" method="POST" onsubmit="handleCommentSubmit(event)">
-            <input type="text" name="name" placeholder="Tu Nombre o Apodo" required>
-            <textarea name="message" rows="3" placeholder="Escribe tu opinión aquí..." required></textarea>
-            <button type="submit">Enviar Comentario</button>
-          </form>
-        </div>
-
-      </div>
-    </div>
-  </main>
-
-  <!-- Notificación flotante de enlace copiado -->
-  <div id="copy-toast">¡Enlace copiado al portapapeles!</div>
-
-  <!-- Franja de texto pegada sobre la banda inferior -->
-  <div class="ticker-stripe">
-    <b>CUALQUIERSIMILITUDCONLAREALIDADESPURACOINCIDENCIACUALQUIERSIMILITUDCONLAREALIDADESPURACOINCIDENCIACUALQUIERSIMILITUDCONLAREALIDADESPURACOINCIDENCIACUALQUIERSIMILITUDCONLAREALIDADESPURACOINCIDIENCIA</b>
-  </div>
-
-  <!-- Pie de página -->
-  <footer class="metallic-bar">
-    <div class="footer-brand">PlatAzul</div>
-
-    <!-- Texto de Copyright -->
-    <div class="copyright-legal-text">
-      Copyright © Cristian Marcelo Latrónica 2026. Todos los derechos reservados. Esta es una edición digital autorizada para su descarga gratuita desde esta página web. Queda prohibida su venta, alteración o distribución total o parcial en plataformas no autorizadas por el autor.
     </div>
 
-    <div class="footer-icons" id="contacto">
-      <a href="mailto:tuemail@ejemplo.com"><i class="fa-regular fa-envelope"></i></a>
-      <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-      <a href="#"><i class="fa-brands fa-instagram"></i></a>
-    </div>
+    <footer>
+        <p>&copy; PlatAzul — Todos los derechos reservados.</p>
+        <p style="margin-top: 5px; color: #566488;">Contacto: contacto@platazul.com.ar | info@platazul.com.ar</p>
+    </footer>
+
+    <script>
+        // Sistema de Contadores (Descargas, Likes y Dislikes)
+        let downloads = parseInt(localStorage.getItem('platazul_downloads')) || 124;
+        let likes = parseInt(localStorage.getItem('platazul_likes')) || 42;
+        let dislikes = parseInt(localStorage.getItem('platazul_dislikes')) || 3;
+        let userVote = localStorage.getItem('platazul_user_vote') || null;
+
+        document.getElementById('downloadCounter').textContent = downloads;
+        document.getElementById('likeCounter').textContent = likes;
+        document.getElementById('dislikeCounter').textContent = dislikes;
+        
+        if (userVote === 'like') document.getElementById('btnLike').classList.add('active-like');
+        if (userVote === 'dislike') document.getElementById('btnDislike').classList.add('active-dislike');
+
+        function votar(tipo) {
+            const btnLike = document.getElementById('btnLike');
+            const btnDislike = document.getElementById('btnDislike');
+
+            if (userVote === tipo) {
+                // Deshacer voto
+                if (tipo === 'like') likes--;
+                if (tipo === 'dislike') dislikes--;
+                userVote = null;
+                btnLike.classList.remove('active-like');
+                btnDislike.classList.remove('active-dislike');
+            } else {
+                // Cambiar o poner voto
+                if (userVote === 'like') likes--;
+                if (userVote === 'dislike') dislikes--;
+
+                if (tipo === 'like') {
+                    likes++;
+                    btnLike.classList.add('active-like');
+                    btnDislike.classList.remove('active-dislike');
+                } else {
+                    dislikes++;
+                    btnDislike.classList.add('active-dislike');
+                    btnLike.classList.remove('active-like');
+                }
+                userVote = tipo;
+            }
+
+            // Guardar estado local
+            localStorage.setItem('platazul_likes', likes);
+            localStorage.setItem('platazul_dislikes', dislikes);
+            localStorage.setItem('platazul_user_vote', userVote || '');
+
+            document.getElementById('likeCounter').textContent = likes;
+            document.getElementById('dislikeCounter').textContent = dislikes;
+        }
+
+        // Funciones del Visor de Lectura
+        let currentFontSize = 16;
+        function changeFontSize(delta) {
+            currentFontSize += delta;
+            if (currentFontSize < 12) currentFontSize = 12;
+            if (currentFontSize > 24) currentFontSize = 24;
+            document.getElementById('reader').style.fontSize = currentFontSize + 'px';
+        }
+
+        function changeTheme(theme) {
+            const reader = document.getElementById('reader');
+            reader.classList.remove('sepia', 'night');
+            if (theme === 'sepia') reader.classList.add('sepia');
+            if (theme === 'night') reader.classList.add('night');
+        }
+
+        // Actualización de la vista previa de la marca de agua
+        function actualizarPrevisualizacion() {
+            const nombre = document.getElementById('nombre').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const preview = document.getElementById('previewText');
+
+            if (nombre || email) {
+                preview.textContent = `Licencia personal otorgada a: ${nombre || '...'} (${email || '...'}) - PlatAzul`;
+            } else {
+                preview.textContent = 'Copia personal registrada para: [Completá tus datos] - PlatAzul';
+            }
+        }
+
+        // Procesador y Generador de Descargas
+        async function procesarDescarga(e) {
+            e.preventDefault();
+            
+            const nombre = document.getElementById('nombre').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const formato = document.getElementById('formato').value;
+            const btn = document.getElementById('btnSubmit');
+            const status = document.getElementById('status');
+
+            btn.disabled = true;
+            status.textContent = "Procesando el archivo y estampando la marca de agua...";
+
+            setTimeout(() => {
+                const Leyenda = `Licencia personal otorgada a: ${nombre} (${email}) - PlatAzul`;
+
+                if (formato === 'pdf') {
+                    generarPDFConMarca(Leyenda, nombre);
+                } else {
+                    generarEPUBConMarca(Leyenda, nombre);
+                }
+
+                // Incrementar contador de descargas
+                downloads++;
+                localStorage.setItem('platazul_downloads', downloads);
+                document.getElementById('downloadCounter').textContent = downloads;
+
+                status.textContent = "¡Descarga iniciada con éxito!";
+                btn.disabled = false;
+                setTimeout(() => { status.textContent = ""; }, 4000);
+            }, 800);
+        }
+
+        // Generar archivo PDF con jsPDF
+        function generarPDFConMarca(leyenda, nombre) {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            // Encabezado del PDF
+            doc.setFontSize(18);
+            doc.setTextColor(10, 25, 47);
+            doc.text("PlatAzul - Edición Digital", 20, 25);
+
+            // Contenido
+            doc.setFontSize(11);
+            doc.setTextColor(60, 60, 60);
+            doc.text("Este es el contenido del documento descargado desde la plataforma PlatAzul.", 20, 45);
+            doc.text("El archivo cuenta con estampado digital para verificar la licencia de lectura.", 20, 55);
+
+            // Pie de página (Marca de agua)
+            doc.setFontSize(8);
+            doc.setTextColor(120, 120, 120);
+            doc.text(leyenda, 20, 280);
+
+            // Descarga
+            doc.save(`PlatAzul_${nombre.replace(/\s+/g, '_')}.pdf`);
+        }
+
+        // Generar archivo ePUB con JSZip
+        function generarEPUBConMarca(leyenda, nombre) {
+            const zip = new JSZip();
+
+            zip.file("mimetype", "application/epub+zip");
+            
+            const metaInf = zip.folder("META-INF");
+            metaInf.file("container.xml", `<?xml version="1.0"?>
+<container version="1.0" xmlns="urn:oasis:names:tc:opendocument:xmlns:container">
+  <rootfiles>
+    <rootfile full-path="OEBPS/content.opf" media-type="application/oebps-package+xml"/>
+  </rootfiles>
+</container>`);
+
+            const oebps = zip.folder("OEBPS");
+            oebps.file("content.html", `<!DOCTYPE html>
+<html>
+<head><title>PlatAzul</title></head>
+<body style="font-family: sans-serif; padding: 20px;">
+  <h1>PlatAzul - Edición Digital</h1>
+  <p>Gracias por descargar esta publicación desde nuestra web.</p>
+  <hr style="margin-top: 40px;"/>
+  <footer style="font-size: 0.8em; color: #666;">
+    <p><strong>${leyenda}</strong></p>
   </footer>
+</body>
+</html>`);
 
-  <script>
-    function toggleSynopsis() {
-      const synopsis = document.getElementById('sinopsis-text');
-      synopsis.classList.toggle('active');
-    }
-
-    function toggleComments() {
-      const comments = document.getElementById('comments-box');
-      comments.classList.toggle('active');
-    }
-
-    /* LÓGICA DE REENVIAR / COMPARTIR ENLACE */
-    function sharePage() {
-      if (navigator.share) {
-        navigator.share({
-          title: 'Con el vuelo de los pájaros - PlatAzul',
-          text: 'Descarga gratis la novela "Con el vuelo de los pájaros" de Cristian Marcelo Latrónica',
-          url: window.location.href
-        }).catch(() => {});
-      } else {
-        navigator.clipboard.writeText(window.location.href);
-        showToast();
-      }
-    }
-
-    function showToast() {
-      const toast = document.getElementById("copy-toast");
-      toast.className = "show";
-      setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
-    }
-
-    /* LÓGICA DE ME GUSTA / NO ME GUSTA (Guardado local) */
-    let likes = parseInt(localStorage.getItem('page_likes') || '0');
-    let dislikes = parseInt(localStorage.getItem('page_dislikes') || '0');
-    let userVote = localStorage.getItem('user_vote');
-
-    document.getElementById('like-count').innerText = likes;
-    document.getElementById('dislike-count').innerText = dislikes;
-    updateVoteUI();
-
-    function handleLike() {
-      if (userVote === 'like') {
-        likes--;
-        userVote = null;
-      } else {
-        if (userVote === 'dislike') dislikes--;
-        likes++;
-        userVote = 'like';
-      }
-      saveVotes();
-    }
-
-    function handleDislike() {
-      if (userVote === 'dislike') {
-        dislikes--;
-        userVote = null;
-      } else {
-        if (userVote === 'like') likes--;
-        dislikes++;
-        userVote = 'dislike';
-      }
-      saveVotes();
-    }
-
-    function saveVotes() {
-      localStorage.setItem('page_likes', likes);
-      localStorage.setItem('page_dislikes', dislikes);
-      if (userVote) localStorage.setItem('user_vote', userVote);
-      else localStorage.removeItem('user_vote');
-
-      document.getElementById('like-count').innerText = likes;
-      document.getElementById('dislike-count').innerText = dislikes;
-      updateVoteUI();
-    }
-
-    function updateVoteUI() {
-      const likeBtn = document.getElementById('like-btn');
-      const dislikeBtn = document.getElementById('dislike-btn');
-      
-      likeBtn.classList.remove('active-like');
-      dislikeBtn.classList.remove('active-dislike');
-
-      if (userVote === 'like') likeBtn.classList.add('active-like');
-      if (userVote === 'dislike') dislikeBtn.classList.add('active-dislike');
-    }
-
-    function handleCommentSubmit(e) {
-      alert("¡Gracias por tu comentario!");
-    }
-  </script>
-
+            zip.generateAsync({type:"blob"}).then(function(content) {
+                const a = document.createElement("a");
+                a.href = URL.createObjectURL(content);
+                a.download = `PlatAzul_${nombre.replace(/\s+/g, '_')}.epub`;
+                a.click();
+            });
+        }
+    </script>
 </body>
 </html>
