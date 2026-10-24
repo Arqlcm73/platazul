@@ -425,7 +425,7 @@
 
     <footer>
         <p>&copy; PlatAzul — Todos los derechos reservados.</p>
-        <p style="margin-top: 5px; color: #566488;">Contacto: contacto@platazul.com.ar | info@platazul.com.ar</p>
+        <p style="margin-top: 5px; color: #566488;">Contacto: contacto@platazul.com.ar | info@platazul.com.ar | comentarios@platazul.com.ar</p>
     </footer>
 
     <script>
@@ -447,14 +447,12 @@
             const btnDislike = document.getElementById('btnDislike');
 
             if (userVote === tipo) {
-                // Deshacer voto
                 if (tipo === 'like') likes--;
                 if (tipo === 'dislike') dislikes--;
                 userVote = null;
                 btnLike.classList.remove('active-like');
                 btnDislike.classList.remove('active-dislike');
             } else {
-                // Cambiar o poner voto
                 if (userVote === 'like') likes--;
                 if (userVote === 'dislike') dislikes--;
 
@@ -470,7 +468,6 @@
                 userVote = tipo;
             }
 
-            // Guardar estado local
             localStorage.setItem('platazul_likes', likes);
             localStorage.setItem('platazul_dislikes', dislikes);
             localStorage.setItem('platazul_user_vote', userVote || '');
@@ -502,7 +499,7 @@
             const preview = document.getElementById('previewText');
 
             if (nombre || email) {
-                preview.textContent = `Licencia personal otorgada a: ${nombre || '...'} (${email || '...'}) - PlatAzul`;
+                preview.textContent = `Licencia personal otorgada a: ${nombre \vert{}\vert{} '...'} (${email || '...'}) - PlatAzul`;
             } else {
                 preview.textContent = 'Copia personal registrada para: [Completá tus datos] - PlatAzul';
             }
@@ -522,48 +519,7 @@
             status.textContent = "Procesando el archivo y estampando la marca de agua...";
 
             setTimeout(() => {
-                const Leyenda = `Licencia personal otorgada a: ${nombre} (${email}) - PlatAzul`;
-
-                if (formato === 'pdf') {
-                    generarPDFConMarca(Leyenda, nombre);
-                } else {
-                    generarEPUBConMarca(Leyenda, nombre);
-                }
-
-                // Incrementar contador de descargas
-                downloads++;
-                localStorage.setItem('platazul_downloads', downloads);
-                document.getElementById('downloadCounter').textContent = downloads;
-
-                status.textContent = "¡Descarga iniciada con éxito!";
-                btn.disabled = false;
-                setTimeout(() => { status.textContent = ""; }, 4000);
-            }, 800);
-        }
-
-        // Generar archivo PDF con jsPDF
-        function generarPDFConMarca(leyenda, nombre) {
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
-
-            // Encabezado del PDF
-            doc.setFontSize(18);
-            doc.setTextColor(10, 25, 47);
-            doc.text("PlatAzul - Edición Digital", 20, 25);
-
-            // Contenido
-            doc.setFontSize(11);
-            doc.setTextColor(60, 60, 60);
-            doc.text("Este es el contenido del documento descargado desde la plataforma PlatAzul.", 20, 45);
-            doc.text("El archivo cuenta con estampado digital para verificar la licencia de lectura.", 20, 55);
-
-            // Pie de página (Marca de agua)
-            doc.setFontSize(8);
-            doc.setTextColor(120, 120, 120);
-            doc.text(leyenda, 20, 280);
-
-            // Descarga
-            doc.save(`PlatAzul_${nombre.replace(/\s+/g, '_')}.pdf`);
+                const Leyenda = `Licencia personal otorgada a: ${nombre} (${email}) - PlatAzul`;  if (formato === 'pdf') { generarPDFConMarca(Leyenda, nombre); } else { generarEPUBConMarca(Leyenda, nombre); }  // Incrementar contador de descargas downloads++; localStorage.setItem('platazul_downloads', downloads); document.getElementById('downloadCounter').textContent = downloads;  status.textContent = "¡Descarga iniciada con éxito!"; btn.disabled = false; setTimeout(() => { status.textContent = ""; }, 4000); }, 800); }  // Generar archivo PDF con jsPDF function generarPDFConMarca(leyenda, nombre) { const { jsPDF } = window.jspdf; const doc = new jsPDF();  doc.setFontSize(18); doc.setTextColor(10, 25, 47); doc.text("PlatAzul - Edición Digital", 20, 25);  doc.setFontSize(11); doc.setTextColor(60, 60, 60); doc.text("Este es el contenido del documento descargado desde la plataforma PlatAzul.", 20, 45); doc.text("El archivo cuenta con estampado digital para verificar la licencia de lectura.", 20, 55);  doc.setFontSize(8); doc.setTextColor(120, 120, 120); doc.text(leyenda, 20, 280);  doc.save(`PlatAzul_${nombre.replace(/\s+/g, '_')}.pdf`);
         }
 
         // Generar archivo ePUB con JSZip
@@ -586,21 +542,4 @@
 <head><title>PlatAzul</title></head>
 <body style="font-family: sans-serif; padding: 20px;">
   <h1>PlatAzul - Edición Digital</h1>
-  <p>Gracias por descargar esta publicación desde nuestra web.</p>
-  <hr style="margin-top: 40px;"/>
-  <footer style="font-size: 0.8em; color: #666;">
-    <p><strong>${leyenda}</strong></p>
-  </footer>
-</body>
-</html>`);
-
-            zip.generateAsync({type:"blob"}).then(function(content) {
-                const a = document.createElement("a");
-                a.href = URL.createObjectURL(content);
-                a.download = `PlatAzul_${nombre.replace(/\s+/g, '_')}.epub`;
-                a.click();
-            });
-        }
-    </script>
-</body>
-</html>
+  <p>Gracias por descargar esta publicación desde
