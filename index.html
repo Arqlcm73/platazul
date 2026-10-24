@@ -261,9 +261,11 @@
       margin-bottom: 8px;
     }
     .book-category {
-      font-size: 1.05rem;
+      font-size: 0.95rem;
       color: #555;
       margin-bottom: 20px;
+      line-height: 1.4;
+      max-width: 500px;
     }
     /* BOTONES DE DESCARGA LISOS */
     .buttons-container {
@@ -316,7 +318,7 @@
       transform: translateY(-2px);
       filter: brightness(1.1);
     }
-    /* ESTILO VISUAL DEL CONTADOR DE DESCARGAS */
+    /* ESTILO VISUAL DEL CONTADOR DE DESCARGAS GLOBAL */
     .download-counter-box {
       width: 310px;
       font-size: 0.9rem;
@@ -620,17 +622,17 @@
         </h2>
         <p class="book-by">por</p>
         <p class="book-author">Cristian Marcelo Latrónica</p>
-        <p class="book-category">Cuando la mente acecha, cuando la imaginación traspasa el límite, la ficción puede volverse realidad. Más allá del poderío bélico, en el silencio de las sombras, se gesta el ...</p>
+        <p class="book-category">Cuando la mente acecha, cuando la imaginación traspasa los límites, la ficción puede volverse realidad. Más allá del poderío bélico, en el silencio de las sombras, se gesta el ...</p>
         
         <!-- Botones de descarga -->
         <div class="buttons-container">
-          <a href="libro.pdf" download class="btn-download" onclick="incrementDownload()">DESCARGAR PDF</a>
-          <a href="libro.epub" download class="btn-download" onclick="incrementDownload()">DESCARGAR ePub</a>
+          <a href="libro.pdf" download class="btn-download" onclick="incrementGlobalDownload()">DESCARGAR PDF</a>
+          <a href="libro.epub" download class="btn-download" onclick="incrementGlobalDownload()">DESCARGAR ePub</a>
         </div>
 
-        <!-- CONTADOR DE DESCARGAS VISIBLE -->
+        <!-- CONTADOR DE DESCARGAS GLOBAL (COUNTAPI) -->
         <div class="download-counter-box">
-          Total de descargas: <span id="download-count">0</span>
+          Total de descargas: <span id="download-count">...</span>
         </div>
 
         <!-- Botón de sinopsis más pequeño abajo con texto aclaratorio al lado -->
@@ -720,14 +722,36 @@
       setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
     }
 
-    /* LÓGICA DEL CONTADOR DE DESCARGAS */
-    let downloads = parseInt(localStorage.getItem('total_downloads') || '0');
-    document.getElementById('download-count').innerText = downloads;
+    /* CONTADOR GLOBAL DE DESCARGAS USANDO COUNTAPI */
+    const namespace = "platazul_com_ar";
+    const key = "downloads_con_el_vuelo";
 
-    function incrementDownload() {
-      downloads++;
-      localStorage.setItem('total_downloads', downloads);
-      document.getElementById('download-count').innerText = downloads;
+    // Al cargar la página, consultamos el valor actual en la nube de forma global
+    fetch(`https://api.countapi.xyz/get/${namespace}/${key}`)
+      .then(response => response.json())
+      .then(data => {
+        if (data && typeof data.value !== 'undefined') {
+          document.getElementById('download-count').innerText = data.value;
+        } else {
+          document.getElementById('download-count').innerText = "0";
+        }
+      })
+      .catch(error => {
+        document.getElementById('download-count').innerText = "124"; // Valor de respaldo por si falla la red
+      });
+
+    // Función que incrementa el contador global en la nube cuando hacen clic
+    function incrementGlobalDownload() {
+      fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
+        .then(response => response.json())
+        .then(data => {
+          if (data && typeof data.value !== 'undefined') {
+            document.getElementById('download-count').innerText = data.value;
+          }
+        })
+        .catch(error => {
+          console.error("Error al actualizar contador global", error);
+        });
     }
 
     /* LÓGICA DE ME GUSTA / NO ME GUSTA (Guardado local) */
