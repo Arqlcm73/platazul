@@ -271,7 +271,7 @@
       flex-direction: column;
       gap: 16px;
       width: 310px;
-      margin-bottom: 18px;
+      margin-bottom: 12px;
     }
     .btn-download {
       display: block;
@@ -315,6 +315,25 @@
     .btn-download:hover {
       transform: translateY(-2px);
       filter: brightness(1.1);
+    }
+    /* ESTILO VISUAL DEL CONTADOR DE DESCARGAS */
+    .download-counter-box {
+      width: 310px;
+      font-size: 0.9rem;
+      color: #444;
+      margin-bottom: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #f1f3f5;
+      padding: 6px 12px;
+      border-radius: 4px;
+      border: 1px solid #dcdfe3;
+      font-weight: 600;
+    }
+    .download-counter-box span {
+      color: #003865;
+      font-weight: 700;
     }
     /* FILA DE SINOPSIS */
     .synopsis-row {
@@ -452,7 +471,7 @@
     .comments-section button:hover {
       background-color: #002244;
     }
-    /* NOTIFICACIÓN "ENLACE COPIADO" Y CONTADOR DE DESCARGAS */
+    /* NOTIFICACIÓN "ENLACE COPIADO" */
     #copy-toast {
       visibility: hidden;
       min-width: 180px;
@@ -472,13 +491,6 @@
     #copy-toast.show {
       visibility: visible;
       animation: fadein 0.3s, fadeout 0.5s 2.5s;
-    }
-    .download-counter-text {
-      font-size: 0.82rem;
-      color: #555;
-      margin-top: -6px;
-      margin-bottom: 18px;
-      font-style: italic;
     }
     @keyframes fadein { from { bottom: 0; opacity: 0; } to { bottom: 30px; opacity: 1; } }
     @keyframes fadeout { from { bottom: 30px; opacity: 1; } to { bottom: 0; opacity: 0; } }
@@ -557,7 +569,7 @@
         justify-content: center;
         margin-left: 0;
       }
-      .buttons-container {
+      .buttons-container, .download-counter-box {
         margin: 0 auto;
       }
       footer {
@@ -609,15 +621,18 @@
         <p class="book-by">por</p>
         <p class="book-author">Cristian Marcelo Latrónica</p>
         <p class="book-category">Science Fiction</p>
-        <!-- Botones de descarga arriba -->
+        
+        <!-- Botones de descarga -->
         <div class="buttons-container">
           <a href="libro.pdf" download class="btn-download" onclick="incrementDownload()">DESCARGAR PDF</a>
           <a href="libro.epub" download class="btn-download" onclick="incrementDownload()">DESCARGAR ePub</a>
         </div>
-        <!-- Texto con el contador de descargas -->
-        <div class="download-counter-text">
-          Descargas totales: <span id="download-count">0</span>
+
+        <!-- CONTADOR DE DESCARGAS VISIBLE -->
+        <div class="download-counter-box">
+          Total de descargas: <span id="download-count">0</span>
         </div>
+
         <!-- Botón de sinopsis más pequeño abajo con texto aclaratorio al lado -->
         <div class="synopsis-row">
           <button class="btn-synopsis-toggle" onclick="toggleSynopsis()">Leer Sinopsis ↓</button>
