@@ -452,7 +452,7 @@
     .comments-section button:hover {
       background-color: #002244;
     }
-    /* NOTIFICACIÓN "ENLACE COPIADO" */
+    /* NOTIFICACIÓN "ENLACE COPIADO" Y CONTADOR DE DESCARGAS */
     #copy-toast {
       visibility: hidden;
       min-width: 180px;
@@ -472,6 +472,13 @@
     #copy-toast.show {
       visibility: visible;
       animation: fadein 0.3s, fadeout 0.5s 2.5s;
+    }
+    .download-counter-text {
+      font-size: 0.82rem;
+      color: #555;
+      margin-top: -6px;
+      margin-bottom: 18px;
+      font-style: italic;
     }
     @keyframes fadein { from { bottom: 0; opacity: 0; } to { bottom: 30px; opacity: 1; } }
     @keyframes fadeout { from { bottom: 30px; opacity: 1; } to { bottom: 0; opacity: 0; } }
@@ -504,7 +511,6 @@
       -webkit-text-fill-color: transparent;
       filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.8));
     }
-    /* SÍMBOLO DE COPYRIGHT CON CÍRCULO AL LADO DE PLATAZUL EN EL FOOTER */
     .footer-copyright-symbol {
       font-family: 'Trebuchet MS', sans-serif;
       font-size: 1rem;
@@ -512,7 +518,6 @@
       color: #c0c5cc;
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
     }
-    /* TEXTO DE COPYRIGHT EN EL CENTRO DE LA BANDA */
     .copyright-legal-text {
       color: #c0c5cc;
       font-size: 0.85rem;
@@ -606,8 +611,12 @@
         <p class="book-category">Science Fiction</p>
         <!-- Botones de descarga arriba -->
         <div class="buttons-container">
-          <a href="libro.pdf" download class="btn-download">DESCARGAR PDF</a>
-          <a href="libro.epub" download class="btn-download">DESCARGAR ePub</a>
+          <a href="libro.pdf" download class="btn-download" onclick="incrementDownload()">DESCARGAR PDF</a>
+          <a href="libro.epub" download class="btn-download" onclick="incrementDownload()">DESCARGAR ePub</a>
+        </div>
+        <!-- Texto con el contador de descargas -->
+        <div class="download-counter-text">
+          Descargas totales: <span id="download-count">0</span>
         </div>
         <!-- Botón de sinopsis más pequeño abajo con texto aclaratorio al lado -->
         <div class="synopsis-row">
@@ -695,6 +704,17 @@
       toast.className = "show";
       setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
     }
+
+    /* LÓGICA DEL CONTADOR DE DESCARGAS */
+    let downloads = parseInt(localStorage.getItem('total_downloads') || '0');
+    document.getElementById('download-count').innerText = downloads;
+
+    function incrementDownload() {
+      downloads++;
+      localStorage.setItem('total_downloads', downloads);
+      document.getElementById('download-count').innerText = downloads;
+    }
+
     /* LÓGICA DE ME GUSTA / NO ME GUSTA (Guardado local) */
     let likes = parseInt(localStorage.getItem('page_likes') || '0');
     let dislikes = parseInt(localStorage.getItem('page_dislikes') || '0');
