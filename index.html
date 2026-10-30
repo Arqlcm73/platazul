@@ -7,6 +7,10 @@
   <!-- Iconos de redes sociales y acciones -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
+  <!-- Carga de fuentes caligráficas desde Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Great+Vibes&family=Parisienne&family=Monsieur+La+Doulaise&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
@@ -16,7 +20,7 @@
     }
     body {
       font-family: Arial, Helvetica, sans-serif;
-      background-color: #f7f3ec; /* Fondo crema cálido unificado */
+      background-color: #f7f3ec;
       color: #000;
       display: flex;
       flex-direction: column;
@@ -205,17 +209,42 @@
       flex-direction: column;
     }
     
-    /* CONTENEDOR PARA LA IMAGEN DEL TÍTULO (con fondo unificado y alineado) */
-    .book-title-image-container {
+    /* TÍTULO CON FUENTES WEBFONTS */
+    .book-title {
+      color: #000000;
       margin-bottom: 12px;
+      white-space: nowrap; 
+      display: flex;
+      align-items: baseline;
+      justify-content: flex-start;
+      gap: 2px;
+      max-width: 100%;
+      overflow: visible;
+      padding: 15px 0px 10px 0px;
       margin-left: -38px;
-      max-width: 100%;
     }
-    .book-title-image-container img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-      background-color: #f7f3ec; /* Mantiene el mismo fondo exacto de la página */
+    .edwardian-cap-c {
+      font-family: 'Monsieur La Doulaise', 'Alex Brush', 'Great Vibes', cursive;
+      font-size: 4.2rem;
+      font-weight: bold;
+      line-height: 1;
+      margin-right: -4px;
+      -webkit-text-stroke: 0.4px #000;
+    }
+    .edwardian-cap-vp {
+      font-family: 'Monsieur La Doulaise', 'Alex Brush', 'Great Vibes', cursive;
+      font-size: 3.8rem;
+      font-weight: bold;
+      line-height: 1;
+      margin-right: -4px;
+      -webkit-text-stroke: 0.4px #000;
+    }
+    .embassy-text {
+      font-family: 'Alex Brush', 'Parisienne', cursive;
+      font-size: 1.6rem;
+      font-weight: bold;
+      letter-spacing: 0.4px;
+      -webkit-text-stroke: 0.3px #000;
     }
 
     /* AUTORÍA Y SUBTÍTULO */
@@ -533,7 +562,8 @@
         align-items: center;
         text-align: center;
       }
-      .book-title-image-container {
+      .book-title {
+        justify-content: center;
         margin-left: 0;
       }
       .buttons-container, .download-counter-box {
@@ -580,12 +610,12 @@
         <img src="portada-libro.jpg" alt="Portada Con el vuelo de los pájaros">
       </div>
       <div class="book-info">
-        
-        <!-- TÍTULO EN IMAGEN CON EL MISMO FONDO DE LA PÁGINA -->
-        <div class="book-title-image-container">
-          <img src="titulo-novela.png" alt="Con el vuelo de los pájaros">
-        </div>
-
+        <!-- TÍTULO CON FUENTES ESTILIZADAS -->
+        <h2 class="book-title">
+          <span class="edwardian-cap-c">C</span><span class="embassy-text">ON&nbsp;EL&nbsp;</span>
+          <span class="edwardian-cap-vp">V</span><span class="embassy-text">UELO&nbsp;DE&nbsp;LOS&nbsp;</span>
+          <span class="edwardian-cap-vp">P</span><span class="embassy-text">ÁJAROS.</span>
+        </h2>
         <p class="book-by">por</p>
         <p class="book-author">Cristian Marcelo Latrónica</p>
         <p class="book-category">Cuando la mente acecha, cuando la imaginación traspasa los límites, la ficción puede volverse realidad. Más allá del poderío bélico, en el silencio de las sombras, se gesta el ...</p>
@@ -601,7 +631,7 @@
           Total de descargas: <span id="download-count">0</span>
         </div>
 
-        <!-- Botón de sinopsis sin "Leer" y sin texto al lado -->
+        <!-- Botón de sinopsis -->
         <div class="synopsis-row">
           <button class="btn-synopsis-toggle" onclick="toggleSynopsis()">Sinopsis ↓</button>
         </div>
