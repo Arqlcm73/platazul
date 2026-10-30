@@ -6,6 +6,8 @@
   <title>PlatAzul.com.ar - Con el vuelo de los pájaros</title>
   <!-- Iconos de redes sociales y acciones -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Fuentes estilizadas de respaldo para asegurar compatibilidad en celulares -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Pinyon+Script&family=Cinzel:wght@600&display=swap" rel="stylesheet">
   
   <style>
     * {
@@ -209,7 +211,6 @@
     .book-title {
       color: #000000;
       margin-bottom: 12px;
-      white-space: nowrap; 
       display: flex;
       align-items: baseline;
       justify-content: flex-start;
@@ -218,31 +219,32 @@
       overflow: visible;
       padding: 15px 0px 10px 0px;
       margin-left: -38px;
+      flex-wrap: nowrap;
     }
     /* C de CON: Edwardian Script ITC, 55pt, negrita */
     .title-cap-c {
-      font-family: 'Edwardian Script ITC', cursive;
+      font-family: 'Edwardian Script ITC', 'Great Vibes', cursive;
       font-size: 55pt;
       font-weight: bold;
       line-height: 1;
     }
     /* V de VUELO: Edwardian Script ITC, 48pt, negrita */
     .title-cap-v {
-      font-family: 'Edwardian Script ITC', cursive;
+      font-family: 'Edwardian Script ITC', 'Great Vibes', cursive;
       font-size: 48pt;
       font-weight: bold;
       line-height: 1;
     }
     /* P de PÁJAROS: Embassy BT, 45pt, negrita */
     .title-cap-p {
-      font-family: 'Embassy BT', cursive;
+      font-family: 'Embassy BT', 'Pinyon Script', cursive;
       font-size: 45pt;
       font-weight: bold;
       line-height: 1;
     }
     /* Resto del texto y el punto final: Matura MT Script Capitals, 12pt, sin negrita, mayúsculas */
     .title-rest-text {
-      font-family: 'Matura MT Script Capitals', cursive;
+      font-family: 'Matura MT Script Capitals', 'Cinzel', cursive;
       font-size: 12pt;
       font-weight: normal;
       text-transform: uppercase;
@@ -269,7 +271,7 @@
       max-width: 500px;
     }
     
-    /* BOTONES DE DESCARGA LIGERAMENTE MÁS PEQUEÑOS */
+    /* BOTONES DE DESCARGA */
     .buttons-container {
       display: flex;
       flex-direction: column;
@@ -348,7 +350,6 @@
       margin-bottom: 15px;
       flex-wrap: wrap;
     }
-    /* BOTONES SINOPSIS Y RESUMEN CON ALTURA UN POCO MENOR */
     .btn-synopsis-toggle {
       display: inline-block;
       padding: 4px 12px;
@@ -400,7 +401,7 @@
     .synopsis-body.active {
       display: block;
     }
-    /* BARRA DE INTERACCIÓN (ME GUSTA, NO ME GUSTA, COMPARTIR, COMENTAR) */
+    /* BARRA DE INTERACCIÓN */
     .interaction-bar {
       display: flex;
       align-items: center;
@@ -502,6 +503,7 @@
     }
     @keyframes fadein { from { bottom: 0; opacity: 0; } to { bottom: 30px; opacity: 1; } }
     @keyframes fadeout { from { bottom: 30px; opacity: 1; } to { bottom: 0; opacity: 0; } }
+    
     /* PIE DE PÁGINA */
     footer {
       padding: 24px 5%; 
@@ -562,23 +564,62 @@
     .footer-icons a:hover {
       color: #3399ff;
     }
-    /* RESPONSIVO */
+
+    /* ========================================== */
+    /* ADAPTACIONES ESPECÍFICAS PARA CELULARES    */
+    /* ========================================== */
     @media (max-width: 768px) {
       header {
         flex-direction: column;
         gap: 15px;
+        padding: 20px 5%;
+      }
+      main {
+        padding: 30px 5%;
       }
       .book-wrapper {
         flex-direction: column;
         align-items: center;
         text-align: center;
+        gap: 30px;
       }
+      .book-cover-container {
+        flex: 0 0 240px;
+        max-width: 240px;
+      }
+      /* Ajuste dinámico del título en pantallas chicas para que no se corte */
       .book-title {
         justify-content: center;
         margin-left: 0;
+        flex-wrap: wrap;
+        white-space: normal;
+        text-align: center;
+        gap: 4px;
+      }
+      .title-cap-c { font-size: 42pt !important; }
+      .title-cap-v { font-size: 38pt !important; }
+      .title-cap-p { font-size: 35pt !important; }
+      .title-rest-text { font-size: 10pt !important; }
+
+      .book-category {
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
       }
       .buttons-container, .download-counter-box {
-        margin: 0 auto;
+        margin: 0 auto 12px auto;
+        width: 100%;
+        max-width: 280px;
+      }
+      .synopsis-row {
+        justify-content: center;
+      }
+      .interaction-bar {
+        justify-content: center;
+      }
+      .comments-section {
+        margin-left: auto;
+        margin-right: auto;
       }
       footer {
         flex-direction: column;
@@ -621,7 +662,7 @@
         <img src="portada-libro.jpg" alt="Portada Con el vuelo de los pájaros">
       </div>
       <div class="book-info">
-        <!-- TÍTULO DE LA NOVELA CONFIGURADO EXACTAMENTE SEGÚN LAS REGLAS -->
+        <!-- TÍTULO DE LA NOVELA CON ADAPTACIÓN MÓVIL -->
         <h2 class="book-title">
           <span class="title-cap-c">C</span><span class="title-rest-text">ON&nbsp;EL&nbsp;</span>
           <span class="title-cap-v">V</span><span class="title-rest-text">UELO&nbsp;DE&nbsp;LOS&nbsp;</span>
@@ -631,18 +672,18 @@
         <p class="book-author">Cristian Marcelo Latrónica</p>
         <p class="book-category">Cuando la mente acecha, cuando la imaginación traspasa los límites, la ficción puede volverse realidad. Más allá del poderío bélico, en el silencio de las sombras, se gesta el ...</p>
         
-        <!-- Botones de descarga achicados -->
+        <!-- Botones de descarga -->
         <div class="buttons-container">
           <a href="libro.pdf" download class="btn-download" onclick="incrementGlobalDownload()">DESCARGAR PDF</a>
           <a href="libro.epub" download class="btn-download" onclick="incrementGlobalDownload()">DESCARGAR ePub</a>
         </div>
 
-        <!-- CONTADOR DE DESCARGAS GLOBAL LIMPIO EN 0 -->
+        <!-- CONTADOR DE DESCARGAS GLOBAL -->
         <div class="download-counter-box">
           Total de descargas: <span id="download-count">0</span>
         </div>
 
-        <!-- Botones de Sinopsis y Resumen (con menor altura) -->
+        <!-- Botones de Sinopsis y Resumen -->
         <div class="synopsis-row">
           <button class="btn-synopsis-toggle" onclick="toggleSynopsis()">Sinopsis ↓</button>
           <button class="btn-synopsis-toggle" onclick="toggleResumen()">Resumen ↓</button>
@@ -654,12 +695,12 @@
           [Próximamente ingresarás aquí la sinopsis de la novela...]
         </p>
 
-        <!-- Texto del resumen (con final incluido) -->
+        <!-- Texto del resumen -->
         <p id="resumen-text" class="synopsis-body">
           [Próximamente ingresarás aquí el resumen con el final incluido...]
         </p>
 
-        <!-- BARRA INTERACTIVA: ME GUSTA / NO ME GUSTA / COMPARTIR / COMENTAR -->
+        <!-- BARRA DE INTERACCIÓN -->
         <div class="interaction-bar">
           <button id="like-btn" class="btn-action" onclick="handleLike()">
             <i class="fa-regular fa-thumbs-up"></i> <span id="like-count">0</span>
@@ -675,7 +716,7 @@
             <i class="fa-regular fa-comment"></i> Comentar
           </button>
         </div>
-        <!-- SECCIÓN DESPLEGABLE PARA COMENTARIOS (CON FORMSPREE CONECTADO) -->
+        <!-- SECCIÓN DE COMENTARIOS -->
         <div id="comments-box" class="comments-section">
           <h4>Déjanos tu comentario o mensaje:</h4>
           <form action="https://formspree.io/f/mljjwpjp" method="POST" onsubmit="handleCommentSubmit(event)">
@@ -745,11 +786,10 @@
       setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
     }
 
-    /* CONTADOR GLOBAL DE DESCARGAS (CLAVE LIMPIA Y ÚNICA) */
+    /* CONTADOR GLOBAL DE DESCARGAS */
     const namespace = "platazul_com_ar";
     const key = "platazul_vuelo_pajaros_2026";
 
-    // Al cargar la página, consultamos el valor actual en la nube de forma global
     fetch(`https://api.countapi.xyz/get/${namespace}/${key}`)
       .then(response => response.json())
       .then(data => {
@@ -763,7 +803,6 @@
         document.getElementById('download-count').innerText = "0"; 
       });
 
-    // Función que incrementa el contador global en la nube cuando hacen clic
     function incrementGlobalDownload() {
       fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
         .then(response => response.json())
@@ -777,7 +816,7 @@
         });
     }
 
-    /* LÓGICA DE ME GUSTA / NO ME GUSTA (Guardado local) */
+    /* LÓGICA DE ME GUSTA / NO ME GUSTA */
     let likes = parseInt(localStorage.getItem('page_likes') || '0');
     let dislikes = parseInt(localStorage.getItem('page_dislikes') || '0');
     let userVote = localStorage.getItem('user_vote');
