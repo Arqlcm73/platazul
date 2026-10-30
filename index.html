@@ -221,28 +221,24 @@
       margin-left: -38px;
       flex-wrap: nowrap;
     }
-    /* C de CON: Edwardian Script ITC, 55pt, negrita */
     .title-cap-c {
       font-family: 'Edwardian Script ITC', 'Great Vibes', cursive;
       font-size: 55pt;
       font-weight: bold;
       line-height: 1;
     }
-    /* V de VUELO: Edwardian Script ITC, 48pt, negrita */
     .title-cap-v {
       font-family: 'Edwardian Script ITC', 'Great Vibes', cursive;
       font-size: 48pt;
       font-weight: bold;
       line-height: 1;
     }
-    /* P de PÁJAROS: Embassy BT, 45pt, negrita */
     .title-cap-p {
       font-family: 'Embassy BT', 'Pinyon Script', cursive;
       font-size: 45pt;
       font-weight: bold;
       line-height: 1;
     }
-    /* Resto del texto y el punto final: Matura MT Script Capitals, 12pt, sin negrita, mayúsculas */
     .title-rest-text {
       font-family: 'Matura MT Script Capitals', 'Cinzel', cursive;
       font-size: 12pt;
@@ -549,9 +545,12 @@
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
       font-weight: 400;
     }
+    
+    /* ICONOS DEL PIE DE PÁGINA */
     .footer-icons {
       display: flex;
       gap: 20px;
+      align-items: center;
       flex-shrink: 0;
     }
     .footer-icons a {
@@ -559,15 +558,40 @@
       font-size: 1.4rem;
       text-decoration: none;
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
-      transition: color 0.2s;
+      transition: all 0.3s ease;
     }
     .footer-icons a:hover {
       color: #3399ff;
     }
 
-    /* ========================================== */
-    /* ADAPTACIONES ESPECÍFICAS PARA CELULARES    */
-    /* ========================================== */
+    /* ESTILO RESALTADO ESPECÍFICO PARA EL BOTÓN DE CORREO */
+    .footer-icons a[href^="mailto"] {
+      font-size: 1.75rem;
+      color: #3399ff;
+      background: rgba(0, 56, 101, 0.4);
+      padding: 8px 12px;
+      border-radius: 50%;
+      border: 1px solid rgba(51, 153, 255, 0.6);
+      box-shadow: 0 0 10px rgba(51, 153, 255, 0.4);
+      animation: pulseEmail 2s infinite alternate;
+    }
+    .footer-icons a[href^="mailto"]:hover {
+      color: #ffffff;
+      background: #003865;
+      transform: scale(1.15);
+      box-shadow: 0 0 18px rgba(51, 153, 255, 0.8);
+    }
+
+    @keyframes pulseEmail {
+      0% {
+        box-shadow: 0 0 6px rgba(51, 153, 255, 0.3);
+      }
+      100% {
+        box-shadow: 0 0 14px rgba(51, 153, 255, 0.7);
+      }
+    }
+
+    /* ADAPTACIONES ESPECÍFICAS PARA CELULARES */
     @media (max-width: 768px) {
       header {
         flex-direction: column;
@@ -587,7 +611,6 @@
         flex: 0 0 240px;
         max-width: 240px;
       }
-      /* Ajuste dinámico del título en pantallas chicas para que no se corte */
       .book-title {
         justify-content: center;
         margin-left: 0;
@@ -637,12 +660,10 @@
         <div class="logo-frame">
           <img src="logo-101.jpg" alt="Logo PlatAzul">
         </div>
-        <!-- © al costado derecho del logo -->
         <span class="logo-copyright-symbol">©</span>
       </div>
       <div class="brand-title-wrapper">
         <h1 class="brand-title">PlatAzul</h1>
-        <!-- .com.ar -->
         <span class="domain-ext">.com.ar</span>
       </div>
     </div>
@@ -651,18 +672,17 @@
       <a href="#contacto">CONTACTO</a>
     </nav>
   </header>
-  <!-- Franja de texto pegada abajo de la banda superior -->
+  
   <div class="ticker-stripe">
     <b>FICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCIONFICCION</b>
   </div>
-  <!-- Contenido principal -->
+
   <main>
     <div class="book-wrapper">
       <div class="book-cover-container">
         <img src="portada-libro.jpg" alt="Portada Con el vuelo de los pájaros">
       </div>
       <div class="book-info">
-        <!-- TÍTULO DE LA NOVELA CON ADAPTACIÓN MÓVIL -->
         <h2 class="book-title">
           <span class="title-cap-c">C</span><span class="title-rest-text">ON&nbsp;EL&nbsp;</span>
           <span class="title-cap-v">V</span><span class="title-rest-text">UELO&nbsp;DE&nbsp;LOS&nbsp;</span>
@@ -672,35 +692,29 @@
         <p class="book-author">Cristian Marcelo Latrónica</p>
         <p class="book-category">Cuando la mente acecha, cuando la imaginación traspasa los límites, la ficción puede volverse realidad. Más allá del poderío bélico, en el silencio de las sombras, se gesta el ...</p>
         
-        <!-- Botones de descarga -->
         <div class="buttons-container">
           <a href="libro.pdf" download class="btn-download" onclick="incrementGlobalDownload()">DESCARGAR PDF</a>
           <a href="libro.epub" download class="btn-download" onclick="incrementGlobalDownload()">DESCARGAR ePub</a>
         </div>
 
-        <!-- CONTADOR DE DESCARGAS GLOBAL -->
         <div class="download-counter-box">
           Total de descargas: <span id="download-count">0</span>
         </div>
 
-        <!-- Botones de Sinopsis y Resumen -->
         <div class="synopsis-row">
           <button class="btn-synopsis-toggle" onclick="toggleSynopsis()">Sinopsis ↓</button>
           <button class="btn-synopsis-toggle" onclick="toggleResumen()">Resumen ↓</button>
           <span class="resumen-label-text">con final incluido</span>
         </div>
         
-        <!-- Texto de la sinopsis -->
         <p id="sinopsis-text" class="synopsis-body">
           [Próximamente ingresarás aquí la sinopsis de la novela...]
         </p>
 
-        <!-- Texto del resumen -->
         <p id="resumen-text" class="synopsis-body">
           [Próximamente ingresarás aquí el resumen con el final incluido...]
         </p>
 
-        <!-- BARRA DE INTERACCIÓN -->
         <div class="interaction-bar">
           <button id="like-btn" class="btn-action" onclick="handleLike()">
             <i class="fa-regular fa-thumbs-up"></i> <span id="like-count">0</span>
@@ -716,7 +730,7 @@
             <i class="fa-regular fa-comment"></i> Comentar
           </button>
         </div>
-        <!-- SECCIÓN DE COMENTARIOS -->
+
         <div id="comments-box" class="comments-section">
           <h4>Déjanos tu comentario o mensaje:</h4>
           <form action="https://formspree.io/f/mljjwpjp" method="POST" onsubmit="handleCommentSubmit(event)">
@@ -728,28 +742,31 @@
       </div>
     </div>
   </main>
-  <!-- Notificación flotante de enlace copiado -->
+
   <div id="copy-toast">¡Enlace copiado al portapapeles!</div>
-  <!-- Franja de texto pegada sobre la banda inferior -->
+
   <div class="ticker-stripe">
     <b>CUALQUIERSIMILITUDCONLAREALIDADESPURACOINCIDENCIACUALQUIERSIMILITUDCONLAREALIDADESPURACOINCIDENCIACUALQUIERSIMILITUDCONLAREALIDADESPURACOINCIDENCIACUALQUIERSIMILITUDCONLAREALIDADESPURACOINCIDIENCIA</b>
   </div>
-  <!-- Pie de página -->
+
+  <!-- Pie de página con el botón de correo resaltado -->
   <footer class="metallic-bar">
     <div class="footer-brand-wrapper">
       <div class="footer-brand">PlatAzul</div>
       <span class="footer-copyright-symbol">©</span>
     </div>
-    <!-- Texto de Copyright -->
+    
     <div class="copyright-legal-text">
       Copyright © Cristian Marcelo Latrónica 2026. Todos los derechos reservados. Esta es una edición digital limitada autorizada para su descarga gratuita desde esta página web. Queda prohibida su venta, alteración o distribución total o parcial en plataformas no autorizadas por el autor.
     </div>
+
     <div class="footer-icons" id="contacto">
-      <a href="mailto:tuemail@ejemplo.com"><i class="fa-regular fa-envelope"></i></a>
+      <a href="mailto:lllplatazulll@gmail.com" title="Enviar correo electrónico"><i class="fa-regular fa-envelope"></i></a>
       <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
       <a href="#"><i class="fa-brands fa-instagram"></i></a>
     </div>
   </footer>
+
   <script>
     function toggleSynopsis() {
       const synopsis = document.getElementById('sinopsis-text');
@@ -767,7 +784,6 @@
       const comments = document.getElementById('comments-box');
       comments.classList.toggle('active');
     }
-    /* LÓGICA DE REENVIAR / COMPARTIR ENLACE */
     function sharePage() {
       if (navigator.share) {
         navigator.share({
@@ -786,7 +802,6 @@
       setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
     }
 
-    /* CONTADOR GLOBAL DE DESCARGAS */
     const namespace = "platazul_com_ar";
     const key = "platazul_vuelo_pajaros_2026";
 
@@ -816,13 +831,13 @@
         });
     }
 
-    /* LÓGICA DE ME GUSTA / NO ME GUSTA */
     let likes = parseInt(localStorage.getItem('page_likes') || '0');
     let dislikes = parseInt(localStorage.getItem('page_dislikes') || '0');
     let userVote = localStorage.getItem('user_vote');
     document.getElementById('like-count').innerText = likes;
     document.getElementById('dislike-count').innerText = dislikes;
     updateVoteUI();
+
     function handleLike() {
       if (userVote === 'like') {
         likes--;
