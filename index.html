@@ -20,7 +20,7 @@
     }
     body {
       font-family: Arial, Helvetica, sans-serif;
-      background-color: #fbf9f5; /* Crema apagado solicitado */
+      background-color: #fbf9f5; /* Fondo crema apagado solicitado */
       color: #000;
       display: flex;
       flex-direction: column;
@@ -178,7 +178,7 @@
     nav a:hover {
       color: #3399ff;
     }
-    /* ÁREA CENTRAL CON CREMA APAGADO */
+    /* ÁREA CENTRAL CON FONDO CREMA APAGADO */
     main {
       background-color: #fbf9f5;
       flex: 1;
@@ -208,7 +208,7 @@
       display: flex;
       flex-direction: column;
     }
-    /* ESTILOS DEL TÍTULO DE LA NOVELA */
+    /* ESTILOS DEL TÍTULO DE LA NOVELA EN UN SOLO RENGLÓN Y AJUSTADO */
     .book-title {
       color: #000000;
       margin-bottom: 12px;
@@ -216,35 +216,34 @@
       display: flex;
       align-items: baseline;
       justify-content: flex-start;
-      gap: 2px;
+      gap: 1px;
       max-width: 100%;
       overflow: visible;
       padding: 15px 0px 10px 0px;
       margin-left: -38px;
     }
-    /* FUENTE EDWARDIAN SCRIPT ITC PARA INICIALES MAYÚSCULAS */
+    /* TAMAÑOS AJUSTADOS PARA QUE ENTRE EXACTAMENTE EN UN RENGLÓN */
     .edwardian-cap-c {
       font-family: 'Edwardian Script ITC', 'Alex Brush', 'Great Vibes', cursive;
-      font-size: 5.2rem;
+      font-size: 3.5rem;
       font-weight: bold;
       line-height: 1;
-      margin-right: -4px;
+      margin-right: -2px;
       -webkit-text-stroke: 0.3px #000;
     }
     .edwardian-cap-vp {
       font-family: 'Edwardian Script ITC', 'Alex Brush', 'Great Vibes', cursive;
-      font-size: 4.2rem;
+      font-size: 3.2rem;
       font-weight: bold;
       line-height: 1;
-      margin-right: -3px;
+      margin-right: -2px;
       -webkit-text-stroke: 0.3px #000;
     }
-    /* FUENTE EMBASSY BT / CALIGRÁFICA PARA RESTO DE LETRAS Y PUNTO */
     .embassy-text {
       font-family: 'Embassy BT', 'Parisienne', 'Alex Brush', cursive;
-      font-size: 1.85rem;
+      font-size: 1.4rem;
       font-weight: bold;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.2px;
       -webkit-text-stroke: 0.2px #000;
     }
     /* AUTORÍA Y SUBTÍTULO */
@@ -616,6 +615,7 @@
         <img src="portada-libro.jpg" alt="Portada Con el vuelo de los pájaros">
       </div>
       <div class="book-info">
+        <!-- TÍTULO EN UN SOLO RENGLÓN Y AJUSTADO -->
         <h2 class="book-title">
           <span class="edwardian-cap-c">C</span><span class="embassy-text">ON&nbsp;EL&nbsp;</span>
           <span class="edwardian-cap-vp">V</span><span class="embassy-text">UELO&nbsp;DE&nbsp;LOS&nbsp;</span>
