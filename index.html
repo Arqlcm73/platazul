@@ -209,7 +209,7 @@
       flex-direction: column;
     }
     
-    /* TÍTULO ESTILIZADO CON LAS FUENTES Y PROPORCIONES DE LA IMAGEN EN UN SOLO RENGLÓN */
+    /* TÍTULO CON TAMAÑO LIGERAMENTE AGRANDADO */
     .book-title {
       color: #000000;
       margin-bottom: 12px;
@@ -225,7 +225,7 @@
     }
     .edwardian-cap-c {
       font-family: 'Edwardian Script ITC', 'Alex Brush', 'Great Vibes', cursive;
-      font-size: 3.2rem;
+      font-size: 3.6rem;
       font-weight: bold;
       line-height: 1;
       margin-right: -3px;
@@ -233,7 +233,7 @@
     }
     .edwardian-cap-vp {
       font-family: 'Edwardian Script ITC', 'Alex Brush', 'Great Vibes', cursive;
-      font-size: 2.9rem;
+      font-size: 3.3rem;
       font-weight: bold;
       line-height: 1;
       margin-right: -3px;
@@ -241,7 +241,7 @@
     }
     .embassy-text {
       font-family: 'Embassy BT', 'Parisienne', 'Alex Brush', cursive;
-      font-size: 1.3rem;
+      font-size: 1.45rem;
       font-weight: bold;
       letter-spacing: 0.2px;
       -webkit-text-stroke: 0.2px #000;
@@ -373,12 +373,6 @@
     .btn-synopsis-toggle:hover {
       filter: brightness(1.1);
       transform: translateY(-1px);
-    }
-    .synopsis-warning-text {
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: #333333;
-      line-height: 1.3;
     }
     /* TEXTO DE SINOPSIS DESPLEGABLE */
     .synopsis-body {
@@ -616,7 +610,7 @@
         <img src="portada-libro.jpg" alt="Portada Con el vuelo de los pájaros">
       </div>
       <div class="book-info">
-        <!-- TÍTULO EXACTO CON LAS FUENTES Y PROPORCIONES DE LA IMAGEN EN UN SOLO RENGLÓN -->
+        <!-- TÍTULO AGRANDADO Y CON SUS FUENTES ORIGINALES -->
         <h2 class="book-title">
           <span class="edwardian-cap-c">C</span><span class="embassy-text">ON&nbsp;EL&nbsp;</span>
           <span class="edwardian-cap-vp">V</span><span class="embassy-text">UELO&nbsp;DE&nbsp;LOS&nbsp;</span>
@@ -637,10 +631,9 @@
           Total de descargas: <span id="download-count">0</span>
         </div>
 
-        <!-- Botón de sinopsis más pequeño abajo con texto aclaratorio al lado -->
+        <!-- Botón de sinopsis sin la palabra "Leer" y sin texto al lado -->
         <div class="synopsis-row">
-          <button class="btn-synopsis-toggle" onclick="toggleSynopsis()">Leer Sinopsis ↓</button>
-          <span class="synopsis-warning-text"><b>solo si no vas a leer la historia completa.</b></span>
+          <button class="btn-synopsis-toggle" onclick="toggleSynopsis()">Sinopsis ↓</button>
         </div>
         <!-- Texto de la sinopsis -->
         <p id="sinopsis-text" class="synopsis-body">
