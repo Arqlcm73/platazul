@@ -7,10 +7,6 @@
   <!-- Iconos de redes sociales y acciones -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
-  <!-- Carga de fuentes caligráficas alternativas desde Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Great+Vibes&family=Parisienne&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
@@ -20,7 +16,7 @@
     }
     body {
       font-family: Arial, Helvetica, sans-serif;
-      background-color: #f7f3ec;
+      background-color: #f7f3ec; /* Fondo crema cálido unificado */
       color: #000;
       display: flex;
       flex-direction: column;
@@ -209,42 +205,17 @@
       flex-direction: column;
     }
     
-    /* TÍTULO AGRANDADO Y CON SUS FUENTES ORIGINALES */
-    .book-title {
-      color: #000000;
+    /* CONTENEDOR PARA LA IMAGEN DEL TÍTULO (con fondo unificado y alineado) */
+    .book-title-image-container {
       margin-bottom: 12px;
-      white-space: nowrap; 
-      display: flex;
-      align-items: baseline;
-      justify-content: flex-start;
-      gap: 2px;
-      max-width: 100%;
-      overflow: visible;
-      padding: 15px 0px 10px 0px;
       margin-left: -38px;
+      max-width: 100%;
     }
-    .edwardian-cap-c {
-      font-family: 'Edwardian Script ITC', 'Alex Brush', 'Great Vibes', cursive;
-      font-size: 3.6rem;
-      font-weight: bold;
-      line-height: 1;
-      margin-right: -3px;
-      -webkit-text-stroke: 0.3px #000;
-    }
-    .edwardian-cap-vp {
-      font-family: 'Edwardian Script ITC', 'Alex Brush', 'Great Vibes', cursive;
-      font-size: 3.3rem;
-      font-weight: bold;
-      line-height: 1;
-      margin-right: -3px;
-      -webkit-text-stroke: 0.3px #000;
-    }
-    .embassy-text {
-      font-family: 'Embassy BT', 'Parisienne', 'Alex Brush', cursive;
-      font-size: 1.45rem;
-      font-weight: bold;
-      letter-spacing: 0.2px;
-      -webkit-text-stroke: 0.2px #000;
+    .book-title-image-container img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      background-color: #f7f3ec; /* Mantiene el mismo fondo exacto de la página */
     }
 
     /* AUTORÍA Y SUBTÍTULO */
@@ -562,8 +533,7 @@
         align-items: center;
         text-align: center;
       }
-      .book-title {
-        justify-content: center;
+      .book-title-image-container {
         margin-left: 0;
       }
       .buttons-container, .download-counter-box {
@@ -610,12 +580,12 @@
         <img src="portada-libro.jpg" alt="Portada Con el vuelo de los pájaros">
       </div>
       <div class="book-info">
-        <!-- TÍTULO AGRANDADO Y CON SUS FUENTES ORIGINALES -->
-        <h2 class="book-title">
-          <span class="edwardian-cap-c">C</span><span class="embassy-text">ON&nbsp;EL&nbsp;</span>
-          <span class="edwardian-cap-vp">V</span><span class="embassy-text">UELO&nbsp;DE&nbsp;LOS&nbsp;</span>
-          <span class="edwardian-cap-vp">P</span><span class="embassy-text">ÁJAROS.</span>
-        </h2>
+        
+        <!-- TÍTULO EN IMAGEN CON EL MISMO FONDO DE LA PÁGINA -->
+        <div class="book-title-image-container">
+          <img src="titulo-novela.png" alt="Con el vuelo de los pájaros">
+        </div>
+
         <p class="book-by">por</p>
         <p class="book-author">Cristian Marcelo Latrónica</p>
         <p class="book-category">Cuando la mente acecha, cuando la imaginación traspasa los límites, la ficción puede volverse realidad. Más allá del poderío bélico, en el silencio de las sombras, se gesta el ...</p>
@@ -631,7 +601,7 @@
           Total de descargas: <span id="download-count">0</span>
         </div>
 
-        <!-- Botón de sinopsis sin la palabra "Leer" y sin texto al lado -->
+        <!-- Botón de sinopsis sin "Leer" y sin texto al lado -->
         <div class="synopsis-row">
           <button class="btn-synopsis-toggle" onclick="toggleSynopsis()">Sinopsis ↓</button>
         </div>
