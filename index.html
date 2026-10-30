@@ -6,8 +6,8 @@
   <title>PlatAzul.com.ar - Con el vuelo de los pájaros</title>
   <!-- Iconos de redes sociales y acciones -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <!-- Fuentes optimizadas de Google para asegurar idéntica visualización en celulares y PC -->
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Pinyon+Script&family=Cinzel:wght@600&display=swap" rel="stylesheet">
+  <!-- Fuentes optimizadas de Google para asegurar idéntica visualización en celulares -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Pinyon+Script&family=Cinzel:wght@600&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
   
   <style>
     * {
@@ -210,7 +210,7 @@
       flex-direction: column;
     }
     
-    /* ESTRUCTURA DEL TÍTULO DE LA NOVELA (FORZADO CON !IMPORTANT PARA MÓVILES) */
+    /* ESTRUCTURA DEL TÍTULO DE LA NOVELA (CON RESPALDO UNIVERSAL PARA MÓVILES) */
     .book-title {
       color: #000000;
       margin-bottom: 12px;
@@ -225,29 +225,28 @@
       flex-wrap: nowrap;
     }
     .title-cap-c {
-      font-family: 'Great Vibes', cursive !important;
-      font-size: 52pt;
+      font-family: 'Edwardian Script ITC', 'Great Vibes', cursive;
+      font-size: 50pt;
       font-weight: bold;
       line-height: 1;
     }
     .title-cap-v {
-      font-family: 'Great Vibes', cursive !important;
-      font-size: 46pt;
+      font-family: 'Edwardian Script ITC', 'Great Vibes', cursive;
+      font-size: 44pt;
       font-weight: bold;
       line-height: 1;
     }
     .title-cap-p {
-      font-family: 'Pinyon Script', cursive !important;
-      font-size: 42pt;
+      font-family: 'Embassy BT', 'Pinyon Script', cursive;
+      font-size: 40pt;
       font-weight: bold;
       line-height: 1;
     }
     .title-rest-text {
-      font-family: 'Cinzel', serif !important;
+      font-family: 'Matura MT Script Capitals', 'Cinzel', cursive;
       font-size: 11pt;
-      font-weight: 600;
+      font-weight: normal;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
     }
 
     /* AUTORÍA Y SUBTÍTULO */
@@ -650,12 +649,11 @@
         text-align: center;
         gap: 2px;
       }
-      
-      /* Tamaños de fuentes adaptados para móviles */
-      .title-cap-c { font-size: 38pt !important; }
-      .title-cap-v { font-size: 34pt !important; }
-      .title-cap-p { font-size: 32pt !important; }
-      .title-rest-text { font-size: 9.5pt !important; }
+      /* Fuentes responsivas exactas para celulares */
+      .title-cap-c { font-size: 36pt !important; font-family: 'Great Vibes', cursive !important; }
+      .title-cap-v { font-size: 32pt !important; font-family: 'Great Vibes', cursive !important; }
+      .title-cap-p { font-size: 30pt !important; font-family: 'Pinyon Script', cursive !important; }
+      .title-rest-text { font-size: 9pt !important; font-family: 'Cinzel', serif !important; }
 
       .book-category {
         max-width: 100%;
