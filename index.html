@@ -209,22 +209,41 @@
       flex-direction: column;
     }
     
-    /* NUEVO TÍTULO UNIFICADO EN UN SOLO RENGLÓN CON ESTÉTICA CALIGRÁFICA EXACTA */
+    /* TÍTULO ESTILIZADO CON LAS FUENTES Y PROPORCIONES DE LA IMAGEN EN UN SOLO RENGLÓN */
     .book-title {
       color: #000000;
-      font-family: 'Edwardian Script ITC', 'Alex Brush', 'Great Vibes', cursive;
-      font-size: 2.8rem;
-      font-weight: bold;
       margin-bottom: 12px;
       white-space: nowrap; 
       display: flex;
       align-items: baseline;
       justify-content: flex-start;
+      gap: 2px;
       max-width: 100%;
       overflow: visible;
       padding: 15px 0px 10px 0px;
       margin-left: -38px;
-      letter-spacing: 0.5px;
+    }
+    .edwardian-cap-c {
+      font-family: 'Edwardian Script ITC', 'Alex Brush', 'Great Vibes', cursive;
+      font-size: 3.2rem;
+      font-weight: bold;
+      line-height: 1;
+      margin-right: -3px;
+      -webkit-text-stroke: 0.3px #000;
+    }
+    .edwardian-cap-vp {
+      font-family: 'Edwardian Script ITC', 'Alex Brush', 'Great Vibes', cursive;
+      font-size: 2.9rem;
+      font-weight: bold;
+      line-height: 1;
+      margin-right: -3px;
+      -webkit-text-stroke: 0.3px #000;
+    }
+    .embassy-text {
+      font-family: 'Embassy BT', 'Parisienne', 'Alex Brush', cursive;
+      font-size: 1.3rem;
+      font-weight: bold;
+      letter-spacing: 0.2px;
       -webkit-text-stroke: 0.2px #000;
     }
 
@@ -597,8 +616,12 @@
         <img src="portada-libro.jpg" alt="Portada Con el vuelo de los pájaros">
       </div>
       <div class="book-info">
-        <!-- TÍTULO ÚNICO Y REEMPLAZADO -->
-        <h2 class="book-title">Con el vuelo de los pájaros.</h2>
+        <!-- TÍTULO EXACTO CON LAS FUENTES Y PROPORCIONES DE LA IMAGEN EN UN SOLO RENGLÓN -->
+        <h2 class="book-title">
+          <span class="edwardian-cap-c">C</span><span class="embassy-text">ON&nbsp;EL&nbsp;</span>
+          <span class="edwardian-cap-vp">V</span><span class="embassy-text">UELO&nbsp;DE&nbsp;LOS&nbsp;</span>
+          <span class="edwardian-cap-vp">P</span><span class="embassy-text">ÁJAROS.</span>
+        </h2>
         <p class="book-by">por</p>
         <p class="book-author">Cristian Marcelo Latrónica</p>
         <p class="book-category">Cuando la mente acecha, cuando la imaginación traspasa los límites, la ficción puede volverse realidad. Más allá del poderío bélico, en el silencio de las sombras, se gesta el ...</p>
