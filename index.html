@@ -338,7 +338,7 @@
       font-weight: 700;
     }
     
-    /* FILA DE SINOPSIS Y RESUMEN */
+    /* FILA DE BOTONES DESPLEGABLES (CRÓNICA, SINOPSIS, RESUMEN) */
     .synopsis-row {
       display: flex;
       align-items: center;
@@ -382,7 +382,7 @@
       margin-left: -4px;
     }
     
-    /* TEXTO DE SINOPSIS Y RESUMEN DESPLEGABLE */
+    /* TEXTOS DESPLEGABLES (CRÓNICA, SINOPSIS Y RESUMEN) */
     .synopsis-body {
       display: none; 
       font-size: 1.05rem;
@@ -668,7 +668,6 @@
       </div>
     </div>
     <nav>
-      <a href="#cronica">CRÓNICA</a>
       <a href="#contacto">CONTACTO</a>
     </nav>
   </header>
@@ -701,16 +700,25 @@
           Total de descargas: <span id="download-count">0</span>
         </div>
 
+        <!-- BOTONES DESPLEGABLES (CRÓNICA, SINOPSIS Y RESUMEN) -->
         <div class="synopsis-row">
+          <button class="btn-synopsis-toggle" onclick="toggleCronica()">Crónica ↓</button>
           <button class="btn-synopsis-toggle" onclick="toggleSynopsis()">Sinopsis ↓</button>
           <button class="btn-synopsis-toggle" onclick="toggleResumen()">Resumen ↓</button>
           <span class="resumen-label-text">con final incluido</span>
         </div>
         
+        <!-- Texto de la crónica (sobre cómo nació la novela) -->
+        <p id="cronica-text" class="synopsis-body">
+          [Próximamente ingresarás aquí el relato de cómo surgió la escritura de esta novela...]
+        </p>
+
+        <!-- Texto de la sinopsis -->
         <p id="sinopsis-text" class="synopsis-body">
           [Próximamente ingresarás aquí la sinopsis de la novela...]
         </p>
 
+        <!-- Texto del resumen -->
         <p id="resumen-text" class="synopsis-body">
           [Próximamente ingresarás aquí el resumen con el final incluido...]
         </p>
@@ -768,15 +776,27 @@
   </footer>
 
   <script>
-    function toggleSynopsis() {
+    function toggleCronica() {
+      const cronica = document.getElementById('cronica-text');
       const synopsis = document.getElementById('sinopsis-text');
       const resumen = document.getElementById('resumen-text');
+      synopsis.classList.remove('active');
+      resumen.classList.remove('active');
+      cronica.classList.toggle('active');
+    }
+    function toggleSynopsis() {
+      const cronica = document.getElementById('cronica-text');
+      const synopsis = document.getElementById('sinopsis-text');
+      const resumen = document.getElementById('resumen-text');
+      cronica.classList.remove('active');
       resumen.classList.remove('active');
       synopsis.classList.toggle('active');
     }
     function toggleResumen() {
+      const cronica = document.getElementById('cronica-text');
       const synopsis = document.getElementById('sinopsis-text');
       const resumen = document.getElementById('resumen-text');
+      cronica.classList.remove('active');
       synopsis.classList.remove('active');
       resumen.classList.toggle('active');
     }
