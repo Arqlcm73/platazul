@@ -7,10 +7,6 @@
   <!-- Iconos de redes sociales y acciones -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
-  <!-- Carga de fuentes caligráficas desde Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Great+Vibes&family=Parisienne&family=Monsieur+La+Doulaise&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
@@ -209,7 +205,7 @@
       flex-direction: column;
     }
     
-    /* TÍTULO CON FUENTES WEBFONTS */
+    /* ESTRUCTURA DEL TÍTULO DE LA NOVELA */
     .book-title {
       color: #000000;
       margin-bottom: 12px;
@@ -223,28 +219,33 @@
       padding: 15px 0px 10px 0px;
       margin-left: -38px;
     }
-    .edwardian-cap-c {
-      font-family: 'Monsieur La Doulaise', 'Alex Brush', 'Great Vibes', cursive;
-      font-size: 4.2rem;
+    /* C de CON: Edwardian Script ITC 55pt Negrita */
+    .title-cap-c {
+      font-family: 'Edwardian Script ITC', cursive;
+      font-size: 55pt;
       font-weight: bold;
       line-height: 1;
-      margin-right: -4px;
-      -webkit-text-stroke: 0.4px #000;
     }
-    .edwardian-cap-vp {
-      font-family: 'Monsieur La Doulaise', 'Alex Brush', 'Great Vibes', cursive;
-      font-size: 3.8rem;
+    /* V de VUELO: Edwardian Script ITC 48pt Negrita */
+    .title-cap-v {
+      font-family: 'Edwardian Script ITC', cursive;
+      font-size: 48pt;
       font-weight: bold;
       line-height: 1;
-      margin-right: -4px;
-      -webkit-text-stroke: 0.4px #000;
     }
-    .embassy-text {
-      font-family: 'Alex Brush', 'Parisienne', cursive;
-      font-size: 1.6rem;
+    /* P de PÁJAROS: Embassy BT 45pt Negrita */
+    .title-cap-p {
+      font-family: 'Embassy BT', cursive;
+      font-size: 45pt;
       font-weight: bold;
-      letter-spacing: 0.4px;
-      -webkit-text-stroke: 0.3px #000;
+      line-height: 1;
+    }
+    /* Resto del texto y punto final: Matura MT Script Capitals 12pt Normal */
+    .title-rest-text {
+      font-family: 'Matura MT Script Capitals', cursive;
+      font-size: 12pt;
+      font-weight: normal;
+      text-transform: uppercase;
     }
 
     /* AUTORÍA Y SUBTÍTULO */
@@ -610,11 +611,11 @@
         <img src="portada-libro.jpg" alt="Portada Con el vuelo de los pájaros">
       </div>
       <div class="book-info">
-        <!-- TÍTULO CON FUENTES ESTILIZADAS -->
+        <!-- TÍTULO DE LA NOVELA CON FUENTES Y TAMAÑOS EXACTOS -->
         <h2 class="book-title">
-          <span class="edwardian-cap-c">C</span><span class="embassy-text">ON&nbsp;EL&nbsp;</span>
-          <span class="edwardian-cap-vp">V</span><span class="embassy-text">UELO&nbsp;DE&nbsp;LOS&nbsp;</span>
-          <span class="edwardian-cap-vp">P</span><span class="embassy-text">ÁJAROS.</span>
+          <span class="title-cap-c">C</span><span class="title-rest-text">ON&nbsp;EL&nbsp;</span>
+          <span class="title-cap-v">V</span><span class="title-rest-text">UELO&nbsp;DE&nbsp;LOS&nbsp;</span>
+          <span class="title-cap-p">P</span><span class="title-rest-text">ÁJAROS.</span>
         </h2>
         <p class="book-by">por</p>
         <p class="book-author">Cristian Marcelo Latrónica</p>
