@@ -6,8 +6,8 @@
   <title>PlatAzul.com.ar - Con el vuelo de los pájaros</title>
   <!-- Iconos de redes sociales y acciones -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <!-- Fuentes estilizadas de respaldo para asegurar compatibilidad en celulares -->
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Pinyon+Script&family=Cinzel:wght@600&display=swap" rel="stylesheet">
+  <!-- Fuentes optimizadas de Google para asegurar idéntica visualización en celulares -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Pinyon+Script&family=Cinzel:wght@600&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
   
   <style>
     * {
@@ -66,31 +66,33 @@
     }
     /* ENCABEZADO SUPERIOR */
     header {
-      padding: 34px 5%; 
+      padding: 24px 5%; 
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
     }
     .header-brand {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 15px;
     }
     /* CONTENEDOR DEL LOGO CON © */
     .logo-container-relative {
       position: relative;
       display: flex;
       align-items: center;
+      flex-shrink: 0;
     }
     /* MARCO 3D METÁLICO PARA EL LOGO (logo-101.jpg) */
     .logo-frame {
-      width: 105px;
-      height: 105px;
-      border-radius: 16px;
+      width: 85px;
+      height: 85px;
+      border-radius: 14px;
       background: linear-gradient(135deg, #d2d5d9 0%, #4a4f56 50%, #121416 100%);
-      padding: 4px;
+      padding: 3px;
       box-shadow: 
-        0 8px 16px rgba(0, 0, 0, 0.6), 
+        0 6px 12px rgba(0, 0, 0, 0.6), 
         inset 0 2px 3px rgba(255, 255, 255, 0.8), 
         inset 0 -3px 5px rgba(0, 0, 0, 0.9);
       display: flex;
@@ -101,29 +103,30 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      border-radius: 12px;
+      border-radius: 11px;
       border: 1px solid #0d0e10;
       image-rendering: -webkit-optimize-contrast;
     }
     /* SÍMBOLO © AL COSTADO DERECHO DEL LOGO */
     .logo-copyright-symbol {
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 700;
       color: #d0d5dd;
-      margin-left: 6px;
+      margin-left: 4px;
       text-shadow: 0 1px 2px rgba(0,0,0,0.8);
       align-self: flex-start;
-      margin-top: 8px;
+      margin-top: 4px;
     }
     /* TÍTULO PRINCIPAL: PlatAzul */
     .brand-title-wrapper {
       display: flex;
       align-items: baseline;
-      gap: 4px;
+      gap: 2px;
+      flex-wrap: wrap;
     }
     .brand-title {
       font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
-      font-size: 4.8rem;
+      font-size: 3.8rem;
       font-weight: 700;
       letter-spacing: -2px;
       line-height: 1;
@@ -147,7 +150,7 @@
     /* EXTENSIÓN .com.ar */
     .domain-ext {
       font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
-      font-size: 1.6rem;
+      font-size: 1.4rem;
       font-weight: 700;
       letter-spacing: 0.5px;
       background: linear-gradient(180deg, #ffffff 0%, #a8b0b8 50%, #5f646a 100%);
@@ -159,7 +162,7 @@
     /* ENLACES DE NAVEGACIÓN SUPERIOR */
     nav {
       display: flex;
-      gap: 25px;
+      gap: 20px;
       align-items: center;
     }
     nav a {
@@ -167,8 +170,8 @@
       color: #e2e5e9;
       text-decoration: none;
       font-weight: 700;
-      font-size: 1.25rem;
-      letter-spacing: 1.8px;
+      font-size: 1.1rem;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
       transition: color 0.2s;
@@ -183,17 +186,17 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 60px 5%;
+      padding: 50px 5%;
     }
     .book-wrapper {
       max-width: 950px;
       width: 100%;
       display: flex;
-      gap: 60px;
+      gap: 50px;
       align-items: flex-start;
     }
     .book-cover-container {
-      flex: 0 0 320px;
+      flex: 0 0 300px;
     }
     .book-cover-container img {
       width: 100%;
@@ -207,7 +210,7 @@
       flex-direction: column;
     }
     
-    /* ESTRUCTURA DEL TÍTULO DE LA NOVELA */
+    /* ESTRUCTURA DEL TÍTULO DE LA NOVELA (CON RESPALDO UNIVERSAL PARA MÓVILES) */
     .book-title {
       color: #000000;
       margin-bottom: 12px;
@@ -218,30 +221,30 @@
       max-width: 100%;
       overflow: visible;
       padding: 15px 0px 10px 0px;
-      margin-left: -38px;
+      margin-left: -20px;
       flex-wrap: nowrap;
     }
     .title-cap-c {
       font-family: 'Edwardian Script ITC', 'Great Vibes', cursive;
-      font-size: 55pt;
+      font-size: 50pt;
       font-weight: bold;
       line-height: 1;
     }
     .title-cap-v {
       font-family: 'Edwardian Script ITC', 'Great Vibes', cursive;
-      font-size: 48pt;
+      font-size: 44pt;
       font-weight: bold;
       line-height: 1;
     }
     .title-cap-p {
       font-family: 'Embassy BT', 'Pinyon Script', cursive;
-      font-size: 45pt;
+      font-size: 40pt;
       font-weight: bold;
       line-height: 1;
     }
     .title-rest-text {
       font-family: 'Matura MT Script Capitals', 'Cinzel', cursive;
-      font-size: 12pt;
+      font-size: 11pt;
       font-weight: normal;
       text-transform: uppercase;
     }
@@ -338,17 +341,17 @@
       font-weight: 700;
     }
     
-    /* FILA DE BOTONES DESPLEGABLES (CRÓNICA, SINOPSIS, RESUMEN) */
+    /* FILA DE BOTONES DESPLEGABLES */
     .synopsis-row {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       margin-bottom: 15px;
       flex-wrap: wrap;
     }
     .btn-synopsis-toggle {
       display: inline-block;
-      padding: 4px 12px;
+      padding: 4px 10px;
       text-decoration: none;
       font-size: 0.8rem;
       font-weight: 800;
@@ -376,13 +379,13 @@
       transform: translateY(-1px);
     }
     .resumen-label-text {
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       color: #666;
       font-style: italic;
-      margin-left: -4px;
+      margin-left: -2px;
     }
     
-    /* TEXTOS DESPLEGABLES (CRÓNICA, SINOPSIS Y RESUMEN) */
+    /* TEXTOS DESPLEGABLES */
     .synopsis-body {
       display: none; 
       font-size: 1.05rem;
@@ -401,7 +404,7 @@
     .interaction-bar {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       margin-top: 10px;
       margin-bottom: 15px;
       flex-wrap: wrap;
@@ -410,7 +413,7 @@
       display: flex;
       align-items: center;
       gap: 6px;
-      padding: 7px 14px;
+      padding: 7px 12px;
       background-color: #efeade;
       border: 1px solid #d5cebc;
       border-radius: 20px;
@@ -434,7 +437,7 @@
       color: #ffffff;
       border-color: #521319;
     }
-    /* SECCIÓN DE FORMULARIO DE COMENTARIOS */
+    /* SECCIÓN DE COMENTARIOS */
     .comments-section {
       display: none;
       margin-top: 10px;
@@ -476,7 +479,7 @@
     .comments-section button:hover {
       background-color: #002244;
     }
-    /* NOTIFICACIÓN "ENLACE COPIADO" */
+    /* NOTIFICACIÓN TOAST */
     #copy-toast {
       visibility: hidden;
       min-width: 180px;
@@ -591,25 +594,52 @@
       }
     }
 
-    /* ADAPTACIONES ESPECÍFICAS PARA CELULARES */
+    /* ========================================== */
+    /* ADAPTACIONES ESPECÍFICAS PARA CELULARES    */
+    /* ========================================== */
     @media (max-width: 768px) {
       header {
         flex-direction: column;
-        gap: 15px;
-        padding: 20px 5%;
+        gap: 12px;
+        padding: 16px 4%;
+        text-align: center;
+      }
+      .header-brand {
+        flex-direction: column;
+        gap: 8px;
+        align-items: center;
+        width: 100%;
+      }
+      .logo-frame {
+        width: 75px;
+        height: 75px;
+      }
+      .brand-title-wrapper {
+        justify-content: center;
+      }
+      .brand-title {
+        font-size: 2.8rem;
+      }
+      .domain-ext {
+        font-size: 1.1rem;
+      }
+      nav {
+        justify-content: center;
+        width: 100%;
+        margin-top: 4px;
       }
       main {
-        padding: 30px 5%;
+        padding: 25px 4%;
       }
       .book-wrapper {
         flex-direction: column;
         align-items: center;
         text-align: center;
-        gap: 30px;
+        gap: 25px;
       }
       .book-cover-container {
-        flex: 0 0 240px;
-        max-width: 240px;
+        flex: 0 0 220px;
+        max-width: 220px;
       }
       .book-title {
         justify-content: center;
@@ -617,12 +647,13 @@
         flex-wrap: wrap;
         white-space: normal;
         text-align: center;
-        gap: 4px;
+        gap: 2px;
       }
-      .title-cap-c { font-size: 42pt !important; }
-      .title-cap-v { font-size: 38pt !important; }
-      .title-cap-p { font-size: 35pt !important; }
-      .title-rest-text { font-size: 10pt !important; }
+      /* Fuentes responsivas exactas para celulares */
+      .title-cap-c { font-size: 36pt !important; font-family: 'Great Vibes', cursive !important; }
+      .title-cap-v { font-size: 32pt !important; font-family: 'Great Vibes', cursive !important; }
+      .title-cap-p { font-size: 30pt !important; font-family: 'Pinyon Script', cursive !important; }
+      .title-rest-text { font-size: 9pt !important; font-family: 'Cinzel', serif !important; }
 
       .book-category {
         max-width: 100%;
@@ -708,7 +739,7 @@
           <span class="resumen-label-text">con final incluido</span>
         </div>
         
-        <!-- Texto de la crónica (sobre cómo nació la novela) -->
+        <!-- Texto de la crónica -->
         <p id="cronica-text" class="synopsis-body">
           [Próximamente ingresarás aquí el relato de cómo surgió la escritura de esta novela...]
         </p>
@@ -757,7 +788,7 @@
     <b>CUALQUIERSIMILITUDCONLAREALIDADESPURACOINCIDENCIACUALQUIERSIMILITUDCONLAREALIDADESPURACOINCIDENCIACUALQUIERSIMILITUDCONLAREALIDADESPURACOINCIDENCIACUALQUIERSIMILITUDCONLAREALIDADESPURACOINCIDIENCIA</b>
   </div>
 
-  <!-- Pie de página con el botón de correo resaltado -->
+  <!-- Pie de página -->
   <footer class="metallic-bar">
     <div class="footer-brand-wrapper">
       <div class="footer-brand">PlatAzul</div>
