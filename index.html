@@ -889,13 +889,16 @@ Martín no descubre la verdad porque posea conocimientos superiores a los de los
       toast.className = "show";
       setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
     }
-    const namespace = "platazul_com_ar";
-    const key = "platazul_vuelo_pajaros_2026";
-    fetch(`https://api.countapi.xyz/get/${namespace}/${key}`)
+
+    // CONTADOR DE DESCARGAS ACTUALIZADO CON COUNTERAPI.DEV
+    const namespace = "platazul";
+    const key = "vuelopajaros";
+
+    fetch(`https://api.counterapi.dev/v1/${namespace}/${key}/`)
       .then(response => response.json())
       .then(data => {
-        if (data && typeof data.value !== 'undefined') {
-          document.getElementById('download-count').innerText = data.value;
+        if (data && typeof data.count !== 'undefined') {
+          document.getElementById('download-count').innerText = data.count;
         } else {
           document.getElementById('download-count').innerText = "0";
         }
@@ -903,18 +906,20 @@ Martín no descubre la verdad porque posea conocimientos superiores a los de los
       .catch(error => {
         document.getElementById('download-count').innerText = "0"; 
       });
+
     function incrementGlobalDownload() {
-      fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
+      fetch(`https://api.counterapi.dev/v1/${namespace}/${key}/up`)
         .then(response => response.json())
         .then(data => {
-          if (data && typeof data.value !== 'undefined') {
-            document.getElementById('download-count').innerText = data.value;
+          if (data && typeof data.count !== 'undefined') {
+            document.getElementById('download-count').innerText = data.count;
           }
         })
         .catch(error => {
-          console.error("Error al actualizar contador global", error);
+          console.error("Error al actualizar contador", error);
         });
     }
+
     let likes = parseInt(localStorage.getItem('page_likes') || '0');
     let dislikes = parseInt(localStorage.getItem('page_dislikes') || '0');
     let userVote = localStorage.getItem('user_vote');
