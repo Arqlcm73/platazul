@@ -839,4 +839,158 @@ Martín no descubre la verdad porque posea conocimientos superiores a los de los
     </div>
     <div class="footer-icons" id="contacto">
       <a href="mailto:lllplatazulll@gmail.com" title="Enviar correo electrónico"><i class="fa-regular fa-envelope"></i></a>
-      <a href="#"><i class="fa-brands
+      <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="#"><i class="fa-brands fa-instagram"></i></a>
+    </div>
+  </footer>
+  <script>
+    function toggleCronica() {
+      const cronica = document.getElementById('cronica-text');
+      const synopsis = document.getElementById('sinopsis-text');
+      const resumen = document.getElementById('resumen-text');
+      synopsis.classList.remove('active');
+      resumen.classList.remove('active');
+      cronica.classList.toggle('active');
+    }
+    function toggleSynopsis() {
+      const cronica = document.getElementById('cronica-text');
+      const synopsis = document.getElementById('sinopsis-text');
+      const resumen = document.getElementById('resumen-text');
+      cronica.classList.remove('active');
+      resumen.classList.remove('active');
+      synopsis.classList.toggle('active');
+    }
+    function toggleResumen() {
+      const cronica = document.getElementById('cronica-text');
+      const synopsis = document.getElementById('sinopsis-text');
+      const resumen = document.getElementById('resumen-text');
+      cronica.classList.remove('active');
+      synopsis.classList.remove('active');
+      resumen.classList.toggle('active');
+    }
+    function toggleComments() {
+      const comments = document.getElementById('comments-box');
+      comments.classList.toggle('active');
+    }
+    function sharePage() {
+      if (navigator.share) {
+        navigator.share({
+          title: 'Con el vuelo de los pájaros - PlatAzul',
+          text: 'Descarga gratis la novela "Con el vuelo de los pájaros" de Cristian Marcelo Latrónica',
+          url: window.location.href
+        }).catch(() => {});
+      } else {
+        navigator.clipboard.writeText(window.location.href);
+        showToast();
+      }
+    }
+    function showToast() {
+      const toast = document.getElementById("copy-toast");
+      toast.className = "show";
+      setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
+    }
+
+    // CONTADOR GLOBAL DE DESCARGAS (ABACUS)
+    const namespace = "platazul_com_ar";
+    const downloadKey = "vuelo_pajaros_descargas";
+
+    fetch(`https://abacus.jasoncameron.dev/get/${namespace}/${downloadKey}`)
+      .then(response => response.json())
+      .then(data => {
+        if (data && typeof data.value !== 'undefined') {
+          document.getElementById('download-count').innerText = data.value;
+        }
+      })
+      .catch(() => {
+        document.getElementById('download-count').innerText = "0";
+      });
+
+    function incrementGlobalDownload() {
+      fetch(`https://abacus.jasoncameron.dev/hit/${namespace}/${downloadKey}`)
+        .then(response => response.json())
+        .then(data => {
+          if (data && typeof data.value !== 'undefined') {
+            document.getElementById('download-count').innerText = data.value;
+          }
+        })
+        .catch(error => {
+          console.error("Error al actualizar contador de descargas", error);
+        });
+    }
+
+    // CONTADORES GLOBALES DE LIKES Y DISLIKES (ROBUSTOS)
+    const likeKey = "vuelo_pajaros_likes_v2";
+    const dislikeKey = "vuelo_pajaros_dislikes_v2";
+    let userVoted = localStorage.getItem('user_voted_v2');
+
+    // Cargar valores iniciales desde la nube
+    fetch(`https://abacus.jasoncameron.dev/get/${namespace}/${likeKey}`)
+      .then(res => res.json())
+      .then(data => {
+        if (data && typeof data.value !== 'undefined') document.getElementById('like-count').innerText = data.value;
+      }).catch(() => {});
+
+    fetch(`https://abacus.jasoncameron.dev/get/${namespace}/${dislikeKey}`)
+      .then(res => res.json())
+      .then(data => {
+        if (data && typeof data.value !== 'undefined') document.getElementById('dislike-count').innerText = data.value;
+      }).catch(() => {});
+
+    if (userVoted) {
+      updateVoteUI(userVoted);
+    }
+
+    function handleLike() {
+      if (userVoted) return; // Evita múltiples votos por usuario
+
+      fetch(`https://abacus.jasoncameron.dev/hit/${namespace}/${likeKey}`)
+        .then(res => res.json())
+        .then(data => {
+          if (data && typeof data.value !== 'undefined') {
+            document.getElementById('like-count').innerText = data.value;
+          }
+        })
+        .catch(err => console.error("Error al sumar like", err));
+
+      userVoted = 'like';
+      localStorage.setItem('user_voted_v2', userVoted);
+      updateVoteUI('like');
+    }
+
+    function handleDislike() {
+      if (userVoted) return; // Evita múltiples votos por usuario
+
+      fetch(`https://abacus.jasoncameron.dev/hit/${namespace}/${dislikeKey}`)
+        .then(res => res.json())
+        .then(data => {
+          if (data && typeof data.value !== 'undefined') {
+            document.getElementById('dislike-count').innerText = data.value;
+          }
+        })
+        .catch(err => console.error("Error al sumar dislike", err));
+
+      userVoted = 'dislike';
+      localStorage.setItem('user_voted_v2', userVoted);
+      updateVoteUI('dislike');
+    }
+
+    function updateVoteUI(voteType) {
+      const likeBtn = document.getElementById('like-btn');
+      const dislikeBtn = document.getElementById('dislike-btn');
+      
+      likeBtn.classList.remove('active-like');
+      dislikeBtn.classList.remove('active-dislike');
+      
+      if (voteType === 'like') {
+        likeBtn.classList.add('active-like');
+      } else if (voteType === 'dislike') {
+        dislikeBtn.classList.add('active-dislike');
+      }
+    }
+
+    function handleCommentSubmit(e) {
+      alert("¡Gracias por tu comentario!");
+    }
+  </script>
+</body>
+</html>
