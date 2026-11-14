@@ -890,29 +890,27 @@ Martín no descubre la verdad porque posea conocimientos superiores a los de los
       setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
     }
 
-    // CONTADOR DE DESCARGAS ACTUALIZADO CON COUNTERAPI.DEV
-    const namespace = "platazul";
-    const key = "vuelopajaros";
+    // NUEVO CONTADOR GLOBAL AUTOMÁTICO (ABACUS)
+    const namespace = "platazul_com_ar";
+    const key = "vuelo_pajaros_descargas";
 
-    fetch(`https://api.counterapi.dev/v1/${namespace}/${key}/`)
+    fetch(`https://abacus.jasoncameron.dev/get/${namespace}/${key}`)
       .then(response => response.json())
       .then(data => {
-        if (data && typeof data.count !== 'undefined') {
-          document.getElementById('download-count').innerText = data.count;
-        } else {
-          document.getElementById('download-count').innerText = "0";
+        if (data && typeof data.value !== 'undefined') {
+          document.getElementById('download-count').innerText = data.value;
         }
       })
-      .catch(error => {
-        document.getElementById('download-count').innerText = "0"; 
+      .catch(() => {
+        document.getElementById('download-count').innerText = "0";
       });
 
     function incrementGlobalDownload() {
-      fetch(`https://api.counterapi.dev/v1/${namespace}/${key}/up`)
+      fetch(`https://abacus.jasoncameron.dev/hit/${namespace}/${key}`)
         .then(response => response.json())
         .then(data => {
-          if (data && typeof data.count !== 'undefined') {
-            document.getElementById('download-count').innerText = data.count;
+          if (data && typeof data.value !== 'undefined') {
+            document.getElementById('download-count').innerText = data.value;
           }
         })
         .catch(error => {
