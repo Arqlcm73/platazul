@@ -759,7 +759,7 @@ Con el vuelo de los pájaros es una novela de suspenso e intriga internacional e
         <!-- Texto del resumen -->
         <p id="resumen-text" class="synopsis-body">
           La historia transcurre entre mediados de 2005 y mediados de 2006. Se desarrolla principalmente entre las ciudades fronterizas de Posadas, Encarnación y Foz de Iguazú, a lo largo de la costa atlántica y en Mar del Plata (ciudad sede de la Cumbre de las Américas), lugares donde los terroristas monitorean el cielo en las cercanías de los principales aeropuertos internacionales.
-Martín Biaggini es periodista de profesión. Sensato y dubitativo, apegado a la legalidad y a lo correcto, lleva una vida común. Se encuentra desocupado en la ciudad de Buenos Aires junto a un amigo, Walter, cuyo temperamento es, a veces, desatinado y arrojado.
+Martín Biaggini es periodista de profession. Sensato y dubitativo, apegado a la legalidad y a lo correcto, lleva una vida común. Se encuentra desocupado en la ciudad de Buenos Aires junto a un amigo, Walter, cuyo temperamento es, a veces, desatinado y arrojado.
 Martín perdió su empleo porque su patrón se dedicaba a contrabandear productos electrónicos y drogas desde Paraguay hacia Argentina. Si bien no participaba en las actividades delictivas que allí se cometían, cuando su patrón cayó preso, a él lo detuvieron por averiguación de antecedentes.
 Se había mudado de la pensión en la que vivía con Walter, quien todavía reside allí, porque su expatrón había hecho enviar unas encomiendas con contrabando a nombre del propio Martín.
 Ni bien es liberado, se reencuentra con Walter y ambos recuperan una última encomienda que había llegado a la pensión, en un acto desesperado por conseguir algo de dinero. Así comienzan a enredarse en una serie de conflictos cada vez más graves y complejos al intentar contrabandear productos electrónicos.
@@ -890,11 +890,11 @@ Martín no descubre la verdad porque posea conocimientos superiores a los de los
       setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
     }
 
-    // NUEVO CONTADOR GLOBAL AUTOMÁTICO (ABACUS)
+    // CONTADOR GLOBAL DE DESCARGAS (ABACUS)
     const namespace = "platazul_com_ar";
-    const key = "vuelo_pajaros_descargas";
+    const downloadKey = "vuelo_pajaros_descargas";
 
-    fetch(`https://abacus.jasoncameron.dev/get/${namespace}/${key}`)
+    fetch(`https://abacus.jasoncameron.dev/get/${namespace}/${downloadKey}`)
       .then(response => response.json())
       .then(data => {
         if (data && typeof data.value !== 'undefined') {
@@ -906,7 +906,7 @@ Martín no descubre la verdad porque posea conocimientos superiores a los de los
       });
 
     function incrementGlobalDownload() {
-      fetch(`https://abacus.jasoncameron.dev/hit/${namespace}/${key}`)
+      fetch(`https://abacus.jasoncameron.dev/hit/${namespace}/${downloadKey}`)
         .then(response => response.json())
         .then(data => {
           if (data && typeof data.value !== 'undefined') {
@@ -914,47 +914,77 @@ Martín no descubre la verdad porque posea conocimientos superiores a los de los
           }
         })
         .catch(error => {
-          console.error("Error al actualizar contador", error);
+          console.error("Error al actualizar contador de descargas", error);
         });
     }
 
-    let likes = parseInt(localStorage.getItem('page_likes') || '0');
-    let dislikes = parseInt(localStorage.getItem('page_dislikes') || '0');
+    // CONTADORES GLOBALES DE LIKES Y DISLIKES
+    const likeKey = "vuelo_pajaros_likes";
+    const dislikeKey = "vuelo_pajaros_dislikes";
     let userVote = localStorage.getItem('user_vote');
-    document.getElementById('like-count').innerText = likes;
-    document.getElementById('dislike-count').innerText = dislikes;
+
+    // Cargar valores iniciales de la nube
+    fetch(`https://abacus.jasoncameron.dev/get/${namespace}/${likeKey}`)
+      .then(res => res.json())
+      .then(data => {
+        if (data && typeof data.value !== 'undefined') document.getElementById('like-count').innerText = data.value;
+      }).catch(() => {});
+
+    fetch(`https://abacus.jasoncameron.dev/get/${namespace}/${dislikeKey}`)
+      .then(res => res.json())
+      .then(data => {
+        if (data && typeof data.value !== 'undefined') document.getElementById('dislike-count').innerText = data.value;
+      }).catch(() => {});
+
     updateVoteUI();
+
     function handleLike() {
-      if (userVote === 'like') {
-        likes--;
-        userVote = null;
-      } else {
-        if (userVote === 'dislike') dislikes--;
-        likes++;
-        userVote = 'like';
-      }
-      saveVotes();
-    }
-    function handleDislike() {
+      if (userVote === 'like') return; // Si ya votó like, no hace nada para evitar spam
+      
+      // Si antes había votado dislike, restamos uno al dislike en la nube y sumamos like
+      let endpoint = userVote === 'dislike' ? `https://abacus.jasoncameron.dev/hit/${namespace}/${likeKey}` : `https://abacus.jasoncameron.dev/hit/${namespace}/${likeKey}`;
+      
+      // Llamada para sumar like
+      fetch(`https://abacus.jasoncameron.dev/hit/${namespace}/${likeKey}`)
+        .then(res => res.json())
+        .then(data => {
+          if (data && typeof data.value !== 'undefined') {
+            document.getElementById('like-count').innerText = data.value;
+          }
+        });
+
       if (userVote === 'dislike') {
-        dislikes--;
-        userVote = null;
-      } else {
-        if (userVote === 'like') likes--;
-        dislikes++;
-        userVote = 'dislike';
+        // Ajuste visual rápido si cambió de opinión de dislike a like
+        let currentDislike = parseInt(document.getElementById('dislike-count').innerText);
+        if (currentDislike > 0) document.getElementById('dislike-count').innerText = currentDislike - 1;
       }
-      saveVotes();
-    }
-    function saveVotes() {
-      localStorage.setItem('page_likes', likes);
-      localStorage.setItem('page_dislikes', dislikes);
-      if (userVote) localStorage.setItem('user_vote', userVote);
-      else localStorage.removeItem('user_vote');
-      document.getElementById('like-count').innerText = likes;
-      document.getElementById('dislike-count').innerText = dislikes;
+
+      userVote = 'like';
+      localStorage.setItem('user_vote', userVote);
       updateVoteUI();
     }
+
+    function handleDislike() {
+      if (userVote === 'dislike') return; // Si ya votó dislike, no hace nada
+
+      fetch(`https://abacus.jasoncameron.dev/hit/${namespace}/${dislikeKey}`)
+        .then(res => res.json())
+        .then(data => {
+          if (data && typeof data.value !== 'undefined') {
+            document.getElementById('dislike-count').innerText = data.value;
+          }
+        });
+
+      if (userVote === 'like') {
+        let currentLike = parseInt(document.getElementById('like-count').innerText);
+        if (currentLike > 0) document.getElementById('like-count').innerText = currentLike - 1;
+      }
+
+      userVote = 'dislike';
+      localStorage.setItem('user_vote', userVote);
+      updateVoteUI();
+    }
+
     function updateVoteUI() {
       const likeBtn = document.getElementById('like-btn');
       const dislikeBtn = document.getElementById('dislike-btn');
@@ -964,6 +994,7 @@ Martín no descubre la verdad porque posea conocimientos superiores a los de los
       if (userVote === 'like') likeBtn.classList.add('active-like');
       if (userVote === 'dislike') dislikeBtn.classList.add('active-dislike');
     }
+
     function handleCommentSubmit(e) {
       alert("¡Gracias por tu comentario!");
     }
